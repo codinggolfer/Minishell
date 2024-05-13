@@ -1,0 +1,2 @@
+# Minishell
+Recreation of bash
