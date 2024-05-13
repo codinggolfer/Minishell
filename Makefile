@@ -4,7 +4,12 @@ CC		=	CC
 CFLAGS	=	-Wall -Wextra -Werror
 RM		=	rm -f
 
-FILES	=	
+HEADERS	=	-I ~/.brew/opt/readline/include
+
+INCLUDES	=	-lreadline -L ~/.brew/opt/readline/lib
+
+FILES	=	minishell.c \
+			
 
 
 
@@ -15,7 +20,7 @@ OBJECTS	=	$(FILES:.c=.o)
 all:	minishell
 
 $(NAME):	$(LIBFT) $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(HEADERS) $(INCLUDES) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	@make -C ./libft

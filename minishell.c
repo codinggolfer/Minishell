@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/13 16:28:01 by eagbomei         ###   ########.fr       */
+/*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
+/*   Updated: 2024/05/13 16:29:19 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
 
-# include <stdio.h>
-# include "libft/libft.h"
-# include <signal.h>
-# include <fcntl.h>
-# include <term.h>
-# include <dirent.h>
-# include <termios.h>
-
-typedef struct s_env
+int	main(int argc, char **argv, char **env)
 {
-	
-}	t_env;
+	t_input	input;
 
-typedef struct s_input
-{
-	char	**env;
-}	t_input;
-
-#endif
+	input.env = env;
+}
