@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:17:36 by hzibari           #+#    #+#             */
-/*   Updated: 2024/04/08 14:04:35 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/14 14:07:00 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	pipex(int fd1, int fd2, char **av, t_pipe *struk)
 		exit(WEXITSTATUS(status));
 }
 
-int	main(int ac, char **av, char **env)
+int	pipex_main(int ac, char **av, char **env)
 {
 	int				fd1;
 	int				fd2;

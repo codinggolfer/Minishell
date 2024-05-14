@@ -15,6 +15,8 @@ FILES	=	minishell.c \
 
 LIBFT	=	libft/libft.a
 
+PIPEX	=	pipex/pipex.a
+
 OBJECTS	=	$(FILES:.c=.o)
 
 all:	minishell
