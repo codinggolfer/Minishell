@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+         #
+#    By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/25 12:27:21 by hzibari           #+#    #+#              #
-#    Updated: 2024/05/13 16:06:28 by hzibari          ###   ########.fr        #
+#    Updated: 2024/05/13 16:38:21 by eagbomei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT	=	libft/libft.a
+LIBFT	=	../libft/libft.a
 
 NAME	=	pipex
 
