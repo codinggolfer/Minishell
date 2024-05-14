@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/14 16:35:08 by eagbomei         ###   ########.fr       */
+/*   Created: 2024/05/14 14:40:44 by eagbomei          #+#    #+#             */
+/*   Updated: 2024/05/14 15:08:32 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_data(t_input *data, char **env)
+int	is_token(char c)
 {
-	data->vars = set_env(env); //TODO
-	rebuild_envp(data); //TODO
+	if (c == 39 || c == 34 || c == 124 || c == 60 || c == 62)
+		return (1);
+	return (0);
 }
 
-
-int	main(int ac, char **av, char **envp)
+int	bunny_ears(char *line, int stop, int bunny_ears)
 {
-	t_input	input;
-	char	*line;
+	int	start;
+	int	end;
 
-	input.env = envp;
-	init_data(&input, envp); //TODO
-	while (1)
-	{
-		//do signals Eronom
-		line = readline("babatunde: ");
-		if (!line)
-			break ;
-		add_history(line);
-		//pipex_main(ac, av, env);
-		free(line);
-	}
+	start = 0;
+	end = 0;
+	while (start < stop && line[start] != bunny_ears && line[start])
+		start++;
+	end = start;
+	while (end < stop && line[end] != bunny_ears && line[end])
+		end++;
+	
+
 }

@@ -6,14 +6,14 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 13:15:09 by hzibari           #+#    #+#             */
-/*   Updated: 2024/05/13 16:58:57 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:17:11 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include "../libft/libft.h"
+# include "./libft/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 
@@ -26,6 +26,7 @@ typedef struct s_pipe
 
 }	t_pipe;
 
+int		pipex_main(int ac, char **av, char **env);
 void	pipex(int fd1, int fd2, char **av, t_pipe *struk);
 void	ft_error(char *msg);
 void	child_one(int fd1, char *av, t_pipe *struk);

@@ -9,13 +9,15 @@ HEADERS	=	-I ~/.brew/opt/readline/include
 INCLUDES	=	-lreadline -L ~/.brew/opt/readline/lib
 
 FILES	=	minishell.c \
+			pipex.c \
+			child.c \
 			
 
 
 
 LIBFT	=	libft/libft.a
 
-PIPEX	=	pipex/pipex.a
+#PIPEX	=	pipex/pipex.a
 
 OBJECTS	=	$(FILES:.c=.o)
 

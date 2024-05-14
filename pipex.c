@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:17:36 by hzibari           #+#    #+#             */
-/*   Updated: 2024/05/14 14:07:00 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/14 14:20:45 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	pipex_main(int ac, char **av, char **env)
 	int				fd2;
 	static t_pipe	struk;
 
-	if (ac != 5 || *env == NULL)
+	if (*env == NULL)
 	{
 		ft_putendl_fd("Error input", 1);
 		return (0);

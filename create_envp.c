@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   create_envp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/14 16:35:08 by eagbomei         ###   ########.fr       */
+/*   Created: 2024/05/14 16:07:50 by eagbomei          #+#    #+#             */
+/*   Updated: 2024/05/14 16:15:30 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_data(t_input *data, char **env)
+void	rebuild_envp(t_input *data)
 {
-	data->vars = set_env(env); //TODO
-	rebuild_envp(data); //TODO
-}
-
-
-int	main(int ac, char **av, char **envp)
-{
-	t_input	input;
-	char	*line;
-
-	input.env = envp;
-	init_data(&input, envp); //TODO
-	while (1)
-	{
-		//do signals Eronom
-		line = readline("babatunde: ");
-		if (!line)
-			break ;
-		add_history(line);
-		//pipex_main(ac, av, env);
-		free(line);
-	}
+	
 }
