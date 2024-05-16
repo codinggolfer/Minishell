@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:40:44 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/14 15:08:32 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/16 21:51:55 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,22 @@
 
 int	is_token(char c)
 {
-	if (c == 39 || c == 34 || c == 124 || c == 60 || c == 62)
-		return (1);
+	int		i;
+	char	token[6];
+	
+	i = 0;
+	token[0] = '\'';
+	token[1] = '\"';
+	token[2] = '|';
+	token[3] = '>';
+	token[4] = '<';
+	token[5] = '\0';
+	while (token[i])
+	{
+		if (token[i] == c)
+			return (i + 1);
+		i++;
+	}
 	return (0);
 }
 

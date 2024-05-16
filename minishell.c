@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/16 14:44:15 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/16 21:24:28 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	init_data(t_input *data, char **env)
 	rebuild_envp(data); //TODO
 }
 
+// int	handle_line(t_input *data)
+// {
+// 	char	*line;
+
+// }
 
 int	main(int ac, char **av, char **envp)
 {
@@ -33,7 +38,10 @@ int	main(int ac, char **av, char **envp)
 		if (!line)
 			break ;
 		add_history(line);
-		//pipex_main(ac, av, env);
+		rl_redisplay();
+		input.line = ft_strdup(line);
 		free(line);
 	}
+
+	lexer(input.line);
 }
