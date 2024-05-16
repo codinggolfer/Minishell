@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/14 16:18:41 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:58:44 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,23 @@
 
 typedef struct s_env
 {
-	
+	char	*env_str;
 }	t_env;
 
 typedef struct s_list
 {
+	t_env 	*env;
 	struct s_list	*next;
 }	t_list;
 typedef struct s_input
 {
-	char	**env;
+	char	**own_env;
 	t_list	*vars;
 }	t_input;
 
 
 void	rebuild_envp(t_input *data);
+t_list	*create_list(t_list *head, char *env);
+t_list	*new_list(char *env);
 
 #endif

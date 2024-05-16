@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   t_list_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/16 14:44:15 by eagbomei         ###   ########.fr       */
+/*   Created: 2024/05/16 14:28:28 by eromonagbom       #+#    #+#             */
+/*   Updated: 2024/05/16 14:59:08 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_data(t_input *data, char **env)
+t_list	*new_list(char *env)
 {
-	data->vars = set_env(env);
-	rebuild_envp(data); //TODO
+	t_list	*head;
+
+	head = (t_list *)malloc(sizeof(t_list));
+	if (!head)
+		return (NULL);
+	head->env->env_str = env;
+	head->next = NULL;
+	return (head);
 }
 
-
-int	main(int ac, char **av, char **envp)
+t_list	*create_list(t_list *head, char *env)
 {
-	t_input	input;
-	char	*line;
+	t_list	*new;
+	t_list	*temp;
 
-	input.env = envp;
-	init_data(&input, envp); //TODO
-	while (1)
+	new = new_list(env);
+	if (!listsize(head))
+		head = new;
+	else
 	{
-		//do signals Eronom
-		line = readline("babatunde: ");
-		if (!line)
-			break ;
-		add_history(line);
-		//pipex_main(ac, av, env);
-		free(line);
+		temp = listlast(head);
+		temp->next = new;
 	}
+	return (head);
 }
+
