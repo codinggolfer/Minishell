@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/17 13:07:47 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:01:40 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_list
 	t_env 	*env;
 	struct s_list	*next;
 }	t_list;
+
 typedef struct s_input
 {
 	char	**own_env;
