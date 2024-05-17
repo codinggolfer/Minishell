@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/16 20:52:45 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/05/17 13:07:47 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,15 @@ typedef struct s_input
 	t_list	*vars;
 }	t_input;
 
-
+//init functions:
 void	rebuild_envp(t_input *data);
 t_list	*create_list(t_list *head, char *env);
 t_list	*new_list(char *env);
+
+//readline functions:
+int		handle_line(t_input *data);
+
+//signals:
+void	newliner(int signal);
 
 #endif

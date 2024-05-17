@@ -11,6 +11,8 @@ INCLUDES	=	-lreadline -L ~/.brew/opt/readline/lib
 FILES	=	minishell.c \
 			pipex.c \
 			child.c \
+			signal.c \
+			
 			
 
 
