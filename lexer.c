@@ -6,11 +6,20 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/05/16 21:54:36 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/05/18 23:20:53 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int handle_token(char *line, int token_type, int i)
+{
+	if (line[i + 1] && (token_type == 4 || token_type == 5))
+		if (token_type == is_token(line[i + 1]))
+			i++;
+	else if (token_type == 1 || token_type == 2)
+		i = bunny_ears(line, i, line[i]);
+}
 
 int	find_token_pos(char *line, int *token_pos)
 {
@@ -54,6 +63,9 @@ int	lexer(t_input *data)
 		ret_val = find_token_pos(data->line, token_pos);
 		if (ret_val == -1)
 			break;
-		
+		new_token = ft_substr(data->line, token_pos[0], token_pos[1]);
+		data->tokens = realloc_and_add(data->tokens, new_token);
+		free(new_token);
 	}
+	return (1);
 }

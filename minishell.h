@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/17 15:01:40 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/18 23:24:54 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,8 @@ int		handle_line(t_input *data);
 
 //signals:
 void	newliner(int signal);
+
+//lexer / parsing
+int	lexer(t_input *data);
 
 #endif
