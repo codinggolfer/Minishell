@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/05/18 23:20:53 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/05/21 15:37:24 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	find_token_pos(char *line, int *token_pos)
 	
 	if(!line)
 		return(-1);
-	i = 0;
+	i = token_pos[1] + 1;
 	while (line[i] && line[i] == ' ')
 		i++;
 	token_pos[0] = i;
@@ -44,6 +44,26 @@ int	find_token_pos(char *line, int *token_pos)
 	token_pos[1] = i;
 	return (token_type);
 }
+
+void	add_spaces(t_input *data, int ret_val, int *token_pos)
+{
+	if (ret_val > 0)
+	{
+		if (ret_val == 1 || ret_val == 2)
+		{
+			if (data->line[token_pos[1] + 1] == ' ')
+			{
+				data->tokens = realloc_and_add(data->tokens, "");
+				++token_pos[1];
+			}
+		}
+		else if (ret_val == 4 || ret_val == 5)
+			data->tokens = realloc_and_add(data->tokens, "");
+	}
+	else if (data->line[token_pos[1] + 1] == ' ')
+		data->tokens = realloc_and_add(data->tokens, "");
+}
+
 
 int	lexer(t_input *data)
 {
@@ -65,6 +85,7 @@ int	lexer(t_input *data)
 			break;
 		new_token = ft_substr(data->line, token_pos[0], token_pos[1]);
 		data->tokens = realloc_and_add(data->tokens, new_token);
+		add_spaces(data, ret_val, token_pos);
 		free(new_token);
 	}
 	return (1);

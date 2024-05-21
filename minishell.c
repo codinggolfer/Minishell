@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/17 13:12:32 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:26:25 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	main(int ac, char **av, char **envp)
 		signal(SIGQUIT, ); // this should quit the whole program like ctrl+z
 		if (hande_line(&input) == 0)
 			break ;
-		lexer(input.line);
+		lexer(&input);
+		parser(&input);
 	}
 
 }
