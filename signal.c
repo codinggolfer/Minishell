@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:41:58 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/17 13:06:20 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/17 14:10:43 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,4 @@ void	newliner(int signal)
 	rl_replace_line("", 1);
 	rl_redisplay();
 }
+

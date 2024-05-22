@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/17 13:12:32 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/17 13:29:51 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int ac, char **av, char **envp)
 		signal(SIGINT, newliner); //this is for something like ctrl+c get the newline to the promt
 		signal(SIGQUIT, ); // this should quit the whole program like ctrl+z
 		if (hande_line(&input) == 0)
-			break ;
+			continue ;
 		lexer(input.line);
 	}
 

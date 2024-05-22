@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:40:44 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/17 12:02:05 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/17 14:10:05 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ int	bunny_ears(char *line, int stop, int bunny_ears)
 	end = start;
 	while (end < stop && line[end] != bunny_ears && line[end])
 		end++;
-	
 
 }
