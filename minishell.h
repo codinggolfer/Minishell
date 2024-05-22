@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 14:06:00 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/22 14:10:10 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ t_list	*set_env(char **env);
 void	rebuild_envp(t_input *data);
 t_list	*create_list(t_list *head, char *env);
 t_list	*new_list(char *env);
+int		listsize(t_list *head);
+t_list	*listlast(t_list *head);
 
 //readline functions:
 int		handle_line(t_input *data);
