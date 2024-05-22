@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/17 13:36:31 by hzibari          ###   ########.fr       */
-=======
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/18 23:24:54 by halgordziba      ###   ########.fr       */
->>>>>>> bced92b4eff3bca0c5fc88f4fe65b01410f5db8c
+/*   Updated: 2024/05/22 14:06:00 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +15,6 @@
 
 # include <stdio.h>
 # include "libft/libft.h"
-# include "pipex.h"
 # include <signal.h>
 # include <fcntl.h>
 # include <term.h>
@@ -33,7 +25,6 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 
-
 typedef struct s_env
 {
 	char	*env_str;
@@ -41,9 +32,22 @@ typedef struct s_env
 
 typedef struct s_list
 {
-	t_env 	*env;
+	t_env			*env;
+	char			*token;
+	char			*cmds;
+	char			*array;
 	struct s_list	*next;
 }	t_list;
+
+//pipex struct
+typedef struct s_pipe
+{
+	int		fd[2];
+	char	**env;
+	char	**path;
+	int		flag;
+
+}	t_pipe;
 
 typedef struct s_input
 {
@@ -52,6 +56,10 @@ typedef struct s_input
 	char	**tokens;
 	t_list	*vars;
 }	t_input;
+
+
+// env
+t_list	*set_env(char **env);
 
 //init functions:
 void	rebuild_envp(t_input *data);
@@ -64,13 +72,21 @@ int		handle_line(t_input *data);
 //signals:
 void	newliner(int signal);
 
-<<<<<<< HEAD
-#endif
-
- 
-=======
 //lexer / parsing
-int	lexer(t_input *data);
+int		lexer(t_input *data);
+int		is_token(char c);
+int		bunny_ears(char *line, int start, int bunny_ears);
+int		parser(t_input *data);
+
+// pipex funtions
+
+int		pipex_main(int ac, char **av, char **env);
+void	pipex(int fd1, int fd2, char **av, t_pipe *struk);
+void	ft_error(char *msg);
+void	child_one(int fd1, char *av, t_pipe *struk);
+void	child_two(int fd2, char *av, t_pipe *struk);
+char	*get_command(char **path, char *arg);
+void	put_msg(char *av);
+char	*find_path(char **env);
 
 #endif
->>>>>>> bced92b4eff3bca0c5fc88f4fe65b01410f5db8c

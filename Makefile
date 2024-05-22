@@ -12,9 +12,12 @@ FILES	=	minishell.c \
 			pipex.c \
 			child.c \
 			signal.c \
-			
-			
-
+			array_utils.c \
+			create_envp.c \
+			lexer.c \
+			list_utils.c \
+			t_list_utils.c \
+			token_utils.c
 
 
 LIBFT	=	libft/libft.a

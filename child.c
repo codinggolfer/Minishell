@@ -6,11 +6,11 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:34:36 by hzibari           #+#    #+#             */
-/*   Updated: 2024/04/08 14:38:52 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/22 13:41:19 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "minishell.h"
 
 void	put_msg(char *av)
 {

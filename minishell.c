@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/17 13:29:51 by hzibari          ###   ########.fr       */
-=======
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/21 15:26:25 by halgordziba      ###   ########.fr       */
->>>>>>> bced92b4eff3bca0c5fc88f4fe65b01410f5db8c
+/*   Updated: 2024/05/22 13:36:24 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +46,12 @@ int	main(int ac, char **av, char **envp)
 	init_data(&input, envp);
 	while (1)
 	{
-		signal(SIGINT, newliner); //this is for something like ctrl+c get the newline to the promt
-		signal(SIGQUIT, ); // this should quit the whole program like ctrl+z
-		if (hande_line(&input) == 0)
-<<<<<<< HEAD
-			continue ;
-		lexer(input.line);
-=======
+		// signal(SIGINT, newliner); //this is for something like ctrl+c get the newline to the promt
+		// signal(SIGQUIT, ); // this should quit the whole program like ctrl+z
+		if (handle_line(&input) == 0)
 			break ;
 		lexer(&input);
 		parser(&input);
->>>>>>> bced92b4eff3bca0c5fc88f4fe65b01410f5db8c
 	}
 
 }

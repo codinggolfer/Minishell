@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_list_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:28:28 by eromonagbom       #+#    #+#             */
-/*   Updated: 2024/05/16 14:59:08 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:22:53 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,3 @@ t_list	*create_list(t_list *head, char *env)
 	}
 	return (head);
 }
-
