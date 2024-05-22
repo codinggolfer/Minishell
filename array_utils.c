@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:50:27 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 12:50:04 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/22 15:53:27 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	count_arg_array(char **array)
 	i = 0;
 	while (array[i])
 		i++;
+	printf("arg counter: %d\n", i);
 	return (i);
 }
 
@@ -31,7 +32,7 @@ void	free_2darray(char **array)
 	if (!array)
 		return ;
 	len = count_arg_array(array);
-	while (i <= len)
+	while (i < len)
 	{
 		free (array[i]);
 		i++;

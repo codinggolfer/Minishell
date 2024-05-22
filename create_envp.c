@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:07:50 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 13:20:42 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/22 14:32:18 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	rebuild_envp(t_input *data)
 		ft_error("malloc failure"); // need to add better protections in the future
 	while (list != NULL)
 	{
-		data->own_env[i] = ft_strdup(list->env->env_str);
+		data->own_env[i] = ft_strdup(list->env);
 		i++;
 		list = list->next;
 	}

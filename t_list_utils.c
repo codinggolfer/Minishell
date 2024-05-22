@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:28:28 by eromonagbom       #+#    #+#             */
-/*   Updated: 2024/05/22 13:22:53 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/22 14:44:23 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*new_list(char *env)
 	head = (t_list *)malloc(sizeof(t_list));
 	if (!head)
 		return (NULL);
-	head->env->env_str = env;
+	head->env = ft_strdup(env);
 	head->next = NULL;
 	return (head);
 }

@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/05/22 13:20:38 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/22 16:28:32 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 int	handle_token(char *line, int token_type, int i)
 {
 	if (line[i + 1] && (token_type == 4 || token_type == 5))
+	{
 		if (token_type == is_token(line[i + 1]))
 			i++;
+	}
 	else if (token_type == 1 || token_type == 2)
 		i = bunny_ears(line, i, line[i]);
+	return (i);
 }
 
 int	find_token_pos(char *line, int *token_pos)
@@ -26,9 +29,9 @@ int	find_token_pos(char *line, int *token_pos)
 	int	i;
 	int	token_type;
 
-	if (!line)
+	if (!line || !line[token_pos[1] + 1])
 		return (-1);
-	i = token_pos[1] + 1;
+	i = token_pos[1];
 	while (line[i] && line[i] == ' ')
 		i++;
 	token_pos[0] = i;
@@ -37,9 +40,8 @@ int	find_token_pos(char *line, int *token_pos)
 		i = handle_token(line, token_type, i);
 	else
 	{
-		while (line[i] && !is_token(line[i] && line[i] != ' '))
+		while (line[i] && !is_token(line[i]) && line[i] != ' ')
 			i++;
-		i--;
 	}
 	token_pos[1] = i;
 	return (token_type);
@@ -66,13 +68,11 @@ void	add_spaces(t_input *data, int ret_val, int *token_pos)
 
 int	lexer(t_input *data)
 {
-	int		i;
 	int		len;
 	int		token_pos[2];
 	int		ret_val;
 	char	*new_token;
 
-	i = 0;
 	len = ft_strlen(data->line);
 	data->tokens = (char **) malloc(sizeof(char *));
 	if (!data->tokens)
@@ -84,7 +84,7 @@ int	lexer(t_input *data)
 		ret_val = find_token_pos(data->line, token_pos);
 		if (ret_val == -1)
 			break ;
-		new_token = ft_substr(data->line, token_pos[0], token_pos[1]);
+		new_token = ft_substr(data->line, token_pos[0], token_pos[1] - token_pos[0]);
 		data->tokens = realloc_and_add(data->tokens, new_token);
 		add_spaces(data, ret_val, token_pos);
 		free(new_token);

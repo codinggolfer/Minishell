@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:56:39 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 14:10:01 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:37:28 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	free_node(t_list *node)
 {
-	if (node->env->env_str != NULL)
-		free (node->env->env_str);
+	if (node->env != NULL)
+		free (node->env);
 }
 
 int	listsize(t_list *head)
@@ -30,6 +30,7 @@ int	listsize(t_list *head)
 	}
 	return (i);
 }
+
 t_list	*listlast(t_list *head)
 {
 	while (head)

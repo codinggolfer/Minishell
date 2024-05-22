@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 13:36:24 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/22 15:30:20 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,18 @@ int	handle_line(t_input *data)
 int	main(int ac, char **av, char **envp)
 {
 	t_input	input;
-
+	
 	init_data(&input, envp);
 	while (1)
 	{
-		// signal(SIGINT, newliner); //this is for something like ctrl+c get the newline to the promt
-		// signal(SIGQUIT, ); // this should quit the whole program like ctrl+z
+		signal(SIGINT, newliner); //this is for something like ctrl+c get the newline to the promt
+		signal(SIGQUIT, 0); // this should quit the whole program like ctrl+z
 		if (handle_line(&input) == 0)
 			break ;
 		lexer(&input);
-		parser(&input);
+		// for (int i = 0; input.tokens[i] != '\0'; i++)
+		// 	printf("%s\n", input.tokens[i]);
+		//parser(&input);
 	}
 
 }

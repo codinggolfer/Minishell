@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 14:10:10 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:11:38 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,9 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 
-typedef struct s_env
-{
-	char	*env_str;
-}	t_env;
-
 typedef struct s_list
 {
-	t_env			*env;
-	char			*token;
-	char			*cmds;
-	char			*array;
+	char			*env;
 	struct s_list	*next;
 }	t_list;
 
@@ -57,7 +49,6 @@ typedef struct s_input
 	t_list	*vars;
 }	t_input;
 
-
 // env
 t_list	*set_env(char **env);
 
@@ -67,6 +58,11 @@ t_list	*create_list(t_list *head, char *env);
 t_list	*new_list(char *env);
 int		listsize(t_list *head);
 t_list	*listlast(t_list *head);
+
+//utils
+char	**realloc_and_add(char **src, char *str);
+void	free_2darray(char **array);
+int		count_arg_array(char **array);
 
 //readline functions:
 int		handle_line(t_input *data);

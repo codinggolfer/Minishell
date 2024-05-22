@@ -6,13 +6,13 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:27:07 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/05/22 13:22:39 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/22 14:15:18 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+// #include "minishell.h"
 
-int	parser(t_input *data)
-{
+// int	parser(t_input *data)
+// {
 	
-}
+// }

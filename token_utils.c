@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:40:44 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 13:23:32 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/22 16:15:47 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ int	bunny_ears(char *line, int start, int bunny_ears)
 		start++;
 	if (!line[start])
 		return (-1);
+	start++;
 	return (start);
 }
