@@ -43,7 +43,7 @@ clean:
 
 fclean: clean
 	make fclean -C libft
-	$(RM) $(NAME) $(OBJECTS)
+	$(RM) $(OBJECTS)
 	
 re: fclean $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:41:58 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 14:09:22 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:47:38 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	newliner(int signal)
 	write(STDOUT_FILENO, "\n", 1);
 	rl_on_new_line();
 	rl_redisplay();
-	write(STDOUT_FILENO, "", 1);
+	rl_replace_line("", 0);
 	rl_redisplay();
 }
