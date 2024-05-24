@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:50:27 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 15:53:27 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/23 14:49:05 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	count_arg_array(char **array)
 	i = 0;
 	while (array[i])
 		i++;
-	printf("arg counter: %d\n", i);
 	return (i);
 }
 
@@ -37,7 +36,7 @@ void	free_2darray(char **array)
 		free (array[i]);
 		i++;
 	}
-	array = NULL;
+	array[0] = NULL;
 }
 
 char	**realloc_and_add(char **src, char *str)
@@ -48,7 +47,7 @@ char	**realloc_and_add(char **src, char *str)
 
 	i = 0;
 	len = count_arg_array(src);
-	ret = malloc(sizeof(char *) * len + 2);
+	ret = ft_calloc(sizeof(char *), len + 2);
 	if (!ret)
 		return (NULL);
 	while (i < len)
@@ -57,7 +56,6 @@ char	**realloc_and_add(char **src, char *str)
 		i++;
 	}
 	ret[i] = ft_strdup(str);
-	ret[i + 1] = NULL;
 	free_2darray(src);
 	return (ret);
 }
