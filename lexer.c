@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/05/23 14:50:05 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/05/24 15:11:40 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	handle_token(char *line, int token_type, int i)
 {
-	if (line[i + 1] && (token_type == 4 || token_type == 5))
+	if (line[i] && (token_type == 3 || token_type == 4 || token_type == 5))
 	{
-		if (token_type == is_token(line[i + 1]))
+		if (token_type == is_token(line[i]))
 			i++;
 	}
 	else if (token_type == 1 || token_type == 2)
@@ -53,16 +53,16 @@ void	add_spaces(t_input *data, int ret_val, int *token_pos)
 	{
 		if (ret_val == 1 || ret_val == 2)
 		{
-			if (data->line[token_pos[1] + 1] == ' ')
+			if (data->line[token_pos[1]] == ' ')
 			{
 				data->tokens = realloc_and_add(data->tokens, "");
 				++token_pos[1];
 			}
 		}
-		else if (ret_val == 4 || ret_val == 5)
+		else if (ret_val == 3 || ret_val == 4 || ret_val == 5)
 			data->tokens = realloc_and_add(data->tokens, "");
 	}
-	else if (data->line[token_pos[1] + 1] == ' ')
+	else if (data->line[token_pos[1]] == ' ')
 		data->tokens = realloc_and_add(data->tokens, "");
 }
 
@@ -84,6 +84,8 @@ int	lexer(t_input *data)
 		ret_val = find_token_pos(data->line, token_pos);
 		if (ret_val == -1)
 			break ;
+		if (ret_val == 3 || ret_val == 4 || ret_val == 5)
+			data->tokens = realloc_and_add(data->tokens, "");
 		new_token = ft_substr(data->line, token_pos[0], token_pos[1] - token_pos[0]);
 		//printf("%s\n", new_token);
 		data->tokens = realloc_and_add(data->tokens, new_token);
