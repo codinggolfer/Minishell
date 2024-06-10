@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:27:07 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/05/22 14:15:18 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/06/10 14:40:15 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "minishell.h"
+#include "minishell.h"
 
-// int	parser(t_input *data)
-// {
+int	parser(t_input *data)
+{
+	t_list	ret;
+
 	
-// }
+}
