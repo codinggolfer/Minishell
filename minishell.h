@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 16:11:38 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/06/11 13:53:37 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		count_arg_array(char **array);
 
 //readline functions:
 int		handle_line(t_input *data);
+int		check_closed(t_input *data);
 
 //signals:
 void	newliner(int signal);
