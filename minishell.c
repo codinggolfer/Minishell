@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/06/10 13:49:18 by hzibari          ###   ########.fr       */
-=======
-/*   Updated: 2024/06/10 14:13:22 by eagbomei         ###   ########.fr       */
->>>>>>> 1f41d7e2ba62cdf974cd0fbb96b47e23b96a7d55
+/*   Updated: 2024/06/11 15:24:08 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +55,8 @@ int	handle_line(t_input *data)
 			return (0);
 		}
 		add_history(line);
+		if (!strcmp(line, "exit"))
+			exit (0);
 		rl_redisplay();
 		data->line = ft_strdup(line);
 		free (line);
@@ -81,7 +79,7 @@ int	main(int ac, char **av, char **envp)
 		lexer(&input);
 		// for (int i = 0; input.tokens[i] != '\0'; i++)
 		// 	printf("%s\n", input.tokens[i]);
-		parser(&input);
+		//parser(&input);
 	}
 
 }
