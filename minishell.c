@@ -5,8 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 13:46:19 by hzibari           #+#    #+#             */
-/*   Updated: 2024/06/11 13:46:48 by hzibari          ###   ########.fr       */
+/*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2024/06/10 13:49:18 by hzibari          ###   ########.fr       */
+=======
+/*   Updated: 2024/06/10 14:13:22 by eagbomei         ###   ########.fr       */
+>>>>>>> 1f41d7e2ba62cdf974cd0fbb96b47e23b96a7d55
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +20,30 @@
 void	init_data(t_input *data, char **env)
 {
 	data->vars = set_env(env);
+	data->own_env = NULL;
 	rebuild_envp(data);
+}
+
+int	check_closed(t_input *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->line[i])
+	{
+		if (data->line[i] == '\"' || data->line[i] == '\'')
+		{
+			i = bunny_ears(data->line, i, data->line[i]);
+			if (i == -1)
+			{
+				free (data->line);
+				printf("Error: Unmatched quotation mark detected\n");
+				return (0);
+			}
+		}
+		i++;
+	}
+	return (1);
 }
 
 int	handle_line(t_input *data)
@@ -35,7 +62,7 @@ int	handle_line(t_input *data)
 		rl_redisplay();
 		data->line = ft_strdup(line);
 		free (line);
-		return (1); // has to return a value that tells info about the input and how we need to handle it
+		return (check_closed(data));
 	}
 	return (0);
 }
@@ -50,11 +77,11 @@ int	main(int ac, char **av, char **envp)
 		signal(SIGINT, newliner); //this is for something like ctrl+c get the newline to the promt
 		signal(SIGQUIT, 0); // this should quit the whole program like ctrl+z
 		if (handle_line(&input) == 0)
-			break ;
+			continue ;
 		lexer(&input);
-		for (int i = 0; input.tokens[i] != '\0'; i++)
-			printf("%s\n", input.tokens[i]);
-		//parser(&input);
+		// for (int i = 0; input.tokens[i] != '\0'; i++)
+		// 	printf("%s\n", input.tokens[i]);
+		parser(&input);
 	}
 
 }
