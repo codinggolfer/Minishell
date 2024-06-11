@@ -6,7 +6,11 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/06/10 13:49:18 by hzibari          ###   ########.fr       */
+=======
+/*   Updated: 2024/06/10 14:13:22 by eagbomei         ###   ########.fr       */
+>>>>>>> 1f41d7e2ba62cdf974cd0fbb96b47e23b96a7d55
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +46,7 @@ int	handle_line(t_input *data)
 int	main(int ac, char **av, char **envp)
 {
 	t_input	input;
-	
+
 	init_data(&input, envp);
 	while (1)
 	{
@@ -51,9 +55,9 @@ int	main(int ac, char **av, char **envp)
 		if (handle_line(&input) == 0)
 			break ;
 		lexer(&input);
-		for (int i = 0; input.tokens[i] != '\0'; i++)
-			printf("%s\n", input.tokens[i]);
-		//parser(&input);
+		// for (int i = 0; input.tokens[i] != '\0'; i++)
+		// 	printf("%s\n", input.tokens[i]);
+		parser(&input);
 	}
 
 }
