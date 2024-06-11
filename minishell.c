@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/24 14:44:45 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/06/10 13:49:18 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	main(int ac, char **av, char **envp)
 	init_data(&input, envp);
 	while (1)
 	{
-	//	signal(SIGINT, newliner); //this is for something like ctrl+c get the newline to the promt
-	//	signal(SIGQUIT, 0); // this should quit the whole program like ctrl+z
+		signal(SIGINT, newliner); //this is for something like ctrl+c get the newline to the promt
+		signal(SIGQUIT, 0); // this should quit the whole program like ctrl+z
 		if (handle_line(&input) == 0)
 			break ;
 		lexer(&input);

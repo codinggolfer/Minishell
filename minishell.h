@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 16:11:38 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/06/10 16:17:35 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,18 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 
+typedef struct s_cmd
+{
+	char	**cmd;
+}	t_cmd;
+
 typedef struct s_list
 {
 	char			*env;
 	struct s_list	*next;
+	int				in_fd;
+	int				out_fd;
+	t_cmd			cmd;
 }	t_list;
 
 //pipex struct
@@ -38,7 +46,6 @@ typedef struct s_pipe
 	char	**env;
 	char	**path;
 	int		flag;
-
 }	t_pipe;
 
 typedef struct s_input
