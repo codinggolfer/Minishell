@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:53:21 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/01/12 12:45:15 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/06/13 22:42:25 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	**free_all(char **split)
 	size_t	i;
 
 	i = 0;
-	while (split[i] != '\0')
+	while (split[i] != NULL)
 	{
 		free(split[i]);
 		i++;
@@ -67,7 +67,7 @@ char	**ft_split(char const *s, char c)
 		while (s[end] != c && s[end] != '\0')
 			end++;
 		split[i] = ft_substr(s, start, end - start);
-		if (split[i++] == '\0')
+		if (split[i++] == NULL)
 			return (free_all(split));
 		start = end;
 	}

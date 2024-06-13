@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/11 15:24:08 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/06/13 22:40:13 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int ac, char **av, char **envp)
 		lexer(&input);
 		// for (int i = 0; input.tokens[i] != '\0'; i++)
 		// 	printf("%s\n", input.tokens[i]);
-		//parser(&input);
+		parser(&input);
 	}
 
 }

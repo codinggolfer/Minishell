@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/11 14:26:28 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/06/13 22:49:21 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int		lexer(t_input *data);
 int		is_token(char c);
 int		bunny_ears(char *line, int start, int bunny_ears);
 int		parser(t_input *data);
+char	*append_line(char *line, char *ret);
 
 // pipex funtions
 
