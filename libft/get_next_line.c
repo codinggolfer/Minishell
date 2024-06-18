@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:24:16 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/01/16 13:41:05 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/06/13 22:49:32 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ static char	*next_plz(char *lines)
 	return (line);
 }
 
-static char	*append_line(char *lines, char *ret)
+char	*append_line(char *line, char *ret)
 {
 	char	*temp;
 
-	temp = ft_strjoin(lines, ret);
-	free(lines);
+	temp = ft_strjoin(line, ret);
+	free(line);
 	return (temp);
 }
 

@@ -17,7 +17,8 @@ FILES	=	minishell.c \
 			lexer.c \
 			list_utils.c \
 			t_list_utils.c \
-			token_utils.c
+			token_utils.c \
+			parser.c
 
 
 LIBFT	=	libft/libft.a

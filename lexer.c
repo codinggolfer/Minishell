@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/06/10 14:16:45 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:59:43 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 int	handle_token(char *line, int token_type, int i)
 {
-	if (line[i] && (token_type == 3 || token_type == 4 || token_type == 5))
+	if (line[i] && (token_type == 4 || token_type == 5))
 	{
 		if (token_type == is_token(line[i]))
 			i++;
 	}
 	else if (token_type == 1 || token_type == 2)
+	{
 		i = bunny_ears(line, i, line[i]);
+		i++;
+	}
 	return (i);
 }
 
@@ -42,6 +45,7 @@ int	find_token_pos(char *line, int *token_pos)
 	{
 		while (line[i] && !is_token(line[i]) && line[i] != ' ')
 			i++;
+		i++;
 	}
 	token_pos[1] = i;
 	return (token_type);

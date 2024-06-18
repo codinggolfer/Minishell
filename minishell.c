@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/11 14:26:18 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/06/18 16:56:40 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	handle_line(t_input *data)
 			return (0);
 		}
 		add_history(line);
+		if (!strcmp(line, "exit"))
+			exit (0);
 		rl_redisplay();
 		data->line = ft_strdup(line);
 		free (line);
@@ -75,9 +77,9 @@ int	main(int ac, char **av, char **envp)
 		if (handle_line(&input) == 0)
 			continue ;
 		lexer(&input);
-		// for (int i = 0; input.tokens[i] != '\0'; i++)
-		// 	printf("%s\n", input.tokens[i]);
-		parser(&input);
+		for (int i = 0; input.tokens[i] != '\0'; i++)
+			printf("%s", input.tokens[i]);
+		//parser(&input);
 	}
 
 }

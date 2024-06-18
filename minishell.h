@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/11 14:26:20 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/06/18 14:30:34 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int		lexer(t_input *data);
 int		is_token(char c);
 int		bunny_ears(char *line, int start, int bunny_ears);
 int		parser(t_input *data);
+char	*append_line(char *line, char *ret);
 
 // pipex funtions
 

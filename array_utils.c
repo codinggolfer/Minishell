@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:50:27 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/11 14:15:28 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/06/18 15:56:55 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	count_arg_array(char **array)
 	int	i;
 
 	i = 0;
+	if (!array)
+		return (0);
 	while (array[i])
 		i++;
 	return (i);
