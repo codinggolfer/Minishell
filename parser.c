@@ -47,7 +47,4 @@ char	**cut_cmds(int *find_cmd, char **tokens)
 	
 <<<<<<< HEAD
 // }
-=======
->>>>>>> 1f41d7e2ba62cdf974cd0fbb96b47e23b96a7d55
 }
->>>>>>> fdfc809d6990e4c0e163a08a312991e8ffea1202
