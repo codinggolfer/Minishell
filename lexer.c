@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/06/18 16:59:43 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/06/19 16:18:46 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	handle_token(char *line, int token_type, int i)
 {
-	if (line[i] && (token_type == 4 || token_type == 5))
+	if (line[i] && (token_type == 3 || token_type == 4 || token_type == 5))
 	{
 		if (token_type == is_token(line[i]))
 			i++;
@@ -22,7 +22,8 @@ int	handle_token(char *line, int token_type, int i)
 	else if (token_type == 1 || token_type == 2)
 	{
 		i = bunny_ears(line, i, line[i]);
-		i++;
+		// if (line[i] == ' ')
+		// 	i++;
 	}
 	return (i);
 }
@@ -43,9 +44,10 @@ int	find_token_pos(char *line, int *token_pos)
 		i = handle_token(line, token_type, i);
 	else
 	{
-		while (line[i] && !is_token(line[i]) && line[i] != ' ')
+		while (line[i] && line[i] != '<' && line[i] != '>' && line[i] != '|' && line[i] != ' ')
 			i++;
-		i++;
+		if (line[i] == ' ')
+			i++;
 	}
 	token_pos[1] = i;
 	return (token_type);
@@ -66,8 +68,8 @@ void	add_spaces(t_input *data, int ret_val, int *token_pos)
 		else if (ret_val == 3 || ret_val == 4 || ret_val == 5)
 			data->tokens = realloc_and_add(data->tokens, "");
 	}
-	else if (data->line[token_pos[1]] == ' ')
-		data->tokens = realloc_and_add(data->tokens, "");
+	// else if (data->line[token_pos[1]] == '\"')
+	// 	data->tokens = realloc_and_add(data->tokens, "");
 }
 
 int	lexer(t_input *data)
