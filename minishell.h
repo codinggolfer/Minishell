@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/24 14:23:55 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:54:37 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_input
 	char	**own_env;
 	char	*line;
 	char	**tokens;
+	char	*cwd;
 	t_list	*vars;
 }	t_input;
 
@@ -96,5 +97,8 @@ void	child_two(int fd2, char *av, t_pipe *struk);
 char	*get_command(char **path, char *arg);
 void	put_msg(char *av);
 char	*find_path(char **env);
+
+//builtin functions
+int builtin_pwd(t_input *data),
 
 #endif

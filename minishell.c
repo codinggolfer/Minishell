@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/19 15:21:31 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/06/24 14:56:10 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_data(t_input *data, char **env)
 {
 	data->vars = set_env(env);
 	data->own_env = NULL;
+	data->cwd = getcwd(NULL, 1024);
 	rebuild_envp(data);
 }
 

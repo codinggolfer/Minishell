@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:02:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/24 14:33:34 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:58:15 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,51 @@ int builtin_echo(char **arg)
     return (0);
     
 }
+int builtin_pwd(t_input *data)
+{
+    printf("%s\n", data->cwd);
+    free (data->cwd);
+}
+
+int builtin_env(char **own_env)
+{
+    int i;
+
+    i = 0;
+    while (own_env[i])
+    {
+        printf("%s", own_env[i]);
+        i++;
+    }
+    write (1, "\n", 1);
+    return (0);
+}
+// int builtin_cd(char **arg, t_input *data)
+// { 
+// }
+
+int builtin_export(char **arg, t_input *data)
+{
+    int len;
+
+    len = count_arg_array(data->own_env);
+    data->own_env =
+}
 
 int handle_builtins(char *cmd, char **arg, t_input *data)
 {
-    if (ft_strcmp("echo", cmd) == 0)
+    if (ft_strcmp(cmd,"echo") == 0)
         builtin_echo(arg);
+    else if (ft_strcmp(cmd,"pwd") == 0)
+        builtin_pwd(data);
+    else if (ft_strcmp(cmd, "env") == 0)
+        builtin_env(data->own_env);
+    else if (ft_strcmp(cmd, "cd") == 0)
+        builtin_cd(arg, data); //TODO
+    else if (ft_strcmp(cmd, "export"))
+        builtin_export(arg, data); //TODO
+    else if (ft_strcmp(cmd, "unset"))
+        builtin_unset(arg, data); //TODO
+    else if (ft_strcmp(cmd, "exit"))
+        builtin_exit(arg); //TODO
 }
