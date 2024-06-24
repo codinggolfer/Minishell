@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/18 14:30:34 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/06/24 14:23:55 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_list	*listlast(t_list *head);
 char	**realloc_and_add(char **src, char *str);
 void	free_2darray(char **array);
 int		count_arg_array(char **array);
+int		ft_strcmp(char *s1, char *s2);
 
 //readline functions:
 int		handle_line(t_input *data);
