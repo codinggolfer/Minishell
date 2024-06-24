@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:27:07 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/06/19 16:16:25 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/06/24 15:55:54 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 void	find_next_pipe(char **tokens, int *find_cmd)
 {
-	if (!ft_strncmp(tokens[find_cmd[1]], "|", ft_strlen(tokens[find_cmd[1]])))
+	if (!ft_strcmp(tokens[find_cmd[1]], "|"))
 		find_cmd[1]++;
 	find_cmd[0] = find_cmd[1];
-	while (tokens[find_cmd[1]])
+	while (ft_strcmp(tokens[find_cmd[1]], "|"))
 	{
-		if (!ft_strncmp(tokens[find_cmd[1]], "|", ft_strlen(tokens[find_cmd[1]])))
+		//printf("the token in find pipe %s\n", tokens[find_cmd[1]]);
+		if (!ft_strcmp(tokens[find_cmd[1]], "|"))
 			break ;
 		// printf("in the find pipe %d\n", find_cmd[1]);
 		// printf("here1\n");
 		find_cmd[1]++;
+		//printf(" int the counter %d\n", find_cmd[1]);
 	}
 }
 
@@ -49,18 +51,19 @@ void	remove_space_and_ears(char ***cmd, char **tokens, char **str)
 	{
 		if ((*str))
 		{
+			printf("here in the realloc and add: %s\n", (*str));
 			(*cmd) = realloc_and_add((*cmd), (*str));
 			free((*str));
 			(*str) = ft_strdup("");
-			printf("%s\n", *cmd[0]);
+			printf("cmd in rm spa and erars: %s\n", *cmd[0]);
 		}
 	}
 	else
 	{
-		remove_ears(tokens);
-		// if (remove_ears(tokens) == 1)
-		// 	(*tokens) = ft_strtrim((*tokens), " ");
+		if (remove_ears(tokens) == 1)
+			(*tokens) = append_line((*tokens), " ");
 		(*str) = append_line((*str), (*tokens));
+
 	}
 }
 
@@ -77,16 +80,17 @@ char	**cut_cmds(int *find_cmd, char **tokens)
 	i = find_cmd[0];
 	cmd = NULL;
 	str = ft_strdup("");
-	printf("in the find cut cmds %d\n", find_cmd[1]);
+	//printf("in the find cut cmds %d\n", find_cmd[1]);
 	//printf("in the find cut cmds %d\n", find_cmd[0]);
 	//printf("%s\n", tokens[0]);
 	while (i < find_cmd[1])
 	{
+		//printf("tokens int the while loop: %s\n", tokens[i]);
 		remove_space_and_ears(&cmd, &tokens[i], &str);
 		//printf("%s\n", str);
 		i++;
 	}
-	//printf("%s\n", cmd[0]);
+	// printf("the cmd: %s\n", cmd[5]);
 	//printf("%s\n", str);
 	if (str)
 	{
@@ -102,7 +106,10 @@ int	parser(t_input *data)
 	t_list	*node;
 	int		find_cmd[2];
 	char	**cmd;
-
+	
+	for (int i = 0; data->tokens[i] != NULL; i++)
+		printf("%s\n", data->tokens[i]);
+	printf("\n");
 	find_cmd[1] = 0;
 	cmd = cut_cmds(find_cmd, data->tokens);
 	return (0);

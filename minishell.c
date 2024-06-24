@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/19 15:21:31 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/06/24 15:02:43 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int	main(int ac, char **av, char **envp)
 		if (handle_line(&input) == 0)
 			continue ;
 		lexer(&input);
-		for (int i = 0; input.tokens[i] != NULL; i++)
-			printf("%s", input.tokens[i]);
-		printf("\n");
+		// for (int i = 0; input.tokens[i] != NULL; i++)
+		// 	printf("%s", input.tokens[i]);
+		// printf("\n");
 		parser(&input);
 	}
 
