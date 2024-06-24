@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/06/19 16:18:46 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/06/24 15:50:04 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@ void	add_spaces(t_input *data, int ret_val, int *token_pos)
 {
 	if (ret_val > 0)
 	{
-		if (ret_val == 1 || ret_val == 2)
-		{
-			if (data->line[token_pos[1]] == ' ')
-			{
-				data->tokens = realloc_and_add(data->tokens, "");
-				++token_pos[1];
-			}
-		}
-		else if (ret_val == 3 || ret_val == 4 || ret_val == 5)
+		// if (ret_val == 1 || ret_val == 2)
+		// {
+		// 	if (data->line[token_pos[1]] == ' ')
+		// 	{
+		// 		data->tokens = realloc_and_add(data->tokens, "");
+		// 		++token_pos[1];
+		// 	}
+		// }
+		if (ret_val == 3 || ret_val == 4 || ret_val == 5)
 			data->tokens = realloc_and_add(data->tokens, "");
 	}
 	// else if (data->line[token_pos[1]] == '\"')
