@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:27:07 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/06/24 15:55:54 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/06/25 15:03:19 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ char	**cut_cmds(int *find_cmd, char **tokens)
 
 int	parser(t_input *data)
 {
-	t_list	*ret;
+	t_list	*head;
 	t_list	*node;
 	int		find_cmd[2];
 	char	**cmd;
@@ -112,5 +112,13 @@ int	parser(t_input *data)
 	printf("\n");
 	find_cmd[1] = 0;
 	cmd = cut_cmds(find_cmd, data->tokens);
+	head = new_list_cmd(cmd);
+	while (data->tokens[find_cmd[1]])
+	{
+		cmd = cut_cmds(find_cmd, data->tokens);
+		node = new_list_cmd(cmd);
+		ft_lstadd_back(&head, node);
+	}
+	free_2darray(data->tokens);
 	return (0);
 }

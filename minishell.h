@@ -6,11 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/06/24 14:54:37 by eagbomei         ###   ########.fr       */
-=======
-/*   Updated: 2024/06/24 14:38:06 by halgordziba      ###   ########.fr       */
->>>>>>> 3801728eb2cf28c240b2cf5d5db563df1d770b15
+/*   Updated: 2024/06/25 14:40:17 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +33,10 @@ typedef struct s_cmd
 typedef struct s_list
 {
 	char			*env;
-	struct s_list	*next;
 	int				in_fd;
 	int				out_fd;
 	t_cmd			cmd;
+	struct s_list	*next;
 }	t_list;
 
 //pipex struct
@@ -67,9 +63,12 @@ t_list	*set_env(char **env);
 //init functions:
 void	rebuild_envp(t_input *data);
 t_list	*create_list(t_list *head, char *env);
-t_list	*new_list(char *env);
+t_list	*new_list_env(char *env);
 int		listsize(t_list *head);
 t_list	*listlast(t_list *head);
+t_list	*new_list_cmd(char **cmd);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lstlast(t_list *lst);
 
 //utils
 char	**realloc_and_add(char **src, char *str);
@@ -102,13 +101,8 @@ char	*get_command(char **path, char *arg);
 void	put_msg(char *av);
 char	*find_path(char **env);
 
-<<<<<<< HEAD
-//builtin functions
-int builtin_pwd(t_input *data),
-=======
 // builtins
 int 	handle_builtins(char *cmd, char **arg, t_input *data);
 int 	ft_strcmp(char *s1, char *s2);
->>>>>>> 3801728eb2cf28c240b2cf5d5db563df1d770b15
 
 #endif

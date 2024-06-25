@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/06/24 14:56:10 by eagbomei         ###   ########.fr       */
-=======
-/*   Updated: 2024/06/24 15:02:43 by halgordziba      ###   ########.fr       */
->>>>>>> 3801728eb2cf28c240b2cf5d5db563df1d770b15
+/*   Updated: 2024/06/25 13:52:43 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

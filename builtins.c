@@ -6,11 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:02:01 by eagbomei          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/06/24 15:58:15 by eagbomei         ###   ########.fr       */
-=======
-/*   Updated: 2024/06/24 14:39:04 by halgordziba      ###   ########.fr       */
->>>>>>> 3801728eb2cf28c240b2cf5d5db563df1d770b15
+/*   Updated: 2024/06/25 15:04:23 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +51,9 @@ int builtin_env(char **own_env)
     write (1, "\n", 1);
     return (0);
 }
-// int builtin_cd(char **arg, t_input *data)
-// { 
-// }
+int builtin_cd(char **arg, t_input *data)
+{ 
+}
 
 int builtin_export(char **arg, t_input *data)
 {
@@ -71,7 +67,6 @@ int handle_builtins(char *cmd, char **arg, t_input *data)
 {
     if (ft_strcmp(cmd,"echo") == 0)
         builtin_echo(arg);
-<<<<<<< HEAD
     else if (ft_strcmp(cmd,"pwd") == 0)
         builtin_pwd(data);
     else if (ft_strcmp(cmd, "env") == 0)
@@ -84,7 +79,5 @@ int handle_builtins(char *cmd, char **arg, t_input *data)
         builtin_unset(arg, data); //TODO
     else if (ft_strcmp(cmd, "exit"))
         builtin_exit(arg); //TODO
-=======
     return (0);
->>>>>>> 3801728eb2cf28c240b2cf5d5db563df1d770b15
 }
