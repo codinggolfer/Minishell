@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/25 16:58:24 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:59:15 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_input
 	char	*line;
 	char	**tokens;
 	char	*cwd;
+	int		exit_code;
 	t_list	*vars;
 	t_list	*cmds;
 }	t_input;
@@ -106,4 +107,7 @@ char	*find_path(char **env);
 int 	handle_builtins(char *cmd, char **arg, t_input *data);
 int 	ft_strcmp(char *s1, char *s2);
 
+// redirect
+int	check_redirect_errors(t_input *data);
+int		is_redirect(char *arg);
 #endif

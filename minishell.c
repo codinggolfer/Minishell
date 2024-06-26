@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/26 14:53:40 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:01:25 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,33 @@ int	handle_line(t_input *data)
 	return (0);
 }
 
+int	check_redirect_errors(t_input *data)
+{
+	int		i;
+	t_list	*temp;
+
+	i = 0;
+	temp = data->cmds;
+	while (temp)
+	{
+		while (temp->cmd.cmd && temp->cmd.cmd[i] != NULL)
+		{
+			if (is_redirect(temp->cmd.cmd[i]) == 1
+				&& (is_redirect(temp->cmd.cmd[i + 1]) == 1
+					|| temp->cmd.cmd[i + 1] == NULL))
+			{
+				data->exit_code = 2;
+				return (error_msg(NULL, "babatunde shell",
+						"syntax error near unexpected token", 2));
+			}
+			++i;
+		}
+		i = 0;
+		temp = temp->next;
+	}
+	return (0);
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	t_input	input;
@@ -78,11 +105,9 @@ int	main(int ac, char **av, char **envp)
 		if (handle_line(&input) == 0)
 			continue ;
 		lexer(&input);
-		// for (int i = 0; input.tokens[i] != NULL; i++)
-		// 	printf("%s", input.tokens[i]);
-		// printf("\n");
 		parser(&input);
-		//printf("HERE\n");
+		if (check_redirect_errors(input) == 0)
+			run_cmd()
 		handle_builtins(input.cmds->cmd.cmd[0], input.cmds->cmd.cmd, &input);
 	}
 

@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/06/24 15:50:04 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/06/26 16:08:16 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	handle_token(char *line, int token_type, int i)
 	else if (token_type == 1 || token_type == 2)
 	{
 		i = bunny_ears(line, i, line[i]);
-		// if (line[i] == ' ')
-		// 	i++;
 	}
 	return (i);
 }
@@ -57,19 +55,9 @@ void	add_spaces(t_input *data, int ret_val, int *token_pos)
 {
 	if (ret_val > 0)
 	{
-		// if (ret_val == 1 || ret_val == 2)
-		// {
-		// 	if (data->line[token_pos[1]] == ' ')
-		// 	{
-		// 		data->tokens = realloc_and_add(data->tokens, "");
-		// 		++token_pos[1];
-		// 	}
-		// }
 		if (ret_val == 3 || ret_val == 4 || ret_val == 5)
 			data->tokens = realloc_and_add(data->tokens, "");
 	}
-	// else if (data->line[token_pos[1]] == '\"')
-	// 	data->tokens = realloc_and_add(data->tokens, "");
 }
 
 int	lexer(t_input *data)
