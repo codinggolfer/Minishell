@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:02:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/25 15:04:23 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/06/26 14:29:18 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int builtin_echo(char **arg)
     int i;
     int new_line;
     
-    i = 1;
+    i = 0;
     if (ft_strcmp("echo -n", arg[0]))
     {
         new_line = 0;
@@ -35,7 +35,7 @@ int builtin_echo(char **arg)
 int builtin_pwd(t_input *data)
 {
     printf("%s\n", data->cwd);
-    free (data->cwd);
+    return (0);
 }
 
 int builtin_env(char **own_env)
@@ -45,23 +45,22 @@ int builtin_env(char **own_env)
     i = 0;
     while (own_env[i])
     {
-        printf("%s", own_env[i]);
+        printf("%s\n", own_env[i]);
         i++;
     }
-    write (1, "\n", 1);
     return (0);
 }
-int builtin_cd(char **arg, t_input *data)
-{ 
-}
+// int builtin_cd(char **arg, t_input *data)
+// { 
+// }
 
-int builtin_export(char **arg, t_input *data)
-{
-    int len;
+// int builtin_export(char **arg, t_input *data)
+// {
+//     int len;
 
-    len = count_arg_array(data->own_env);
-    data->own_env =
-}
+//     len = count_arg_array(data->own_env);
+//     data->own_env =
+// }
 
 int handle_builtins(char *cmd, char **arg, t_input *data)
 {
@@ -71,13 +70,13 @@ int handle_builtins(char *cmd, char **arg, t_input *data)
         builtin_pwd(data);
     else if (ft_strcmp(cmd, "env") == 0)
         builtin_env(data->own_env);
-    else if (ft_strcmp(cmd, "cd") == 0)
-        builtin_cd(arg, data); //TODO
-    else if (ft_strcmp(cmd, "export"))
-        builtin_export(arg, data); //TODO
-    else if (ft_strcmp(cmd, "unset"))
-        builtin_unset(arg, data); //TODO
-    else if (ft_strcmp(cmd, "exit"))
-        builtin_exit(arg); //TODO
+    // else if (ft_strcmp(cmd, "cd") == 0)
+    //     builtin_cd(arg, data); //TODO
+    // else if (ft_strcmp(cmd, "export"))
+    //     builtin_export(arg, data); //TODO
+    // else if (ft_strcmp(cmd, "unset"))
+    //     builtin_unset(arg, data); //TODO
+    // else if (ft_strcmp(cmd, "exit"))
+    //     builtin_exit(arg); //TODO
     return (0);
 }

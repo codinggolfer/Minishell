@@ -20,7 +20,7 @@ FILES	=	minishell.c \
 			token_utils.c \
 			parser.c \
 			str_utils.c \
-			#builtins.c
+			builtins.c
 
 
 LIBFT	=	libft/libft.a

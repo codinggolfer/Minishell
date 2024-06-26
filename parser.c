@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:27:07 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/06/25 16:52:38 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/06/26 14:02:40 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	find_next_pipe(char **tokens, int *find_cmd)
 		// printf("in the find pipe %d\n", find_cmd[1]);
 		// printf("here1\n");
 		find_cmd[1]++;
-		printf(" int the counter %d\n", find_cmd[1]);
+		//printf(" int the counter %d\n", find_cmd[1]);
 	}
 }
 
@@ -53,11 +53,11 @@ void	remove_space_and_ears(char ***cmd, char **tokens, char **str)
 	{
 		if ((*str))
 		{
-			printf("in the realloc and add: %s\n", (*str));
+		//	printf("in the realloc and add: %s\n", (*str));
 			(*cmd) = realloc_and_add((*cmd), (*str));
 			free((*str));
 			(*str) = ft_strdup("");
-			printf("cmd in rm spa and erars: %s\n", *cmd[0]);
+		//	printf("cmd in rm spa and erars: %s\n", *cmd[0]);
 		}
 	}
 	else
@@ -88,7 +88,7 @@ char	**cut_cmds(int *find_cmd, char **tokens)
 	//printf("%s\n", tokens[0]);
 	while (i < find_cmd[1])
 	{
-		printf("tokens int the while loop: %s\n", tokens[i]);
+		//printf("tokens int the while loop: %s\n", tokens[i]);
 		remove_space_and_ears(&cmd, &tokens[i], &str);
 		//printf("%s\n", str);
 		i++;
@@ -110,9 +110,9 @@ int	parser(t_input *data)
 	int		find_cmd[2];
 	char	**cmd;
 	
-	for (int i = 0; data->tokens[i] != NULL; i++)
-		printf("%s\n", data->tokens[i]);
-	printf("\n");
+	// for (int i = 0; data->tokens[i] != NULL; i++)
+	// 	printf("%s\n", data->tokens[i]);
+	//printf("\n");
 	find_cmd[1] = 0;
 	cmd = cut_cmds(find_cmd, data->tokens);
 	head = new_list_cmd(cmd);
@@ -123,10 +123,11 @@ int	parser(t_input *data)
 		node = new_list_cmd(cmd);
 		ft_lstadd_back(&head, node);
 	}
-	printf("first cmd in rm spa and erars: %s\n", head->cmd.cmd[0]);
-	printf("secound cmd in rm spa and erars: %s\n", head->next->cmd.cmd[0]);
-	printf("secound cmd in rm spa and erars: %s\n", head->next->next->cmd.cmd[0]);
+	// printf("first cmd in rm spa and erars: %s\n", head->cmd.cmd[0]);
+	// printf("secound cmd in rm spa and erars: %s\n", head->next->cmd.cmd[0]);
+	// printf("secound cmd in rm spa and erars: %s\n", head->next->next->cmd.cmd[0]);
 	// printf("cmd in rm spa and erars: %s\n", cmd[2]);
 	free_2darray(data->tokens);
+	data->cmds = head;
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/25 13:52:43 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/06/26 14:24:04 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int	main(int ac, char **av, char **envp)
 		// 	printf("%s", input.tokens[i]);
 		// printf("\n");
 		parser(&input);
+		//printf("%s\n", );
+		handle_builtins(input.cmds->cmd.cmd[0], input.cmds->cmd.cmd, &input);
 	}
 
 }
