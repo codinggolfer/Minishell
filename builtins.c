@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:02:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/26 14:29:18 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:05:32 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ int builtin_echo(char **arg)
     int i;
     int new_line;
     
-    i = 0;
+    i = 1;
+    new_line = 1;
     if (ft_strcmp("echo -n", arg[0]))
-    {
         new_line = 0;
-    }
     while (arg[i])
     {
-        printf("%s", arg[i]);
+        write(1, arg[i], ft_strlen(arg[i]));
         i++;
+        if (arg[i] != NULL)
+            write(1, " ", 1);
     }
     if (new_line)
         write (1, "\n", 1);

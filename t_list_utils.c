@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_list_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:28:28 by eromonagbom       #+#    #+#             */
-/*   Updated: 2024/06/25 15:02:36 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/06/26 14:51:52 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_list	*new_list_cmd(char **cmd)
 	if (!list)
 		return (NULL);
 	list ->env = NULL;
-	list ->cmd.cmd = cmd;
+	list ->cmd.cmd = ft_split(*cmd, ' ');
 	list ->next = NULL;
 	list->in_fd = STDIN_FILENO;
 	list->out_fd = STDOUT_FILENO;
