@@ -21,7 +21,8 @@ FILES	=	minishell.c \
 			parser.c \
 			str_utils.c \
 			builtins.c \
-			redirect.c 
+			redirect.c \
+			#exec_cmd.c
 
 
 LIBFT	=	libft/libft.a

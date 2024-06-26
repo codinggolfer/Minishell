@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/26 16:01:25 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/06/26 16:22:41 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,7 @@ int	main(int ac, char **av, char **envp)
 		lexer(&input);
 		parser(&input);
 		if (check_redirect_errors(input) == 0)
-			run_cmd()
-		handle_builtins(input.cmds->cmd.cmd[0], input.cmds->cmd.cmd, &input);
+			//run_cmd();
 	}
 
 }
