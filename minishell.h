@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/26 15:59:15 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/01 14:38:01 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,11 @@ char	*find_path(char **env);
 int 	handle_builtins(char *cmd, char **arg, t_input *data);
 int 	ft_strcmp(char *s1, char *s2);
 
+// vars
+
+int		find_symbol(char *line, int found);
+
 // redirect
-int	check_redirect_errors(t_input *data);
+int		check_redirect_errors(t_input *data);
 int		is_redirect(char *arg);
 #endif

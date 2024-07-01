@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   array_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:50:27 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/18 15:56:55 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/07/01 14:37:10 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,17 @@ char	**realloc_and_add(char **src, char *str)
 	ret[i] = ft_strdup(str);
 	free_2darray(src);
 	return (ret);
+}
+int	find_symbol(char *line, int found)
+{
+	int	i;
+
+	i = 0;
+	while(line[i])
+	{
+		if (line[i] == found)
+			return (i);
+		i++;
+	}
+	return (-1);
 }

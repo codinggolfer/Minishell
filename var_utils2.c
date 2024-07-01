@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_cmd.c                                         :+:      :+:    :+:   */
+/*   var_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 16:23:02 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/01 13:27:37 by eagbomei         ###   ########.fr       */
+/*   Created: 2024/07/01 15:50:46 by eagbomei          #+#    #+#             */
+/*   Updated: 2024/07/01 15:54:27 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int single_cmd(t_input *data, t_list *cmds)
+int get_keywords(char *line, int stop)
 {
-    int     exit_stat;
-    char    *cmd;
-    char    **cmd_path;
-
-    cmd = ft_strdup(cmds->cmd.cmd[0]);
-    exit_stat = handle_builtins(cmd, cmds->cmd.cmd, data);
-    if (exit_stat == -1)
-    {
-        
-    }
-    else
-        if (cmd)
-            free(cmd);
-    return (exit_stat);
-}
-
-void    run_cmd(t_input *data)
-{
-    int exit_status;
-
-    exit_status = 0;
-    
+    stop++;
+    while (line[stop] && line[stop] != ' ' && !is_token(line[stop]) && line[stop] != '$')
+        stop++;
+    return (stop--);
 }

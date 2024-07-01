@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/26 16:22:41 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/01 13:20:11 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	main(int ac, char **av, char **envp)
 			continue ;
 		lexer(&input);
 		parser(&input);
-		if (check_redirect_errors(input) == 0)
+		if (check_redirect_errors(&input) == 0)
 			//run_cmd();
 	}
 
