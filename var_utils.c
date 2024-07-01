@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:59:49 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/01 15:49:48 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:26:04 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 int break_down(char *ret, int *index, char **str)
 {
-    index[2] = 
+    index[2] = get_keywords(ret, index[1]);
+    if (index[0] != index[1])
+        str[0] = ft_substr(ret, index[0], index[1] - 1);
+    else
+        str[0] = NULL;
+    str[1] = ft_substr(ret, index[1]+ 1, index[2]);
+    str[2] = ft_substr(ret, index[2] + 1, ft_strlen(ret));
+    return (index[2] == index[1]);
 }
 
 void    innit_rd_vars(int *spec, int *index, char **str)
@@ -25,6 +32,23 @@ void    innit_rd_vars(int *spec, int *index, char **str)
     index[2] = 0;
     str[4] = NULL;
 }
+
+char    *handle_special(char *line, int end, int special)
+{
+    int left;
+    int right;
+
+    left = (line[end - 1] != '\'' && line[end - 1] != '\"');
+    if (!special)
+        right = (line[end + 1] == '\'' || line[end + 1] == '\"');
+    else
+        right = (!is_token(line[end + 1]) && line[end + 1] != ' ');
+    if (left && right)
+       return(ft_strdup(""));
+    else
+        return (ft_strdup("$"));
+}
+
 
 void dollar_sign(t_input *data)
 {
@@ -44,7 +68,9 @@ void dollar_sign(t_input *data)
         else if (ret[index[1]] == '$')
         {
             if (break_down(ret, index, str))
-                handle_special()
+               str[3] = handle_special(ret, index[2], special);
+            else
+                str[3] = access_var(data, str[1]);
         }
         
     }

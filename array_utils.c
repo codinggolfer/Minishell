@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:50:27 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/01 14:37:10 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:53:49 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,16 @@ int	find_symbol(char *line, int found)
 		i++;
 	}
 	return (-1);
+}
+
+int	strcmp_equal(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while ((s1[i] == s2[i]) && s1[i] && s2[i])
+		i++;
+	if (s1[i] == '=' && s2[i] == '\0')
+		return (0);
+	return (s1[i] - s2[i]);
 }
