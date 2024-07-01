@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:59:49 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/01 17:26:04 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/01 22:44:29 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,26 @@ char    *handle_special(char *line, int end, int special)
     else
         return (ft_strdup("$"));
 }
+void    get_return(char **buff, char **str, int *index)
+{
+    int     i;
+    char    *ret;
 
+    i = 0;
+    if ((*buff))
+        free ((*buff));
+    ret = ft_strdup("");
+    ret = ft_strjoin(ret, str[index[0]]);
+    ret = ft_strjoin(ret, str[index[3]]);
+    ret = ft_strjoin(ret, str[index[2]]);
+    (*buff) = ret;
+    index[1] = ft_strlen(str[index[3]]) + ft_strlen(str[index[2]]) - 1;
+    while (str[i])
+    {
+        free (str[i]);
+        i++;
+    }
+}
 
 void dollar_sign(t_input *data)
 {
@@ -71,7 +90,10 @@ void dollar_sign(t_input *data)
                str[3] = handle_special(ret, index[2], special);
             else
                 str[3] = access_var(data, str[1]);
+            get_return(&ret, str, index);
         }
-        
+        index[1]++;
     }
+    free(data->line);
+    data->line = ret;
 }
