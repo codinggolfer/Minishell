@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:50:46 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/01 22:16:42 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/02 14:08:21 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int get_position(t_list *node)
     int i;
 
     i = 0;
-    while (node->env[i] != NULL)
+    while (node->env[i] != '\0')
     {
         if (node->env[i] == '=')
             return (i);
@@ -43,7 +43,7 @@ char    *get_val(t_list *node)
     pos = 0;
     i = 0;
     if (get_position(node) == -1)
-        return (ft_stdup(""));
+        return (ft_strdup(""));
     pos = get_position(node) + 1;
     val = ft_calloc(ft_strlen(node->env) - pos +1, sizeof(char));
     while (node->env[pos])
@@ -52,6 +52,7 @@ char    *get_val(t_list *node)
         i++;
         pos++;
     }
+    printf("here\n");
     return (val);
 }
 
@@ -65,7 +66,7 @@ char *access_var(t_input *data, char *var)
         return ("");
     if (var[0] == '?')
         return (ft_itoa(data->exit_code));
-    while (temp)
+    while (temp != NULL)
     {
         if (strcmp_equal(temp->env, var) == 0)
             return (get_val(temp));

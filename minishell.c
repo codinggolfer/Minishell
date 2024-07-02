@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/01 13:20:11 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/02 14:02:09 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ int	check_redirect_errors(t_input *data)
 					|| temp->cmd.cmd[i + 1] == NULL))
 			{
 				data->exit_code = 2;
-				return (error_msg(NULL, "babatunde shell",
-						"syntax error near unexpected token", 2));
+				//return (error_msg(NULL, "babatunde shell",
+				//		"syntax error near unexpected token", 2));
 			}
 			++i;
 		}
@@ -104,10 +104,11 @@ int	main(int ac, char **av, char **envp)
 		signal(SIGQUIT, 0); // this should quit the whole program like ctrl+z
 		if (handle_line(&input) == 0)
 			continue ;
+		dollar_sign(&input);
 		lexer(&input);
 		parser(&input);
-		if (check_redirect_errors(&input) == 0)
+		//if (check_redirect_errors(&input) == 0)
 			//run_cmd();
 	}
-
+	return (0);
 }

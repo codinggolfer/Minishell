@@ -22,6 +22,8 @@ FILES	=	minishell.c \
 			str_utils.c \
 			builtins.c \
 			redirect.c \
+			var_utils.c \
+			var_utils2.c \
 			#exec_cmd.c
 
 
