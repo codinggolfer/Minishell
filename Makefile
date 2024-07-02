@@ -22,8 +22,12 @@ FILES	=	minishell.c \
 			str_utils.c \
 			builtins.c \
 			redirect.c \
+<<<<<<< HEAD
 			var_utils.c \
 			var_utils2.c \
+=======
+			error_exit.c \
+>>>>>>> 8385d93bd75a32c77410bbcb67e3c1a78bf31508
 			#exec_cmd.c
 
 
