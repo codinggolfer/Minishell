@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:50:46 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/02 14:08:21 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:00:04 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,10 @@ char    *get_val(t_list *node)
     val = ft_calloc(ft_strlen(node->env) - pos +1, sizeof(char));
     while (node->env[pos])
     {
-        val[i] = node->env[i];
+        val[i] = node->env[pos];
         i++;
         pos++;
     }
-    printf("here\n");
     return (val);
 }
 

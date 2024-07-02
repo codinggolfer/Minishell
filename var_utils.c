@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:59:49 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/02 14:06:17 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:42:42 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ void    get_return(char **buff, char **str, int *index)
     i = 0;
     if ((*buff))
         free ((*buff));
-    ret = ft_strdup("");
-    ret = ft_strjoin(ret, str[index[0]]);
-    ret = ft_strjoin(ret, str[index[3]]);
-    ret = ft_strjoin(ret, str[index[2]]);
+    ret = NULL;
+    ret = ft_strjoin(ret, str[0]);
+    printf("%s\n", ret);
+    ret = ft_strjoin(ret, str[3]);
+   // ret = ft_strjoin(ret, str[2]);
     (*buff) = ret;
-    index[1] = ft_strlen(str[index[3]]) + ft_strlen(str[index[2]]) - 1;
+    index[1] = ft_strlen(str[0]) + ft_strlen(str[3]) - 1;
     while (str[i])
     {
         free (str[i]);
