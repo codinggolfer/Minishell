@@ -7,7 +7,11 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2024/07/02 14:00:28 by eagbomei         ###   ########.fr       */
+=======
+/*   Updated: 2024/07/02 14:02:20 by halgordziba      ###   ########.fr       */
+>>>>>>> 8385d93bd75a32c77410bbcb67e3c1a78bf31508
 =======
 /*   Updated: 2024/07/02 14:02:20 by halgordziba      ###   ########.fr       */
 >>>>>>> 8385d93bd75a32c77410bbcb67e3c1a78bf31508
