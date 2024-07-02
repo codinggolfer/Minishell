@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/01 17:54:28 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/02 14:02:20 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,7 @@ int		get_keywords(char *line, int stop);
 // redirect
 int		check_redirect_errors(t_input *data);
 int		is_redirect(char *arg);
+
+//error
+int		error_msg(char *cmd, char *context, char *msg, int code);
 #endif
