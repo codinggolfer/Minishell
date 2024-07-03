@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:59:49 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/03 13:25:31 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/03 14:15:19 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int break_down(char *ret, int *index, char **str)
 {
     index[2] = get_keywords(ret, index[1]);
     if (index[0] != index[1])
-        str[0] = ft_substr(ret, index[0], index[1] - 1);
+        str[0] = ft_substr(ret, index[0], index[1]);
     else
         str[0] = NULL;
     str[1] = ft_substr(ret, index[1]+ 1, index[2]);
@@ -58,7 +58,7 @@ void    get_return(char **buff, char **str, int *index)
         free ((*buff));
     ret = NULL;
     ret = ft_strjoin(ret, str[0]);
-    ret = ft_strjoin(NULL, str[3]);
+    ret = ft_strjoin(ret, str[3]);
     ret = ft_strjoin(ret, str[2]);
     (*buff) = ret;
     index[1] = ft_strlen(str[0]) + ft_strlen(str[3]) - 1;
