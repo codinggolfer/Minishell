@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/03 13:48:06 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:38:54 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,11 @@ void	dollar_sign(t_input *data);
 // redirect
 int		check_redirect_errors(t_input *data);
 int		is_redirect(char *arg);
+int 	count_args_skip_redirections(char **args);
+int		redirection_type(char *arg);
+int		has_redirect(char **arg);
+int		is_redirect(char *arg);
+
 
 //error
 int		error_msg(char *cmd, char *context, char *msg, int code);

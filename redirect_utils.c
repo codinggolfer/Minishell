@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:58:15 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/15 14:26:46 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:37:59 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	redirection_type(char *arg)
 		return (4);
 	return (-1);
 }
-int count_redirections(char **args)
+int count_args_skip_redirections(char **args)
 {
 	int	i;
 	int	ret;
