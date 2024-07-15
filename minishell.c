@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/03 14:17:57 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:41:42 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 void	init_data(t_input *data, char **env)
 {
+	data->stdin_backup = dup(STDIN_FILENO);
+	data->stdout_backup = dup(STDOUT_FILENO);
 	data->vars = set_env(env);
 	data->own_env = NULL;
 	data->cwd = getcwd(NULL, 1024);
@@ -107,8 +109,8 @@ int	main(int ac, char **av, char **envp)
 		dollar_sign(&input);
 		lexer(&input);
 		parser(&input);
-		//if (check_redirect_errors(&input) == 0)
-			//run_cmd();
+		if (check_redirect_errors(&input) == 0)
+			run_cmd(input);
 	}
 	return (0);
 }
