@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/15 14:36:57 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/15 15:13:23 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void run_cmd(t_input *data)
     if (data->cmds->next)
     {
 		if (check_valid_pipes(data))
-			multiple_commands(data);
+			multiple_commands(data);  //need to be made
     }
     else
     {
