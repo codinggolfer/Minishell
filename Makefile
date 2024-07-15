@@ -25,6 +25,7 @@ FILES	=	minishell.c \
 			var_utils.c \
 			var_utils2.c \
 			error_exit.c \
+			#redirect_utils.c \
 			#exec_cmd.c
 
 
