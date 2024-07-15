@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/15 16:22:08 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/15 16:25:10 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ char **cmds_no_redirect(char **arg)
 
 int switchdirect(int *info, t_list *lst, char *arg, int stdin)
 {
+/*NEEEDS THE FUNCTIONS FROM HELPERS TO SEND THEM*/
+    
     if (info[0] == 1)
         return ();
     else if (info[0] == 2)
