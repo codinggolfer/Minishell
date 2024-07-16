@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:50:46 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/02 15:00:04 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/16 15:08:02 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,18 @@ char *access_var(t_input *data, char *var)
         temp = temp->next;
     }
     return (ft_strdup(""));
+}
+
+t_list  *find_var(t_list *vars, char *find)
+{
+    t_list *node;
+
+    node = vars;
+    while (node)
+    {
+        if (!strcmp_equal(node->env, find))
+            get_val(node);
+        node = node->next;
+    }
+    return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:02:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/26 16:31:04 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/16 15:28:23 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,6 @@ int builtin_env(char **own_env)
     }
     return (0);
 }
-// int builtin_cd(char **arg, t_input *data)
-// { 
-// }
-
-// int builtin_export(char **arg, t_input *data)
-// {
-//     int len;
-
-//     len = count_arg_array(data->own_env);
-//     data->own_env =
-// }
 
 int handle_builtins(char *cmd, char **arg, t_input *data)
 {
