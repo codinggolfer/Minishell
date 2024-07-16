@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/15 15:07:51 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/16 15:09:47 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int		find_symbol(char *line, int found);
 int		get_keywords(char *line, int stop);
 char 	*access_var(t_input *data, char *var);
 void	dollar_sign(t_input *data);
+t_list  *find_var(t_list *vars, char *find);
 
 // redirect
 int		check_redirect_errors(t_input *data);
