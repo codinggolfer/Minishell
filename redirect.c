@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/15 16:25:10 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/16 14:11:54 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,11 @@ int switchdirect(int *info, t_list *lst, char *arg, int stdin)
 /*NEEEDS THE FUNCTIONS FROM HELPERS TO SEND THEM*/
     
     if (info[0] == 1)
-        return ();
+        return (handle_redir_input(arg, &lst->in_fd));
     else if (info[0] == 2)
-        return ();
-    else if (info[0] == 3)
-        return ();
-    else if (info[0] == 4)
-        return ();
+        return (handle_redir_input_heredoc(arg, &lst->in_fd, stdin));
+    else if (info[0] == 3 || info[0] == 4)
+        return (handle_all_redir_output(arg, &lst->out_fd));
     else
         return (1);
 }
