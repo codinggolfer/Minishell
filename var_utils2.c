@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:50:46 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/16 15:08:02 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:07:30 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_list  *find_var(t_list *vars, char *find)
     while (node)
     {
         if (!strcmp_equal(node->env, find))
-            get_val(node);
+            return (node);
         node = node->next;
     }
     return (NULL);

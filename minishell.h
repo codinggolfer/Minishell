@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/16 15:09:47 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:22:55 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <readline/history.h>
 # include <sys/stat.h>
 # include <sys/types.h>
+# include <errno.h>
 
 typedef struct s_cmd
 {
@@ -109,6 +110,8 @@ char	*find_path(char **env);
 // builtins
 int 	handle_builtins(char *cmd, char **arg, t_input *data);
 int 	ft_strcmp(char *s1, char *s2);
+int		cd_error(void);
+int 	builtin_cd(char **arg, t_input *data);
 
 // vars
 
