@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   cmd_path_helper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 14:12:27 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/18 14:51:54 by halgordziba      ###   ########.fr       */
+/*   Created: 2024/07/18 13:43:03 by halgordziba       #+#    #+#             */
+/*   Updated: 2024/07/18 13:43:26 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int ft_strcmp(char *s1, char *s2)
+int	is_executable(char *str)
 {
-    int i;
+	if (ft_strlen(str) > 2 && str[0] == '.' && str[1] == '/')
+		return (1);
+	return (0);
+}
 
-    i = 0;
-    if (!s1[i] || !s2[i])
-        return (1);
-    while (s1[i] && s2[i])
-    {
-        if (s1[i] != s2[i])
-            return (2);
-        i++;
-    }
-    return (0);
+int	is_absolute(char *str)
+{
+	if (ft_strlen(str) > 2 && str[0] == '/')
+		return (1);
+	return (0);
 }
