@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:27:31 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/18 15:15:44 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:17:02 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void    update_env_cd(t_input *data)
         ft_lstadd_back(&data->vars, node);
     }
     else
-        node->env = ft_strjoin((ft_strdup("PWD="), data->cwd));    
+        node->env = ft_strjoin(ft_strdup("PWD="), data->cwd);    
 }
 
 int builtin_cd(char **arg, t_input *data)
