@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:59:28 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/18 15:22:41 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/19 12:23:01 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,34 @@
 // 	free(path);
 // 	return (trimmed);
 // }
+
+void	append_to_path(char **paths, char *cmd)
+{
+	int		i;
+	int		j;
+	int		len;
+	char	*to_append;
+
+	i = 1;
+	j = 0;
+	len = ft_strlen(cmd);
+	to_append = (char *) malloc (sizeof(char) * len + 2);
+	to_append[0] = '/';
+	while (j < len)
+		to_append[i++] = cmd[j++];
+	to_append[len + 1] = '\0';
+	i = 0;
+	while (paths[i])
+	{
+		len = ft_strlen(paths[i]);
+		if (paths[i][len - 1] == '/')
+			paths[i] = append_line(paths[i], cmd);
+		else
+			paths[i] = append_line(paths[i], to_append);
+		i++;
+	}
+	free(to_append);
+}
 
 char	*get_path_env(t_input *data)
 {
@@ -73,7 +101,7 @@ char	**get_cmd_path(t_list *data, char *cmd)
 		cmd_paths = ft_split(full_path, ':');
 		free(full_path);
 		cmd_paths[0] = path_trimmer(cmd_paths[0]);
-		append_stuff(cmd_paths, cmd);
+		append_to_path(cmd_paths, cmd);
 	}
 	return (cmd_paths);
 }

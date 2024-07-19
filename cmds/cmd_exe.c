@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/18 13:21:28 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/19 15:23:21 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int single_cmd(t_input *data, t_list *cmds)
 		cmd_path = get_cmd_path(data, cmd);
 		exit_stat = exec_cmd(data, cmd_path, cmds->cmd.cmd, cmd);
 		if (cmd_path)
-			free_2d_array(&cmd_path);
+			free_2darray(&cmd_path);
     }
     else
         if (cmd)
@@ -75,4 +75,10 @@ void run_cmd(t_input *data)
 		data->cmds->cmd.cmd = cmds_no_redirect(data->cmds->cmd.cmd);
 		data->exit_code = single_command(data, data->cmds);
 	}
+}
+
+int execute_cmd(t_input *data, char **cmd_paths, char **args, char *cmd)
+{
+	int i;
+	int pid;
 }
