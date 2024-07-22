@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/18 14:22:55 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:46:59 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,17 @@ typedef struct s_pipe
 
 typedef struct s_input
 {
-	int		stdin_backup;
-	int		stdout_backup;
-	char	**own_env;
-	char	*line;
-	char	**tokens;
-	char	*cwd;
-	int		exit_code;
-	t_list	*vars;
-	t_list	*cmds;
+	int				stdin_backup;
+	int				stdout_backup;
+	char			**own_env;
+	char			*line;
+	char			**tokens;
+	char			*cwd;
+	int				exit_code;
+	struct termios	*new;
+	struct termios	*old;
+	t_list			*vars;
+	t_list			*cmds;
 }	t_input;
 
 // env

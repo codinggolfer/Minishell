@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:02:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/16 15:28:23 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:45:56 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ int handle_builtins(char *cmd, char **arg, t_input *data)
         return (builtin_pwd(data));
     else if (ft_strcmp(cmd, "env") == 0)
        return (builtin_env(data->own_env));
-    // else if (ft_strcmp(cmd, "cd") == 0)
-    //     builtin_cd(arg, data); //TODO
+    else if (ft_strcmp(cmd, "cd") == 0)
+        builtin_cd(arg, data);
     // else if (ft_strcmp(cmd, "export"))
     //     builtin_export(arg, data); //TODO
-    // else if (ft_strcmp(cmd, "unset"))
-    //     builtin_unset(arg, data); //TODO
-    // else if (ft_strcmp(cmd, "exit"))
-    //     builtin_exit(arg); //TODO
+    else if (ft_strcmp(cmd, "unset"))
+        builtin_unset(arg, data);
+    else if (ft_strcmp(cmd, "exit"))
+        builtin_exit(data, arg);
     else    
         return (-1);
 }

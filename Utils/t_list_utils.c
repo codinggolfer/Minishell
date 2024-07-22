@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:28:28 by eromonagbom       #+#    #+#             */
-/*   Updated: 2024/06/26 14:51:52 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:14:55 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,22 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 	else
 		listlast(*lst)-> next = new;
+}
+
+void	remove_env(t_list **lst, t_list *node)
+{
+	t_list	*head;
+	t_list	*prev;
+	
+	if (lst == node)
+	{
+		(*lst) = (*lst)->next;
+		free (node->env);
+	}
+	head = (*lst);
+	prev = head;
+	while (prev != node)
+		prev = prev->next;
+	prev->next = node->next;
+	free (node->env);
 }

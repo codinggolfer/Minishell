@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/15 14:41:42 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/22 15:47:22 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	main(int ac, char **av, char **envp)
 	t_input	input;
 
 	init_data(&input, envp);
+	
 	while (1)
 	{
 		signal(SIGINT, newliner); //this is for something like ctrl+c get the newline to the promt
