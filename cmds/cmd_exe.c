@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/19 15:23:21 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/23 15:05:59 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int single_cmd(t_input *data, t_list *cmds)
     if (exit_stat == -1)
     {
 		cmd_path = get_cmd_path(data, cmd);
-		exit_stat = exec_cmd(data, cmd_path, cmds->cmd.cmd, cmd);
+		exit_stat = execute_cmd(data, cmd_path, cmds->cmd.cmd, cmd);
 		if (cmd_path)
 			free_2darray(&cmd_path);
     }
@@ -80,5 +80,26 @@ void run_cmd(t_input *data)
 int execute_cmd(t_input *data, char **cmd_paths, char **args, char *cmd)
 {
 	int i;
-	int pid;
+	pid_t child;
+
+	i = 0;
+	rebuild_envp(data);
+	if (!cmd_paths)
+		return (error_msg(NULL, cmd, "No such file or directory", 127));
+	while(cmd_paths[i])
+	{
+		if (args[0])
+			free(args[0]);
+		args[0] = ft_strdup(cmd_paths[i]);
+		if (!(access(args[0], X_OK)))
+		{
+			child = fork();
+			if (!child)
+				child_execute(cmd_paths[i], args, data->own_env);
+			else
+				return (parent_execute(data, child));
+		}
+		i++;
+	}
+	return (error_msg(NULL, cmd, "No such file or directory", 127));
 }
