@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/22 15:47:22 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/23 15:19:13 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	init_data(t_input *data, char **env)
 	data->vars = set_env(env);
 	data->own_env = NULL;
 	data->cwd = getcwd(NULL, 1024);
+	data->exit_code = 0;
 	rebuild_envp(data);
 }
 
@@ -100,7 +101,9 @@ int	main(int ac, char **av, char **envp)
 	t_input	input;
 
 	init_data(&input, envp);
-	
+	tcgetattr(STDOUT_FILENO, &input.old);
+	input.new = input.old;
+	tcsetattr(STDIN_FILENO, TCSANOW, &input.new);
 	while (1)
 	{
 		signal(SIGINT, newliner); //this is for something like ctrl+c get the newline to the promt

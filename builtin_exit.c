@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:29:52 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/22 15:45:44 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/23 15:29:24 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int builtin_exit(t_input *data, char **arg)
     while (ecode >= 256)
         ecode -= 256;
     printf("exit\n");
-    return ()
-    
+    tcsetattr(STDIN_FILENO, TCSANOW, &data->old);
+    return (ecode);
 }
