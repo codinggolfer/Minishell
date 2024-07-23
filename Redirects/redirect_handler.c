@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:54:41 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/16 14:27:39 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/23 14:12:26 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	heredoc_child(char *delimiter, int *storage, int std_in)
 
 int	handle_redir_input_heredoc(char *delimiter, int *in_fd, int std_in)
 {
-	int		child_fd;
+	pid_t	child_fd;
 	int		storage[2];
 
 	if (is_redirect(delimiter))
