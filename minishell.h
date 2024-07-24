@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/22 15:46:59 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:35:39 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int		get_keywords(char *line, int stop);
 char 	*access_var(t_input *data, char *var);
 void	dollar_sign(t_input *data);
 t_list  *find_var(t_list *vars, char *find);
+int 	get_position(t_list *node);
 
 // redirect
 int		check_redirect_errors(t_input *data);
