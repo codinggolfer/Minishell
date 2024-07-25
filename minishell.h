@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/24 15:35:39 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:04:41 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,9 @@ int 	handle_builtins(char *cmd, char **arg, t_input *data);
 int 	ft_strcmp(char *s1, char *s2);
 int		cd_error(void);
 int 	builtin_cd(char **arg, t_input *data);
+int 	builtin_export(char **arg, t_input *data);
+int 	builtin_unset(char **arg, t_input *data);
+int 	builtin_exit(t_input *data, char **arg);
 
 // vars
 

@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:28:43 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/24 15:43:05 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:01:34 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,77 @@ void    display_export(t_list *node)
     }
 }
 
+char    *var_name(char *str)
+{
+    int i;
+    int j;
+    char *ret;
+    
+    i = 0;
+    j = 0;
+    while (str[i] != '\0' && str[i] != '=')
+        i++;
+    ret = malloc (sizeof(char) * i + 1);
+    while (j < i)
+    {
+        ret[j] = str[j];
+        j++;
+    }
+    ret[j] = '\0';
+    return (ret);
+}
+
+int pre_print_vars(t_list *list)
+{
+    int     list_size;
+    t_list  *curr_node;
+    t_list  *smallest_node;
+
+    list_size = listsize(list);
+    //reset_printed(list);
+    while (list_size-- >= 0)
+    {
+        curr_node = list;
+        smallest_node = list;
+        while (curr_node)
+        {
+            if (curr_node->env[0] < smallest_node->env[0])
+                smallest_node = curr_node;
+            curr_node = curr_node->next;
+        }
+        display_export(smallest_node);
+    }
+    return (0);
+}
+
+void    replace_var(char *str, t_list *node)
+{
+    if (find_symbol(str, '=') == -1)
+        return ;
+    free (node->env);
+    node->env = ft_strdup(str);
+}
+
 int builtin_export(char **arg, t_input *data)
 {
-    int len;
+    int     i;
+    t_list  *node;
+    char    *new_var_name;
 
-    len = count_arg_array(data->own_env);
+    i = 0;
+    if (arg[1] == NULL)
+        return (pre_print_vars(data->vars));
+    while (arg[i++] != NULL)
+    {
+        if (arg[i][0] == '=')
+            return (error_msg("export", arg[i], "not a valid identifier", 1));
+        new_var_name = var_name(arg[i]);
+        node = find_var(data->vars, new_var_name);
+        free (new_var_name);
+        if (node == NULL)
+            ft_lstadd_back(&data->vars, new_list_env(ft_strdup(arg[i])));
+        else
+            replace_var(arg[i], node);
+    }   
+    return (0);
 }

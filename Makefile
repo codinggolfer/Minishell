@@ -25,6 +25,10 @@ FILES	=	minishell.c \
 			var_utils.c \
 			var_utils2.c \
 			error_exit.c \
+			builtin_export.c \
+			builtin_unset.c \
+			builtin_exit.c \
+			builtin_cd.c \
 			#redirect_utils.c \
 			#exec_cmd.c
 
