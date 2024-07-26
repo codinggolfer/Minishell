@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_int_len(uintptr_t len)
+static int	ft_int_len(intptr_t len)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ static int	ft_int_len(uintptr_t len)
 	return (i);
 }
 
-static int	hex_address(uintptr_t i)
+static int	hex_address(intptr_t i)
 {
 	if (i >= 16)
 	{
@@ -47,7 +47,7 @@ static int	hex_address(uintptr_t i)
 	return (0);
 }
 
-int	address_printer(uintptr_t i)
+int	address_printer(intptr_t i)
 {
 	int	print_lenght;
 

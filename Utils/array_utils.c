@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	count_arg_array(char **array)
 {
@@ -19,7 +19,7 @@ int	count_arg_array(char **array)
 	i = 0;
 	if (!array)
 		return (0);
-	while (array[i])
+	while (array[i] != NULL)
 		i++;
 	return (i);
 }

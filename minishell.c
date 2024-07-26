@@ -21,6 +21,8 @@ void	init_data(t_input *data, char **env)
 	data->own_env = NULL;
 	data->cwd = getcwd(NULL, 1024);
 	data->exit_code = 0;
+	data->old = malloc(sizeof(struct termios) * 1);
+	data->new = malloc(sizeof(struct termios) * 1);
 	rebuild_envp(data);
 }
 
@@ -59,8 +61,6 @@ int	handle_line(t_input *data)
 			return (0);
 		}
 		add_history(line);
-		if (!strcmp(line, "exit"))
-			exit (0);
 		rl_redisplay();
 		data->line = ft_strdup(line);
 		free (line);
@@ -85,8 +85,8 @@ int	check_redirect_errors(t_input *data)
 					|| temp->cmd.cmd[i + 1] == NULL))
 			{
 				data->exit_code = 2;
-				//return (error_msg(NULL, "babatunde shell",
-				//		"syntax error near unexpected token", 2));
+				return (error_msg(NULL, "babatunde shell",
+						"syntax error near unexpected token", 2));
 			}
 			++i;
 		}
@@ -101,20 +101,20 @@ int	main(int ac, char **av, char **envp)
 	t_input	input;
 
 	init_data(&input, envp);
-	tcgetattr(STDOUT_FILENO, &input.old);
+	tcgetattr(STDOUT_FILENO, input.old);
 	input.new = input.old;
-	tcsetattr(STDIN_FILENO, TCSANOW, &input.new);
+	tcsetattr(STDIN_FILENO, TCSANOW, input.new);
 	while (1)
 	{
-		signal(SIGINT, newliner); //this is for something like ctrl+c get the newline to the promt
-		signal(SIGQUIT, 0); // this should quit the whole program like ctrl+z
+		signal(SIGINT, newliner);
+		signal(SIGQUIT, 0);
 		if (handle_line(&input) == 0)
 			continue ;
 		dollar_sign(&input);
 		lexer(&input);
 		parser(&input);
 		if (check_redirect_errors(&input) == 0)
-			run_cmd(input);
+			run_cmd(&input);
 	}
 	return (0);
 }

@@ -1,45 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_utils.c                                      :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 14:40:44 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/06/11 14:16:57 by hzibari          ###   ########.fr       */
+/*   Created: 2024/05/17 14:56:39 by eagbomei          #+#    #+#             */
+/*   Updated: 2024/05/22 14:37:28 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	is_token(char c)
+void	free_node(t_list *node)
 {
-	int		i;
-	char	token[6];
-
-	i = 0;
-	token[0] = '\'';
-	token[1] = '\"';
-	token[2] = '|';
-	token[3] = '>';
-	token[4] = '<';
-	token[5] = '\0';
-	while (token[i])
-	{
-		if (token[i] == c)
-			return (i + 1);
-		i++;
-	}
-	return (0);
+	if (node->env != NULL)
+		free (node->env);
 }
 
-int	bunny_ears(char *line, int start, int bunny_ears)
+int	listsize(t_list *head)
 {
-	start++;
-	while (line[start] && line[start] != bunny_ears)
-		start++;
-	if (!line[start])
-		return (-1);
-	start++;
-	return (start);
+	int	i;
+
+	i = 0;
+	while (head)
+	{
+		head = head->next;
+		i++;
+	}
+	return (i);
+}
+
+t_list	*listlast(t_list *head)
+{
+	while (head)
+	{
+		if (head->next == NULL)
+			return (head);
+		head = head->next;
+	}
+	return (head);
+}
+
+void	free_list(t_list *lst)
+{
+	t_list	*temp;
+
+	temp = lst;
+	while (!lst)
+	{
+		temp = lst->next;
+		free (lst);
+		lst = temp;
+	}
+	lst = NULL;
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 t_list	*new_list_env(char *env)
 {
@@ -70,7 +70,7 @@ void	remove_env(t_list **lst, t_list *node)
 	t_list	*head;
 	t_list	*prev;
 	
-	if (lst == node)
+	if (*lst == node)
 	{
 		(*lst) = (*lst)->next;
 		free (node->env);

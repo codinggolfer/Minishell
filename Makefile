@@ -1,6 +1,6 @@
 NAME	=	minishell
 
-CC		=	CC
+CC		=	cc
 CFLAGS	=	#-Wall -Wextra -Werror
 RM		=	rm -f
 
@@ -9,28 +9,33 @@ HEADERS	=	-I ~/.brew/opt/readline/include
 INCLUDES	=	-lreadline -L ~/.brew/opt/readline/lib
 
 FILES	=	minishell.c \
-			pipex.c \
-			child.c \
 			signal.c \
-			array_utils.c \
+			Utils/array_utils.c \
 			create_envp.c \
 			lexer.c \
-			list_utils.c \
-			t_list_utils.c \
-			token_utils.c \
+			Utils/list_utils.c \
+			Utils/t_list_utils.c \
+			Utils/token_utils.c \
 			parser.c \
-			str_utils.c \
-			builtins.c \
-			redirect.c \
-			var_utils.c \
-			var_utils2.c \
+			Utils/str_utils.c \
+			builtins/builtins.c \
+			Redirects/redirect.c \
+			Vars/var_utils.c \
+			Vars/var_utils2.c \
 			error_exit.c \
-			builtin_export.c \
-			builtin_unset.c \
-			builtin_exit.c \
-			builtin_cd.c \
-			#redirect_utils.c \
-			#exec_cmd.c
+			builtins/builtin_export.c \
+			builtins/builtin_unset.c \
+			builtins/builtin_exit.c \
+			builtins/builtin_cd.c \
+			cmds/cmd_exe_helper.c \
+			cmds/cmd_paths.c \
+			cmds/cmd_path_helper.c \
+			cmds/cmd_exe.c \
+			cmds/cmd_exe_multi.c \
+			Redirects/redirect_utils.c \
+			Redirects/redirect_handler.c \
+			
+
 
 
 LIBFT	=	libft/libft.a

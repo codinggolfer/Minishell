@@ -73,7 +73,7 @@ char	**cut_cmds(int *find_cmd, char **tokens)
 	i = find_cmd[0];
 	cmd = NULL;
 	str = ft_strdup("");
-	while (i < find_cmd[1])
+	while (i <= find_cmd[1])
 	{
 		remove_space_and_ears(&cmd, &tokens[i], &str);
 		i++;

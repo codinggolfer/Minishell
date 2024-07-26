@@ -31,7 +31,7 @@ int	find_token_pos(char *line, int *token_pos)
 	int	i;
 	int	token_type;
 
-	if (!line || !line[token_pos[1] + 1])
+	if (!line || !line[token_pos[1]]) // had token_pos[1] + 1
 		return (-1);
 	i = token_pos[1];
 	while (line[i] && line[i] == ' ')

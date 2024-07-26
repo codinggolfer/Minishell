@@ -23,7 +23,7 @@ void	rebuild_envp(t_input *data)
 	list = node;
 	data->own_env = malloc (sizeof(char *) * listsize(list) + 1);
 	if (!data->own_env)
-		ft_error("malloc failure"); // need to add better protections in the future
+		exit (1); // need to add better protections in the future
 	while (list != NULL)
 	{
 		data->own_env[i] = ft_strdup(list->env);
@@ -44,7 +44,7 @@ t_list	*set_env(char **env)
 	{
 		node = create_list(node, env[i]);
 		if (!node)
-			ft_error("node creation failure");
+			exit(1);
 		i++;
 	}
 	return (node);

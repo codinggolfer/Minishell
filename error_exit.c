@@ -12,9 +12,6 @@
 
 #include "minishell.h"
 
-//ENOENT: If the file does not exist.
-//ENOTDIR: If the component of the path is not a directory.
-
 int	error_msg(char *cmd, char *context, char *msg, int code)
 {
 	if (cmd)

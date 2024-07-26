@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 static void	wait_all_commands(int cmd_count, int last_child_pid, t_input *data)
 {
@@ -63,7 +63,7 @@ static void	fix_fd(int sent, int cmd_count, int *pipe_stor, t_list *current)
 		current->in_fd = pipe_stor[2];
 }
 
-void multi_commands(t_input *data)
+void	multi_commands(t_input *data)
 {
     t_list  *current;
     int     cmd_count;

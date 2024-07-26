@@ -24,6 +24,7 @@
 # include <readline/history.h>
 # include <sys/stat.h>
 # include <sys/types.h>
+# include <sys/wait.h>
 # include <errno.h>
 
 typedef struct s_cmd
@@ -83,6 +84,7 @@ void	free_2darray(char **array);
 int		count_arg_array(char **array);
 int		ft_strcmp(char *s1, char *s2);
 int		strcmp_equal(char *s1, char *s2);
+void	remove_env(t_list **lst, t_list *node);
 
 //readline functions:
 int		handle_line(t_input *data);
@@ -134,6 +136,30 @@ int 	count_args_skip_redirections(char **args);
 int		redirection_type(char *arg);
 int		has_redirect(char **arg);
 int		is_redirect(char *arg);
+int		handle_redir_input(char *filename, int *in_fd);
+int		handle_all_redir_output(char *filename, int *out_fd);
+int		heredoc_child(char *delimiter, int *storage, int std_in);
+int		handle_redir_input_heredoc(char *delimiter, int *in_fd, int std_in);
+int		handle_redirections(char **arg, t_list *list, int std_in);
+char	**cmds_no_redirect(char **arg);
+
+// cmds
+
+void	child_execute(char *cmd_path, char **args, char **my_envp);
+int		parent_execute(t_input *data, pid_t pid);
+int		get_command_count(t_input *data);
+void	multi_commands(t_input *data);
+int		single_cmd(t_input *data, t_list *cmds);
+int		check_pipes(t_input *data);
+void	run_cmd(t_input *data);
+int		execute_cmd(t_input *data, char **cmd_paths, char **args, char *cmd);
+int		is_executable(char *str);
+int		is_absolute(char *str);
+void	append_to_path(char **paths, char *cmd);
+char	*get_path_env(t_input *data);
+char	**get_cmd_path(t_input *data, char *cmd);
+int		get_exit_code(t_input *data, int exit_stat);
+
 
 
 //error

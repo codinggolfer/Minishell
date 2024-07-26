@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 //might not need it, if the +5 in get_path_env works
 
@@ -75,14 +75,14 @@ char	*get_path_env(t_input *data)
 		if (strcmp_equal(lst->env, "PATH") == 0)
         {
 			ret = ft_strdup(lst->env);
-            return (*ret + 5);
+            return (ret + 5);
         }
 		lst = lst->next;
 	}
 	return (NULL);
 }
 
-char	**get_cmd_path(t_list *data, char *cmd)
+char	**get_cmd_path(t_input *data, char *cmd)
 {
 	char	*full_path;
 	char	**cmd_paths;
@@ -100,7 +100,6 @@ char	**get_cmd_path(t_list *data, char *cmd)
 			return (NULL);
 		cmd_paths = ft_split(full_path, ':');
 		free(full_path);
-		cmd_paths[0] = path_trimmer(cmd_paths[0]);
 		append_to_path(cmd_paths, cmd);
 	}
 	return (cmd_paths);

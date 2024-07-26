@@ -61,7 +61,7 @@ int		print_str(char *s);
 int		print_char(int c);
 int		ft_print_number(int i);
 int		print_unint(unsigned int i);
-int		address_printer(uintptr_t i);
+int		address_printer(intptr_t i);
 int		hex_printer(const char format, unsigned int i);
 
 #endif

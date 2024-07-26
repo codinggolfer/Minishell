@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int single_cmd(t_input *data, t_list *cmds)
 {
@@ -25,12 +25,24 @@ int single_cmd(t_input *data, t_list *cmds)
 		cmd_path = get_cmd_path(data, cmd);
 		exit_stat = execute_cmd(data, cmd_path, cmds->cmd.cmd, cmd);
 		if (cmd_path)
-			free_2darray(&cmd_path);
+			free_2darray(cmd_path);
     }
     else
         if (cmd)
             free(cmd);
     return (exit_stat);
+}
+
+int	get_exit_code(t_input *data, int exit_stat)
+{
+	if(WIFEXITED(exit_stat))
+		data->exit_code = WEXITSTATUS(exit_stat);
+	else
+	{
+		if(WIFSIGNALED(exit_stat))
+			data->exit_code = 130;
+	}
+	return (data->exit_code);
 }
 
 int	check_pipes(t_input *data)
@@ -51,7 +63,7 @@ int	check_pipes(t_input *data)
 	return (1);
 }
 
-void run_cmd(t_input *data)
+void	run_cmd(t_input *data)
 {
     int exit_status;
 
@@ -73,7 +85,7 @@ void run_cmd(t_input *data)
 			return ;
 		}
 		data->cmds->cmd.cmd = cmds_no_redirect(data->cmds->cmd.cmd);
-		data->exit_code = single_command(data, data->cmds);
+		data->exit_code = single_cmd(data, data->cmds);
 	}
 }
 
