@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/25 14:04:41 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:34:26 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,5 +164,6 @@ int		get_exit_code(t_input *data, int exit_stat);
 
 //error
 int		error_msg(char *cmd, char *context, char *msg, int code);
+int		get_error(void);
 
 #endif

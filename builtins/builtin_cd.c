@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:27:31 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/18 15:17:02 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:35:20 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,28 @@ char    *get_cd_path(int size, char **arg, t_input *data)
         path = ft_strdup(arg[1]);
     return (path);
 }
-void    update_env_cd(t_input *data)
+void    update_env_cd(t_input **data)
 {
     t_list  *node;
 
-    node = find_var(data->vars, "OLDPWD");
+    node = find_var((*data)->vars, "OLDPWD");
     if (node == NULL)
     {
-        node = new_list_env(ft_strjoin("OLDPWD=", data->cwd));
-        ft_lstadd_back(&data->vars, node);
+        node = new_list_env(ft_strjoin(ft_strdup("OLDPWD="), (*data)->cwd));
+        ft_lstadd_back(&(*data)->vars, node);
     }
     else
-        node->env = ft_strjoin("OLDPWD=", data->cwd);
-    free(data->cwd);
-    data->cwd = getcwd(NULL, 1024);
-    node = find_var(data->vars, "PWD");
+        node->env = ft_strjoin(ft_strdup("OLDPWD="), (*data)->cwd);
+    free((*data)->cwd);
+    (*data)->cwd = getcwd(NULL, 1024);
+    node = find_var((*data)->vars, "PWD");
     if (node == NULL)
     {
-        node = new_list_env(ft_strjoin(ft_strdup("PWD="), data->cwd));
-        ft_lstadd_back(&data->vars, node);
+        node = new_list_env(ft_strjoin(ft_strdup("PWD="), (*data)->cwd));
+        ft_lstadd_back(&(*data)->vars, node);
     }
     else
-        node->env = ft_strjoin(ft_strdup("PWD="), data->cwd);    
+        node->env = ft_strjoin(ft_strdup("PWD="), (*data)->cwd); 
 }
 
 int builtin_cd(char **arg, t_input *data)
@@ -76,8 +76,8 @@ int builtin_cd(char **arg, t_input *data)
     path = get_cd_path(i, arg, data);
     if (!path)
         return (1);
-   // if (chdir(path) == -1)
-     //   return (get_error());
-    update_env_cd(data);
+    if (chdir(path) == -1)
+       return (get_error());
+    update_env_cd(&data);
     return (0);
 }

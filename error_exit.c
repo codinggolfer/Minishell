@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:01:19 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/18 14:21:06 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:34:10 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	error_msg(char *cmd, char *context, char *msg, int code)
 	write(STDERR_FILENO, "\n", 1);
 	return (code);
 }
-int	cd_error(void)
+int	get_error(void)
 {
 	if (errno == ENOENT)
 		error_msg("cd", NULL, "No such file or directory", 1);
