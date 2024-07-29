@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/29 14:41:27 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/29 15:56:37 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_data(t_input *data, char **env)
 	data->exit_code = 0;
 	data->old = malloc(sizeof(struct termios) * 1);
 	data->new = malloc(sizeof(struct termios) * 1);
+	tcgetattr(STDIN_FILENO, data->old);
 	rebuild_envp(data);
 }
 
@@ -101,13 +102,13 @@ int	main(int ac, char **av, char **envp)
 	t_input	input;
 
 	init_data(&input, envp);
-	tcgetattr(STDOUT_FILENO, input.old);
-	input.new = input.old;
+	tcgetattr(STDOUT_FILENO, input.new);
+	input.new->c_lflag &= ~ECHOCTL;
 	tcsetattr(STDIN_FILENO, TCSANOW, input.new);
 	while (1)
 	{
 		signal(SIGINT, newliner);
-		signal(SIGQUIT, 0);
+		signal(SIGQUIT, SIG_IGN);
 		if (handle_line(&input) == 0)
 			continue ;
 		dollar_sign(&input);
