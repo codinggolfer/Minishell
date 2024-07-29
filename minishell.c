@@ -23,7 +23,7 @@ void	init_data(t_input *data, char **env)
 	data->exit_code = 0;
 	data->old = malloc(sizeof(struct termios) * 1);
 	data->new = malloc(sizeof(struct termios) * 1);
-	tcgetattr(STDIN_FILENO, data->old);
+	//tcgetattr(STDIN_FILENO, data->old);
 	rebuild_envp(data);
 }
 
@@ -56,7 +56,7 @@ int	handle_line(t_input *data)
 	line = readline("babatunde shell: ");
 	if (line)
 	{
-		if (!line)
+		if (ft_strlen(line) == 0)
 		{
 			free (line);
 			return (0);
@@ -102,8 +102,8 @@ int	main(int ac, char **av, char **envp)
 	t_input	input;
 
 	init_data(&input, envp);
-	tcgetattr(STDOUT_FILENO, input.new);
-	input.new->c_lflag &= ~ECHOCTL;
+	tcgetattr(STDOUT_FILENO, input.old);
+	input.new = input.old;
 	tcsetattr(STDIN_FILENO, TCSANOW, input.new);
 	while (1)
 	{
