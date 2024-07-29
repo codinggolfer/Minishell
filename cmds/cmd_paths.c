@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:59:28 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/19 12:23:01 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/29 14:30:20 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	**get_cmd_path(t_input *data, char *cmd)
 		if (!full_path)
 			return (NULL);
 		cmd_paths = ft_split(full_path, ':');
-		free(full_path);
+		//free(full_path);
 		append_to_path(cmd_paths, cmd);
 	}
 	return (cmd_paths);

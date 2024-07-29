@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/23 15:05:59 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/29 14:32:12 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int single_cmd(t_input *data, t_list *cmds)
 			free_2darray(cmd_path);
     }
     else
+	{
         if (cmd)
             free(cmd);
+	}
     return (exit_stat);
 }
 
@@ -113,5 +115,5 @@ int execute_cmd(t_input *data, char **cmd_paths, char **args, char *cmd)
 		}
 		i++;
 	}
-	return (error_msg(NULL, cmd, "No such file or directory", 127));
+	return (error_msg(NULL, cmd, "command not found", 127));
 }
