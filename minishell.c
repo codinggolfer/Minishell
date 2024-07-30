@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/30 17:20:13 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/30 17:33:05 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ int	main(int ac, char **av, char **envp)
 		dollar_sign(&input);
 		lexer(&input);
 		parser(&input);
-		//if (check_redirect_errors(&input) == 0)
-		run_cmd(&input);
+		if (check_redirect_errors(&input) == 0)
+			run_cmd(&input);
 	}
 	return (0);
 }
