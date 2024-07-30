@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:50:46 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/18 15:07:30 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/30 14:58:50 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int get_keywords(char *line, int stop)
     stop++;
     while (line[stop] && line[stop] != ' ' && !is_token(line[stop]) && line[stop] != '$')
         stop++;
-    return (stop--);
+    return (--stop);
 }
 
 int get_position(t_list *node)

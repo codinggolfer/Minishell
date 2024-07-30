@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:27:07 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/06/26 15:17:01 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/30 16:47:02 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	remove_ears(char **tokens)
 
 void	remove_space_and_ears(char ***cmd, char **tokens, char **str)
 {
+	
 	if (ft_strlen((*tokens)) == 0)
 	{
 		if ((*str))

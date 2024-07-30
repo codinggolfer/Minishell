@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:58:15 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/15 14:37:59 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:54:22 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
