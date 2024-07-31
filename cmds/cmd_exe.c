@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/30 17:11:31 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/31 12:43:59 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int execute_cmd(t_input *data, char **cmd_paths, char **args, char *cmd)
 	rebuild_envp(data);
 	if (!cmd_paths)
 		return (error_msg(NULL, cmd, "No such file or directory", 127));
-	while(cmd_paths[i])
+	while(cmd_paths[i] && cmd)
 	{
 		if (args[0])
 			free(args[0]);
