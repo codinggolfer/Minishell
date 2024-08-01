@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:54:41 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/23 14:12:26 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 19:33:38 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	handle_redir_input(char *filename, int *in_fd)
 		return (-1);
 	fd = open(filename, O_RDONLY, 0777);
 	if (fd == -1)
-		return (error_msg(NULL, filename, "No such file or directory", 1));
+		return (error_msg("babatunde shell", filename, "No such file or directory", 1));
 	dup2(fd, *in_fd);
 	return (0);
 }

@@ -6,9 +6,10 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 17:25:09 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:50:48 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 
 #include "minishell.h"
@@ -116,13 +117,14 @@ int	main(int ac, char **av, char **envp)
 			continue ;
 		dollar_sign(&input);
 		lexer(&input);
-		//for (int i = 0; input.tokens[i]; i++)
-		//	printf("%s\n", input.tokens[i]);
+		// for (int i = 0; input.tokens[i]; i++)
+		// 	printf("%s\n", input.tokens[i]);
 		parser(&input);
-		// printf("%s\n", input.cmds->cmd.cmd[1]);
-		// printf("%s\n", input.cmds->cmd.cmd[2]);
+		// for (int j = 0; input.cmds->cmd.cmd[j]; j++)
+		// 	printf("%s\n", input.cmds->cmd.cmd[j]);
 		if (check_redirect_errors(&input) == 0)
 			run_cmd(&input);
+		cleaner(&input);
 	}
 	return (0);
 }

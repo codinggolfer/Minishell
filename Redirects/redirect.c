@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 17:49:38 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:37:12 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int *next_redirect(char **arg, int index)
 
     if (index >= count_arg_array(arg))
         return (NULL);
+    redirect = malloc(sizeof(int) * 2);
     while (arg[index])
     {
         redirect[0] = redirection_type(arg[index]);
@@ -61,6 +62,7 @@ char **cmds_no_redirect(char **arg)
 
 int switchdirect(int *info, t_list *lst, char *arg, int stdin)
 {   
+   // exit(printf("%d\n", info[0]));
     if (info[0] == 1)
         return (handle_redir_input(arg, &lst->in_fd));
     else if (info[0] == 2)
@@ -89,11 +91,11 @@ int handle_redirections(char **arg, t_list *list, int std_in)
         i = redirect_info[1] + 1;
         if (switchdirect(redirect_info, list, arg[i], std_in) == 1)
         {
-            //free (redirect_info);
+            free (redirect_info);
             return (1);
         }
     }
-    //if (redirect_info)
-       //free (redirect_info);
+    if (redirect_info)
+       free (redirect_info);
     return (0);
 }
