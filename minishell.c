@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/30 17:33:05 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/01 14:46:24 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,12 @@ int	main(int ac, char **av, char **envp)
 			continue ;
 		dollar_sign(&input);
 		lexer(&input);
+		// for (int i = 0; input.tokens[i]; i++)
+		// 	printf("%s\n", input.tokens[i]);
 		parser(&input);
+		// printf("%s\n", input.cmds->cmd.cmd[0]);
+		// printf("%s\n", input.cmds->cmd.cmd[1]);
+		// printf("%s\n", input.cmds->cmd.cmd[2]);
 		if (check_redirect_errors(&input) == 0)
 			run_cmd(&input);
 	}

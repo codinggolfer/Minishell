@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/06/26 16:08:16 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 14:36:18 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,65 +26,73 @@ int	handle_token(char *line, int token_type, int i)
 	return (i);
 }
 
-int	find_token_pos(char *line, int *token_pos)
+int	find_pos(char *line, int *pos)
 {
 	int	i;
 	int	token_type;
 
-	if (!line || !line[token_pos[1]]) // had token_pos[1] + 1
+	if (!line || !line[pos[1]]) // had pos[1] + 1
 		return (-1);
-	i = token_pos[1];
+	i = pos[1];
 	while (line[i] && line[i] == ' ')
 		i++;
-	token_pos[0] = i;
+	pos[0] = i;
 	token_type = is_token(line[i]);
 	if (token_type)
 		i = handle_token(line, token_type, i);
 	else
 	{
-		while (line[i] && line[i] != '<' && line[i] != '>' && line[i] != '|' && line[i] != ' ')
-			i++;
-		if (line[i] == ' ')
+		while (line[i] && !is_token(line[i]) && line[i] != ' ')
 			i++;
 	}
-	token_pos[1] = i;
+	pos[1] = i;
 	return (token_type);
 }
 
-void	add_spaces(t_input *data, int ret_val, int *token_pos)
+void	add_spaces(t_input *data, int ret, int *pos)
 {
-	if (ret_val > 0)
+	if (ret > 0)
 	{
-		if (ret_val == 3 || ret_val == 4 || ret_val == 5)
+		if (ret == 1 || ret == 2)
+		{
+			if (data->line[pos[1]] == ' ')
+			{
+				data->tokens = realloc_and_add(data->tokens, "");
+				++pos[1];
+			}
+		}
+		else if (ret == 4 || ret == 5)
 			data->tokens = realloc_and_add(data->tokens, "");
 	}
+	else if (data->line[pos[1]] == ' ')
+		data->tokens = realloc_and_add(data->tokens, "");
 }
 
 int	lexer(t_input *data)
 {
 	int		len;
-	int		token_pos[2];
-	int		ret_val;
-	char	*new_token;
+	int		pos[2];
+	int		ret;
+	char	*new_tkn;
 
 	len = ft_strlen(data->line);
 	data->tokens = (char **) malloc(sizeof(char *));
 	if (!data->tokens)
 		return (0);
-	token_pos[1] = 0;
+	pos[1] = 0;
 	data->tokens[0] = NULL;
 	while (1)
 	{
-		ret_val = find_token_pos(data->line, token_pos);
-		if (ret_val == -1)
+		ret = find_pos(data->line, pos);
+		if (ret == -1)
 			break ;
-		if (ret_val == 3 || ret_val == 4 || ret_val == 5)
+		if (ret == 3 || ret == 4 || ret == 5)
 			data->tokens = realloc_and_add(data->tokens, "");
-		new_token = ft_substr(data->line, token_pos[0],
-				token_pos[1] - token_pos[0]);
-		data->tokens = realloc_and_add(data->tokens, new_token);
-		add_spaces(data, ret_val, token_pos);
-		free(new_token);
+		new_tkn = ft_substr(data->line, pos[0],
+				pos[1] - pos[0]);
+		data->tokens = realloc_and_add(data->tokens, new_tkn);
+		add_spaces(data, ret, pos);
+		free(new_tkn);
 	}
 	return (1);
 }
