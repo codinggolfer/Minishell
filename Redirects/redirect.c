@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/30 17:18:55 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 17:09:33 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int *next_redirect(char **arg, int index)
     while (arg[index])
     {
         redirect[0] = redirection_type(arg[index]);
+        printf("here2\n");
         if (redirect[0] != 0)
         {
             redirect[1] = index;
@@ -82,6 +83,7 @@ int handle_redirections(char **arg, t_list *list, int std_in)
     while (arg[i])
     {
         redirect_info = next_redirect(arg, i);
+        printf("here1\n");
         if (redirect_info == NULL)
             return (-1);
         if (redirect_info[0] == -1 && redirect_info[1] == -1)

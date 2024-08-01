@@ -7,6 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
 /*   Updated: 2024/08/01 17:25:09 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:20:00 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +122,8 @@ int	main(int ac, char **av, char **envp)
 		parser(&input);
 		// printf("%s\n", input.cmds->cmd.cmd[1]);
 		// printf("%s\n", input.cmds->cmd.cmd[2]);
-		if (check_redirect_errors(&input) == 0)
-			run_cmd(&input);
+		//if (check_redirect_errors(&input) == 0)
+		run_cmd(&input);
 	}
 	return (0);
 }
