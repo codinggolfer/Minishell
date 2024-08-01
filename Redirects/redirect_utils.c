@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:58:15 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/31 12:00:37 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 17:14:20 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	is_redirect(char *arg)
 	if (ft_strcmp(arg, ">") == 0 || ft_strcmp(arg, ">>") == 0
 		|| ft_strcmp(arg, "<") == 0 || ft_strcmp(arg, "<<") == 0)
 	{
+		printf("arg in is rd: %s\n", arg);
 		return (1);
 	}
 	return (0);
@@ -40,6 +41,7 @@ int	has_redirect(char **arg)
 
 int	redirection_type(char *arg)
 {
+	printf("arg in rt: %s\n", arg);
 	if (!is_redirect(arg))
 		return (0);
 	if (!ft_strcmp(arg, "<"))
