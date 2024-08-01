@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/01 16:24:49 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 16:33:10 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	handle_token(char *line, int token_type, int i)
 {
-	if (line[i + 1] && (token_type == 4 || token_type == 5))
+	if (line[i + 1] != '\0' && (token_type == 3 || token_type == 4 || token_type == 5))
 	{
 		if (token_type == is_token(line[i + 1]))
 			i++;

@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:28:43 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 15:15:49 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 15:36:11 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,12 @@ int builtin_export(char **arg, t_input *data)
         return (pre_print_vars(data->vars));
     while (arg[++i] != NULL)
     {
-        if (arg[i][0] == '=')
+        if (ft_isascii(arg[i][0]) && !ft_isalpha(arg[i][0]) && arg[i][0] != '_')
+        {
+            if (is_redirect(arg[i]))
+                return (0);
             return (error_msg("export", arg[i], "not a valid identifier", 1));
+        }
         new_var_name = var_name(arg[i]);
         node = find_var(data->vars, new_var_name);
         free (new_var_name);
