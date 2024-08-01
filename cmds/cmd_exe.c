@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/31 12:43:59 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 16:14:32 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,17 @@ void	run_cmd(t_input *data)
     {
         if(!data->cmds->cmd.cmd)
             return ;
-		if (is_redirect(data->cmds->cmd.cmd[0]))
-		{
+		//if (is_redirect(data->cmds->cmd.cmd[0]))
+	//	{
 			exit_status = handle_redirections(data->cmds->cmd.cmd,
 					data->cmds, data->stdin_backup);
-		}
+	//	}
 		if (exit_status == 1)
 		{
 			data->exit_code = exit_status;
 			return ;
 		}
-		if (is_redirect(data->cmds->cmd.cmd[0]))
+	//	if (is_redirect(data->cmds->cmd.cmd[0]))
 			data->cmds->cmd.cmd = cmds_no_redirect(data->cmds->cmd.cmd);
 		data->exit_code = single_cmd(data, data->cmds);
 	}
