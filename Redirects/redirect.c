@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 17:41:36 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:49:38 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ int handle_redirections(char **arg, t_list *list, int std_in)
         }
     }
     //if (redirect_info)
-       // free (redirect_info);
+       //free (redirect_info);
     return (0);
 }
