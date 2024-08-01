@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/30 17:18:55 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 17:41:36 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,11 @@ int handle_redirections(char **arg, t_list *list, int std_in)
         i = redirect_info[1] + 1;
         if (switchdirect(redirect_info, list, arg[i], std_in) == 1)
         {
-            free (redirect_info);
+            //free (redirect_info);
             return (1);
         }
     }
-    if (redirect_info)
-        free (redirect_info);
+    //if (redirect_info)
+       // free (redirect_info);
     return (0);
 }
