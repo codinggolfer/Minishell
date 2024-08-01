@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 14:46:24 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 14:56:25 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,11 @@ int	check_redirect_errors(t_input *data)
 					|| temp->cmd.cmd[i + 1] == NULL))
 			{
 				data->exit_code = 2;
-				return (error_msg(NULL, "babatunde shell",
+				if (is_redirect(temp->cmd.cmd[i + 1]) == 1)
+					return (error_msg("babatunde shell", NULL,
 						"syntax error near unexpected token", 2));
+				return (error_msg("babatunde shell", NULL,
+						"command not found", 2));
 			}
 			++i;
 		}
