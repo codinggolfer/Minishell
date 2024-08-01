@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 19:50:48 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/01 23:03:50 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,9 @@ int	main(int ac, char **av, char **envp)
 {
 	t_input	input;
 
+	if (ac != 1)
+		return (0);
+	(void)av;
 	init_data(&input, envp);
 	tcgetattr(STDOUT_FILENO, input.old);
 	input.new = input.old;

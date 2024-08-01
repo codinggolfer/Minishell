@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:56:39 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 19:57:36 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/01 23:05:56 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_node(t_list *node)
 	if (node->env != NULL)
 		free (node->env);
 	if (node->cmd.cmd != NULL)
-		free_2darray(&node->cmd.cmd);
+		free_2darray(node->cmd.cmd);
 }
 
 int	listsize(t_list *head)

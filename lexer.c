@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/01 16:33:10 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/01 23:05:11 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,10 @@ void	add_spaces(t_input *data, int ret, int *pos)
 
 int	lexer(t_input *data)
 {
-	int		len;
 	int		pos[2];
 	int		ret;
 	char	*new_tkn;
 
-	len = ft_strlen(data->line);
 	data->tokens = (char **) malloc(sizeof(char *));
 	if (!data->tokens)
 		return (0);
