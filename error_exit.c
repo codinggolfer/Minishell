@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:01:19 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/29 14:34:10 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:59:56 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ int	error_msg(char *cmd, char *context, char *msg, int code)
 	write(STDERR_FILENO, "\n", 1);
 	return (code);
 }
+void	cleaner(t_input *data)
+{
+	dup2(data->stdin_backup, STDIN_FILENO);
+	dup2(data->stdout_backup, STDOUT_FILENO);
+	if (data->cmds)
+		free_list(data->cmds);
+	if (data->line)
+		free(data->line);
+}
+
 int	get_error(void)
 {
 	if (errno == ENOENT)

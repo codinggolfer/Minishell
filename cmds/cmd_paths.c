@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:59:28 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/29 14:30:20 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 19:44:48 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char	*get_path_env(t_input *data)
 		if (strcmp_equal(lst->env, "PATH") == 0)
         {
 			ret = ft_strdup(lst->env);
+			//exit(printf("%s\n", ret));
             return (ret + 5);
         }
 		lst = lst->next;

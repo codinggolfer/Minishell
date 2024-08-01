@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/01 16:14:32 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:46:21 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	run_cmd(t_input *data)
             return ;
 		//if (is_redirect(data->cmds->cmd.cmd[0]))
 	//	{
-			exit_status = handle_redirections(data->cmds->cmd.cmd,
-					data->cmds, data->stdin_backup);
+		exit_status = handle_redirections(data->cmds->cmd.cmd,
+				data->cmds, data->stdin_backup);
 	//	}
 		if (exit_status == 1)
 		{
@@ -90,7 +90,7 @@ void	run_cmd(t_input *data)
 			return ;
 		}
 	//	if (is_redirect(data->cmds->cmd.cmd[0]))
-			data->cmds->cmd.cmd = cmds_no_redirect(data->cmds->cmd.cmd);
+		data->cmds->cmd.cmd = cmds_no_redirect(data->cmds->cmd.cmd);
 		data->exit_code = single_cmd(data, data->cmds);
 	}
 }

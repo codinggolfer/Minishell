@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/30 17:19:20 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 19:59:30 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ int		count_arg_array(char **array);
 int		ft_strcmp(char *s1, char *s2);
 int		strcmp_equal(char *s1, char *s2);
 void	remove_env(t_list **lst, t_list *node);
+void	free_list(t_list *lst);
+void	free_node(t_list *node);
+void	cleaner(t_input *data);
 
 //readline functions:
 int		handle_line(t_input *data);
