@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/29 14:32:12 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/31 12:43:59 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,18 @@ void	run_cmd(t_input *data)
     {
         if(!data->cmds->cmd.cmd)
             return ;
-		exit_status = handle_redirections(data->cmds->cmd.cmd,
-				data->cmds, data->stdin_backup);
+		if (is_redirect(data->cmds->cmd.cmd[0]))
+		{
+			exit_status = handle_redirections(data->cmds->cmd.cmd,
+					data->cmds, data->stdin_backup);
+		}
 		if (exit_status == 1)
 		{
 			data->exit_code = exit_status;
 			return ;
 		}
-		data->cmds->cmd.cmd = cmds_no_redirect(data->cmds->cmd.cmd);
+		if (is_redirect(data->cmds->cmd.cmd[0]))
+			data->cmds->cmd.cmd = cmds_no_redirect(data->cmds->cmd.cmd);
 		data->exit_code = single_cmd(data, data->cmds);
 	}
 }
@@ -100,7 +104,7 @@ int execute_cmd(t_input *data, char **cmd_paths, char **args, char *cmd)
 	rebuild_envp(data);
 	if (!cmd_paths)
 		return (error_msg(NULL, cmd, "No such file or directory", 127));
-	while(cmd_paths[i])
+	while(cmd_paths[i] && cmd)
 	{
 		if (args[0])
 			free(args[0]);

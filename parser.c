@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:27:07 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/06/26 15:17:01 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/01 14:45:44 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,14 @@ int	remove_ears(char **tokens)
 
 void	remove_space_and_ears(char ***cmd, char **tokens, char **str)
 {
+	
 	if (ft_strlen((*tokens)) == 0)
 	{
 		if ((*str))
 		{
 			(*cmd) = realloc_and_add((*cmd), (*str));
 			free((*str));
-			(*str) = ft_strdup("");
+			(*str) = NULL;
 		}
 	}
 	else
@@ -72,7 +73,7 @@ char	**cut_cmds(int *find_cmd, char **tokens)
 		return (NULL);
 	i = find_cmd[0];
 	cmd = NULL;
-	str = ft_strdup("");
+	str = NULL;
 	while (i <= find_cmd[1])
 	{
 		remove_space_and_ears(&cmd, &tokens[i], &str);

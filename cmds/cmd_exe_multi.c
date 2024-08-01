@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 15:30:09 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/25 14:11:53 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/07/30 17:38:28 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ static void	in_child(int last_var, t_input *data, t_list *curr, int to_close)
 	signal(SIGQUIT, SIG_DFL);
 	if (!(last_var))
 		close(to_close);
-	if (handle_redirections(curr->cmd.cmd, curr, data->stdin_backup) == -1)
-		exit (1);
-	curr->cmd.cmd = cmds_no_redirect(curr->cmd.cmd);
+	if (is_redirect(data->cmds->cmd.cmd[0]))
+		if (handle_redirections(curr->cmd.cmd, curr, data->stdin_backup) == -1)
+			exit (1);
+	if (is_redirect(data->cmds->cmd.cmd[0]))
+		curr->cmd.cmd = cmds_no_redirect(curr->cmd.cmd);
 	dup2(curr->in_fd, STDIN_FILENO);
 	dup2(curr->out_fd, STDOUT_FILENO);
 	exit (single_cmd(data, curr));

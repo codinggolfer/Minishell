@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:02:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/29 15:05:09 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:19:18 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int builtin_env(char **own_env)
 
 int handle_builtins(char *cmd, char **arg, t_input *data)
 {
+    if (cmd == 0)
+        return (-1);
     if (ft_strcmp(cmd,"echo") == 0)
        return (builtin_echo(arg));
     else if (ft_strcmp(cmd,"pwd") == 0)

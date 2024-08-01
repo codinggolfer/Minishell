@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:58:15 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/15 14:37:59 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:00:37 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	is_redirect(char *arg)
 {
+	if (arg == 0)
+		return (0);
 	if (ft_strcmp(arg, ">") == 0 || ft_strcmp(arg, ">>") == 0
 		|| ft_strcmp(arg, "<") == 0 || ft_strcmp(arg, "<<") == 0)
 	{

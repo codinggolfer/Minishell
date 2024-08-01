@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/29 15:56:37 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/01 14:56:25 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,11 @@ int	check_redirect_errors(t_input *data)
 					|| temp->cmd.cmd[i + 1] == NULL))
 			{
 				data->exit_code = 2;
-				return (error_msg(NULL, "babatunde shell",
+				if (is_redirect(temp->cmd.cmd[i + 1]) == 1)
+					return (error_msg("babatunde shell", NULL,
 						"syntax error near unexpected token", 2));
+				return (error_msg("babatunde shell", NULL,
+						"command not found", 2));
 			}
 			++i;
 		}
@@ -113,7 +116,12 @@ int	main(int ac, char **av, char **envp)
 			continue ;
 		dollar_sign(&input);
 		lexer(&input);
+		// for (int i = 0; input.tokens[i]; i++)
+		// 	printf("%s\n", input.tokens[i]);
 		parser(&input);
+		// printf("%s\n", input.cmds->cmd.cmd[0]);
+		// printf("%s\n", input.cmds->cmd.cmd[1]);
+		// printf("%s\n", input.cmds->cmd.cmd[2]);
 		if (check_redirect_errors(&input) == 0)
 			run_cmd(&input);
 	}
