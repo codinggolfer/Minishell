@@ -6,41 +6,41 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 15:03:52 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/23 15:07:18 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/02 16:18:24 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	child_execute(char *cmd_path, char **args, char **my_envp)
+void	child_execute(char *path, char **arg, char **my_env)
 {
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
-	if (execve(cmd_path, args, my_envp) == -1)
+	if (execve(path, arg, my_env) == -1)
 		exit(errno);
 }
 
 int	parent_execute(t_input *data, pid_t pid)
 {
-	int	status;
+	int	stat;
 
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
-	waitpid(pid, &status, 0);
-	return (get_exit_code(data, status));
+	waitpid(pid, &stat, 0);
+	return (get_exit_code(data, stat));
 }
 
-int	get_command_count(t_input *data)
+int	get_cmd_counter(t_input *data)
 {
-	t_list	*counter;
+	t_list	*count;
 	int		ret;
 
 	ret = 0;
-	counter = data->cmds;
-	while (counter)
+	count = data->cmds;
+	while (count)
 	{
 		++ret;
-		counter = counter->next;
+		count = count->next;
 	}
 	return (ret);
 }

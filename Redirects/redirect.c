@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 19:37:12 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/02 16:42:39 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,12 @@ char **cmds_no_redirect(char **arg)
 
 int switchdirect(int *info, t_list *lst, char *arg, int stdin)
 {   
-   // exit(printf("%d\n", info[0]));
     if (info[0] == 1)
-        return (handle_redir_input(arg, &lst->in_fd));
+        return (handle_redirect_input(arg, &lst->in_fd));
     else if (info[0] == 2)
-        return (handle_redir_input_heredoc(arg, &lst->in_fd, stdin));
+        return (handle_redirect_input_heredoc(arg, &lst->in_fd, stdin));
     else if (info[0] == 3 || info[0] == 4)
-        return (handle_all_redir_output(arg, &lst->out_fd));
+        return (handle_all_redirect_output(arg, &lst->out_fd));
     else
         return (1);
 }

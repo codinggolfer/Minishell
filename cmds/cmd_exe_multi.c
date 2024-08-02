@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 15:30:09 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/02 16:13:34 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/02 16:19:58 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,8 @@ static void	in_child(int last, t_input *data, t_list *current, int toclose)
 	signal(SIGQUIT, SIG_DFL);
 	if (!(last))
 		close(toclose);
-	//if (is_redirect(data->cmds->cmd.cmd[0]))
 	if (handle_redirections(current->cmd.cmd, current, data->stdin_backup) == -1)
 		exit (1);
-	//if (is_redirect(data->cmds->cmd.cmd[0]))
 	current->cmd.cmd = cmds_no_redirect(current->cmd.cmd);
 	dup2(current->in_fd, STDIN_FILENO);
 	dup2(current->out_fd, STDOUT_FILENO);
@@ -72,7 +70,7 @@ void	multi_commands(t_input *data)
     int     pipe_stor[3];
     pid_t   last_child;
 
-    cmd_count = get_command_count(data);
+    cmd_count = get_cmd_counter(data);
     currentent = data->cmds;
     send = 0;
     while(send < cmd_count)

@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/02 16:13:04 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/02 16:20:31 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,19 @@ void	run_cmd(t_input *data)
     if (data->cmds->next)
     {
 		if (check_pipes(data))
-			multi_commands(data);  //need to be made
+			multi_commands(data);
     }
     else
     {
         if(!data->cmds->cmd.cmd)
             return ;
-		//if (is_redirect(data->cmds->cmd.cmd[0]))
-	//	{
 		exit_code = handle_redirections(data->cmds->cmd.cmd,
 				data->cmds, data->stdin_backup);
-	//	}
 		if (exit_code == 1)
 		{
 			data->exit_code = exit_code;
 			return ;
 		}
-	//	if (is_redirect(data->cmds->cmd.cmd[0]))
 		data->cmds->cmd.cmd = cmds_no_redirect(data->cmds->cmd.cmd);
 		data->exit_code = single_cmd(data, data->cmds);
 	}
