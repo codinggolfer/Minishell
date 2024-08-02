@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/01 19:46:21 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/02 16:13:04 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 
 int single_cmd(t_input *data, t_list *cmds)
 {
-    int     exit_stat;
+    int     exit_code;
     char    *cmd;
-    char    **cmd_path;
+    char    **path;
 
     cmd = ft_strdup(cmds->cmd.cmd[0]);
-    exit_stat = handle_builtins(cmd, cmds->cmd.cmd, data);
-    if (exit_stat == -1)
+    exit_code = handle_builtins(cmd, cmds->cmd.cmd, data);
+    if (exit_code == -1)
     {
-		cmd_path = get_cmd_path(data, cmd);
-		exit_stat = execute_cmd(data, cmd_path, cmds->cmd.cmd, cmd);
-		if (cmd_path)
-			free_2darray(cmd_path);
+		path = get_cmd_path(data, cmd);
+		exit_code = execute_cmd(data, path, cmds->cmd.cmd, cmd);
+		if (path)
+			free_2darray(path);
     }
     else
 	{
         if (cmd)
             free(cmd);
 	}
-    return (exit_stat);
+    return (exit_code);
 }
 
-int	get_exit_code(t_input *data, int exit_stat)
+int	get_exit_code(t_input *data, int exit_code)
 {
-	if(WIFEXITED(exit_stat))
-		data->exit_code = WEXITSTATUS(exit_stat);
+	if(WIFEXITED(exit_code))
+		data->exit_code = WEXITSTATUS(exit_code);
 	else
 	{
-		if(WIFSIGNALED(exit_stat))
+		if(WIFSIGNALED(exit_code))
 			data->exit_code = 130;
 	}
 	return (data->exit_code);
@@ -49,27 +49,27 @@ int	get_exit_code(t_input *data, int exit_stat)
 
 int	check_pipes(t_input *data)
 {
-	t_list	*cur;
+	t_list	*current;
 
-	cur = data->cmds;
-	while (cur)
+	current = data->cmds;
+	while (current)
 	{
-		if (!cur->cmd.cmd)
+		if (!current->cmd.cmd)
 		{
 			data->exit_code = error_msg("minishell", NULL,
 					"syntax error near unexpected token", 2);
 			return (0);
 		}
-		cur = cur->next;
+		current = current->next;
 	}
 	return (1);
 }
 
 void	run_cmd(t_input *data)
 {
-    int exit_status;
+    int exit_code;
 
-    exit_status = 0;
+    exit_code = 0;
     if (data->cmds->next)
     {
 		if (check_pipes(data))
@@ -81,12 +81,12 @@ void	run_cmd(t_input *data)
             return ;
 		//if (is_redirect(data->cmds->cmd.cmd[0]))
 	//	{
-		exit_status = handle_redirections(data->cmds->cmd.cmd,
+		exit_code = handle_redirections(data->cmds->cmd.cmd,
 				data->cmds, data->stdin_backup);
 	//	}
-		if (exit_status == 1)
+		if (exit_code == 1)
 		{
-			data->exit_code = exit_status;
+			data->exit_code = exit_code;
 			return ;
 		}
 	//	if (is_redirect(data->cmds->cmd.cmd[0]))
@@ -95,25 +95,25 @@ void	run_cmd(t_input *data)
 	}
 }
 
-int execute_cmd(t_input *data, char **cmd_paths, char **args, char *cmd)
+int execute_cmd(t_input *data, char **paths, char **args, char *cmd)
 {
 	int i;
 	pid_t child;
 
 	i = 0;
 	rebuild_envp(data);
-	if (!cmd_paths)
+	if (!paths)
 		return (error_msg(NULL, cmd, "No such file or directory", 127));
-	while(cmd_paths[i] && cmd)
+	while(paths[i] && cmd)
 	{
 		if (args[0])
 			free(args[0]);
-		args[0] = ft_strdup(cmd_paths[i]);
+		args[0] = ft_strdup(paths[i]);
 		if (!(access(args[0], X_OK)))
 		{
 			child = fork();
 			if (!child)
-				child_execute(cmd_paths[i], args, data->own_env);
+				child_execute(paths[i], args, data->own_env);
 			else
 				return (parent_execute(data, child));
 		}
