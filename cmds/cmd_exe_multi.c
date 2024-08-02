@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 15:30:09 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/02 16:19:58 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/02 17:42:07 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,20 @@ static void	in_child(int last, t_input *data, t_list *current, int toclose)
 	current->cmd.cmd = cmds_no_redirect(current->cmd.cmd);
 	dup2(current->in_fd, STDIN_FILENO);
 	dup2(current->out_fd, STDOUT_FILENO);
+	close(current->in_fd);
+	close(current->out_fd);
 	exit (single_cmd(data, current));
 }
 
-static void	fix_fd(int sent, int cmd_count, int *pipe_stor, t_list *currentent)
+static void	fix_fd(int sent, int cmd_count, int *pipe_stor, t_list *current)
 {
 	if (sent != cmd_count - 1)
 	{
 		pipe(pipe_stor);
-		currentent->out_fd = pipe_stor[1];
+		current->out_fd = pipe_stor[1];
 	}
 	if (sent)
-		currentent->in_fd = pipe_stor[2];
+		current->in_fd = pipe_stor[2];
 }
 
 void	multi_commands(t_input *data)
