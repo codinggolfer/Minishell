@@ -3,38 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:59:28 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/01 19:44:48 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/02 16:14:51 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-//might not need it, if the +5 in get_path_env works
-
-// char	*path_trimmer(char *path)
-// {
-// 	int		i;
-// 	int		j;
-// 	int		len;
-// 	char	*trimmed;
-
-// 	i = 0;
-// 	j = 5;
-// 	len = ft_strlen(path) - 5;
-// 	trimmed = (char *) malloc (sizeof(char) * (len + 1));
-// 	while (i < len)
-// 	{
-// 		trimmed[i] = path[j];
-// 		i++;
-// 		j++;
-// 	}
-// 	trimmed[i] = '\0';
-// 	free(path);
-// 	return (trimmed);
-// }
 
 void	append_to_path(char **paths, char *cmd)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 19:59:30 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/05 14:25:20 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,10 +140,10 @@ int 	count_args_skip_redirections(char **args);
 int		redirection_type(char *arg);
 int		has_redirect(char **arg);
 int		is_redirect(char *arg);
-int		handle_redir_input(char *filename, int *in_fd);
-int		handle_all_redir_output(char *filename, int *out_fd);
+int		handle_redirect_input(char *filename, int *in_fd);
+int		handle_all_redirect_output(char *filename, int *out_fd);
 int		heredoc_child(char *delimiter, int *storage, int std_in);
-int		handle_redir_input_heredoc(char *delimiter, int *in_fd, int std_in);
+int		handle_redirect_input_heredoc(char *delimiter, int *in_fd, int std_in);
 int		handle_redirections(char **arg, t_list *list, int std_in);
 char	**cmds_no_redirect(char **arg);
 
@@ -151,7 +151,7 @@ char	**cmds_no_redirect(char **arg);
 
 void	child_execute(char *cmd_path, char **args, char **my_envp);
 int		parent_execute(t_input *data, pid_t pid);
-int		get_command_count(t_input *data);
+int		get_cmd_counter(t_input *data);
 void	multi_commands(t_input *data);
 int		single_cmd(t_input *data, t_list *cmds);
 int		check_pipes(t_input *data);
