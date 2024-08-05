@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/05 14:25:20 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/05 19:48:13 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ int		redirection_type(char *arg);
 int		has_redirect(char **arg);
 int		is_redirect(char *arg);
 int		handle_redirect_input(char *filename, int *in_fd);
-int		handle_all_redirect_output(char *filename, int *out_fd);
+int		handle_all_redirect_output(char *filename, int *out_fd, int decider);
 int		heredoc_child(char *delimiter, int *storage, int std_in);
 int		handle_redirect_input_heredoc(char *delimiter, int *in_fd, int std_in);
 int		handle_redirections(char **arg, t_list *list, int std_in);
@@ -168,6 +168,6 @@ int		get_exit_code(t_input *data, int exit_stat);
 
 //error
 int		error_msg(char *cmd, char *context, char *msg, int code);
-int		get_error(void);
+int		get_error(char *msg);
 
 #endif

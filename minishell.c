@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/05 14:27:48 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/05 19:30:16 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,9 @@ int	main(int ac, char **av, char **envp)
 		// for (int i = 0; input.tokens[i]; i++)
 		// 	printf("%s\n", input.tokens[i]);
 		parser(&input);
+		// for (int j = 0; input.cmds->cmd.cmd[j]; j++)
+		// 	printf("%s\n", input.cmds->cmd.cmd[j]);
+		// input.cmds = input.cmds->next;
 		// for (int j = 0; input.cmds->cmd.cmd[j]; j++)
 		// 	printf("%s\n", input.cmds->cmd.cmd[j]);
 		if (check_redirect_errors(&input) == 0)

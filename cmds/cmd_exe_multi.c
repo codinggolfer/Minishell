@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exe_multi.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 15:30:09 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/02 17:42:07 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/05 19:36:03 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ static void	in_child(int last, t_input *data, t_list *current, int toclose)
 	current->cmd.cmd = cmds_no_redirect(current->cmd.cmd);
 	dup2(current->in_fd, STDIN_FILENO);
 	dup2(current->out_fd, STDOUT_FILENO);
-	close(current->in_fd);
-	close(current->out_fd);
 	exit (single_cmd(data, current));
 }
 

@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:27:31 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/29 14:35:20 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:35:41 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int builtin_cd(char **arg, t_input *data)
     if (!path)
         return (1);
     if (chdir(path) == -1)
-       return (get_error());
+       return (get_error(path));
     update_env_cd(&data);
     return (0);
 }

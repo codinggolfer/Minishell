@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/02 16:42:39 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/05 20:08:58 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int *next_redirect(char **arg, int index)
     while (arg[index])
     {
         redirect[0] = redirection_type(arg[index]);
+        if (arg[index][1] != '\0' && redirection_type(arg[index]))
+            redirect[0] += 1;
         if (redirect[0] != 0)
         {
             redirect[1] = index;
@@ -54,7 +56,7 @@ char **cmds_no_redirect(char **arg)
         else
             ret[j++] = ft_strdup(arg[i++]);
     }
-    ret[len] = NULL;
+    //ret[len] = NULL;
     free_2darray(arg);
     return (ret);
     
@@ -67,7 +69,7 @@ int switchdirect(int *info, t_list *lst, char *arg, int stdin)
     else if (info[0] == 2)
         return (handle_redirect_input_heredoc(arg, &lst->in_fd, stdin));
     else if (info[0] == 3 || info[0] == 4)
-        return (handle_all_redirect_output(arg, &lst->out_fd));
+        return (handle_all_redirect_output(arg, &lst->out_fd, info[0]));
     else
         return (1);
 }

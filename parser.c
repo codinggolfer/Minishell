@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:27:07 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/01 14:45:44 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/05 19:28:27 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	remove_ears(char **tokens)
 
 void	remove_space_and_ears(char ***cmd, char **tokens, char **str)
 {
-	
 	if (ft_strlen((*tokens)) == 0)
 	{
 		if ((*str))
@@ -74,7 +73,7 @@ char	**cut_cmds(int *find_cmd, char **tokens)
 	i = find_cmd[0];
 	cmd = NULL;
 	str = NULL;
-	while (i <= find_cmd[1])
+	while (i < find_cmd[1])
 	{
 		remove_space_and_ears(&cmd, &tokens[i], &str);
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_envp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:07:50 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/05/22 14:32:18 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/08/05 20:06:39 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	rebuild_envp(t_input *data)
 		i++;
 		list = list->next;
 	}
-	data->own_env[i] = NULL;
+	//data->own_env[i] = NULL;
 }
 
 t_list	*set_env(char **env)

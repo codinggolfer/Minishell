@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:02:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/02 17:28:30 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/05 20:16:04 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int builtin_echo(char **arg)
     
     i = 1;
     new_line = 1;
-    if (!ft_strcmp("-n", arg[1]))
+    if (arg[1] && !ft_strcmp(arg[1], "-n"))
     {
         new_line = 0;
         i++;

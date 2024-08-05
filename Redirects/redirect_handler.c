@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:54:41 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/02 16:41:47 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/05 20:03:16 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,25 @@ int	handle_redirect_input(char *filename, int *in_fd)
 		return (-1);
 	fd = open(filename, O_RDONLY, 0777);
 	if (fd == -1)
-		return (error_msg("babatunde shell", filename, "No such file or directory", 1));
+		return (error_msg(NULL, filename, "No such file or directory", 1));
 	dup2(fd, *in_fd);
 	return (0);
 }
 
-int	handle_all_redirect_output(char *filename, int *out_fd)
+int	handle_all_redirect_output(char *filename, int *out_fd, int decider)
 {
 	int	fd;
 
 	if (is_redirect(filename))
 		return (-1);
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (decider == 3)
+		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	else
+		fd = open(filename, O_WRONLY | O_CREAT | O_APPEND, 0777);
 	if (fd == -1)
 		return (error_msg(NULL, filename, "File could not be opened", 1));
 	dup2(fd, *out_fd);
+	printf("here\n");
 	close(fd);
 	return (0);
 }
