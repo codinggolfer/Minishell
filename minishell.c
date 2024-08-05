@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 23:03:50 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/05 14:27:48 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

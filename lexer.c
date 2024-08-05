@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/01 23:05:11 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/02 16:23:10 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	handle_token(char *line, int token_type, int i)
+int	token_handler(char *line, int token_type, int i)
 {
 	if (line[i + 1] != '\0' && (token_type == 3 || token_type == 4 || token_type == 5))
 	{
@@ -32,7 +32,7 @@ int	find_pos(char *line, int *pos)
 	int	i;
 	int	token_type;
 
-	if (!line || !line[pos[1]]) // had pos[1] + 1
+	if (!line || !line[pos[1]])
 		return (-1);
 	i = pos[1];
 	while (line[i] && line[i] == ' ')
@@ -40,7 +40,7 @@ int	find_pos(char *line, int *pos)
 	pos[0] = i;
 	token_type = is_token(line[i]);
 	if (token_type)
-		i = handle_token(line, token_type, i);
+		i = token_handler(line, token_type, i);
 	else
 	{
 		while (line[i] && !is_token(line[i]) && line[i] != ' ')

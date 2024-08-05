@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:29:18 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/22 14:50:28 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/05 14:35:56 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int builtin_unset(char **arg, t_input *data)
         }
         del = find_var(list, arg[i]);
         if (del)
+        {
             remove_env(&data->vars, del);
+            rebuild_envp(data);
+        }
         i++;
     }
     return (0);

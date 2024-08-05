@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:02:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/31 12:19:18 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/02 17:28:30 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int builtin_env(char **own_env)
     i = 0;
     while (own_env[i])
     {
-        printf("%s\n", own_env[i]);
+        if (ft_strlen(own_env[i]) != 0)
+            printf("%s\n", own_env[i]);
         i++;
     }
     return (0);

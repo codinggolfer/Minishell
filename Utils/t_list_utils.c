@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:28:28 by eromonagbom       #+#    #+#             */
-/*   Updated: 2024/08/01 14:26:25 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/05 14:56:39 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	remove_env(t_list **lst, t_list *node)
 	{
 		(*lst) = (*lst)->next;
 		free (node->env);
+		node->env = ft_strdup("");
+		return ;
 	}
 	head = (*lst);
 	prev = head;
@@ -81,4 +83,5 @@ void	remove_env(t_list **lst, t_list *node)
 		prev = prev->next;
 	prev->next = node->next;
 	free (node->env);
+	node->env = ft_strdup("");
 }
