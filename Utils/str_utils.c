@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:12:27 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/18 14:51:54 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/05 19:13:15 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
