@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:07:50 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/05 20:06:39 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/06 14:04:43 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	rebuild_envp(t_input *data)
 	i = 0;
 	node = data->vars;
 	list = node;
-	data->own_env = malloc (sizeof(char *) * listsize(list) + 1);
+	data->own_env = ft_calloc(sizeof(char *), listsize(list) + 1);
 	if (!data->own_env)
 		exit (1); // need to add better protections in the future
 	while (list != NULL)
@@ -30,7 +30,6 @@ void	rebuild_envp(t_input *data)
 		i++;
 		list = list->next;
 	}
-	//data->own_env[i] = NULL;
 }
 
 t_list	*set_env(char **env)
