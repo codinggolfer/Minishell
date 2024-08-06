@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   array_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:50:27 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 14:17:52 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/06 13:36:46 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
