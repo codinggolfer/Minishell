@@ -57,11 +57,11 @@ $(LIBFT):
 
 clean:
 	make clean -C libft
-	$(RM) $(NAME) $(OBJECTS)
+	$(RM) $(OBJECTS)
 
 fclean: clean
 	make fclean -C libft
-	$(RM) $(OBJECTS)
+	$(RM) $(OBJECTS) $(NAME)
 	
 re: fclean $(NAME)
 

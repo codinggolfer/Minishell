@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/05 20:08:58 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/06 13:32:21 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char **cmds_no_redirect(char **arg)
     len = count_args_skip_redirections(arg);
     i = 0;
     j = 0;
-    ret = malloc (sizeof(char *) * len + 1);
+    ret = ft_calloc (sizeof(char *), len + 1);
     while (i < old_len)
     {
         if (is_redirect(arg[i]))
@@ -56,7 +56,7 @@ char **cmds_no_redirect(char **arg)
         else
             ret[j++] = ft_strdup(arg[i++]);
     }
-    //ret[len] = NULL;
+   // ret[len] = NULL;
     free_2darray(arg);
     return (ret);
     
