@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:50:27 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/08 16:35:47 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/09 12:19:14 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	free_2darray(char **array)
 		i++;
 	}
 	free (array);
-	array = NULL;
 }
 
 char	**realloc_and_add(char **src, char *str)
