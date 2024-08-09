@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/08 17:37:09 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/09 12:05:41 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,9 @@ char **cmds_no_redirect(char **arg)
         else
             ret[j++] = ft_strdup(arg[i++]);
     }
-   // ret[len] = NULL;
+    //ret[len + 1] = NULL;
     free_2darray(arg);
     return (ret);
-    
 }
 
 int switchdirect(int *info, t_list *lst, char *arg, int stdin)
