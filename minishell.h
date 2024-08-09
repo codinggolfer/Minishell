@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/05 19:48:13 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/07 14:42:23 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@
 # include <sys/wait.h>
 # include <errno.h>
 # include <limits.h>
+
+typedef struct s_signal
+{
+	struct termios	def_atr;
+	struct termios	mod_atr;
+}		t_signal;
 
 typedef struct s_cmd
 {
@@ -64,6 +70,7 @@ typedef struct s_input
 	struct termios	*old;
 	t_list			*vars;
 	t_list			*cmds;
+	t_signal		*atr;
 }	t_input;
 
 // env
@@ -169,5 +176,6 @@ int		get_exit_code(t_input *data, int exit_stat);
 //error
 int		error_msg(char *cmd, char *context, char *msg, int code);
 int		get_error(char *msg);
+int		reset_exit(struct termios *save, int ecode);
 
 #endif

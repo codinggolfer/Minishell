@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:01:19 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/05 18:23:10 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/07 14:40:02 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,10 @@ int	get_error(char *msg)
 	else if (errno == ENOTDIR)
 		error_msg("cd", msg, "Not a directory", 1);
 	return (1);
+}
+
+int	reset_exit(struct termios *save, int ecode)
+{
+	tcsetattr(STDIN_FILENO, TCSAFLUSH, save);
+	exit(ecode);
 }

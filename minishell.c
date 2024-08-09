@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/05 21:43:56 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:44:20 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ void	init_data(t_input *data, char **env)
 {
 	data->stdin_backup = dup(STDIN_FILENO);
 	data->stdout_backup = dup(STDOUT_FILENO);
+	data->tokens = NULL;
 	data->vars = set_env(env);
 	data->own_env = NULL;
 	data->cwd = getcwd(NULL, 1024);
 	data->exit_code = 0;
 	data->old = malloc(sizeof(struct termios) * 1);
-	data->new = malloc(sizeof(struct termios) * 1);
+	//data->new = malloc(sizeof(struct termios) * 1);
 	//tcgetattr(STDIN_FILENO, data->old);
 	rebuild_envp(data);
 }
@@ -132,5 +133,6 @@ int	main(int ac, char **av, char **envp)
 			run_cmd(&input);
 		cleaner(&input);
 	}
-	return (0);
+	exit (0);
+	//exit (reset_exit(&input.atr->def_atr, 0));
 }
