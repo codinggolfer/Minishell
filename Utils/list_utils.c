@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:56:39 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 23:05:56 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/08 17:06:41 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	free_node(t_list *node)
 		free (node->env);
 	if (node->cmd.cmd != NULL)
 		free_2darray(node->cmd.cmd);
+	free (node);
 }
 
 int	listsize(t_list *head)
@@ -53,8 +54,8 @@ void	free_list(t_list *lst)
 	{
 		temp = lst->next;
 		free_node(lst);
-		free (lst);
 		lst = temp;
 	}
+	free (lst);
 	lst = NULL;
 }

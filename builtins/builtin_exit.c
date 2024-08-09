@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:29:52 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/29 15:57:11 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/08 17:05:54 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,28 @@ static int	is_number(char *num)
 	return (1);
 }
 
+void free_cmd(t_cmd *cmd) 
+{
+    if (cmd && cmd->cmd) {
+        free_2darray(cmd->cmd);
+    }
+}
+
+
+void freelist(t_list *list) 
+{
+    t_list *tmp;
+    while (list) {
+        tmp = list;
+        list = list->next;
+        if (tmp->env) free(tmp->env);
+        if (tmp->in_fd != -1) close(tmp->in_fd);
+        if (tmp->out_fd != -1) close(tmp->out_fd);
+        free_cmd(&tmp->cmd);
+        free(tmp);
+    }
+}
+
 int builtin_exit(t_input *data, char **arg)
 {
     int ecode;
@@ -73,5 +95,7 @@ int builtin_exit(t_input *data, char **arg)
     while (ecode >= 256)
         ecode -= 256;
     tcsetattr(STDIN_FILENO, TCSAFLUSH, data->new);
-    exit (ecode);
+	//freelist(data->cmds);
+    exit (0);
+	//exit (reset_exit(&data->atr->def_atr, ecode));
 }
