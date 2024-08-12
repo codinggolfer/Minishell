@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/08 16:44:20 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/12 17:23:52 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,8 @@ int	main(int ac, char **av, char **envp)
 		// input.cmds = input.cmds->next;
 		// for (int j = 0; input.cmds->cmd.cmd[j]; j++)
 		// 	printf("%s\n", input.cmds->cmd.cmd[j]);
+		// for (int j = 0; input.own_env[j]; j++)
+		// 	printf("%s\n", input.own_env[j]);
 		if (check_redirect_errors(&input) == 0)
 			run_cmd(&input);
 		cleaner(&input);

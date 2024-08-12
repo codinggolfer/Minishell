@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_envp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:07:50 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/06 14:04:43 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:23:47 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,18 @@ void	rebuild_envp(t_input *data)
 	i = 0;
 	node = data->vars;
 	list = node;
-	data->own_env = ft_calloc(sizeof(char *), listsize(list) + 1);
+	if (data->own_env != NULL)
+		free(data->own_env);
+	data->own_env = calloc (sizeof(char *), listsize(list) + 1);
 	if (!data->own_env)
 		exit (1); // need to add better protections in the future
 	while (list != NULL)
 	{
-		data->own_env[i] = ft_strdup(list->env);
+		data->own_env[i] = list->env;
 		i++;
 		list = list->next;
 	}
+	data->own_env[i] = NULL;
 }
 
 t_list	*set_env(char **env)

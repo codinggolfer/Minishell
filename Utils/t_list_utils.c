@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:28:28 by eromonagbom       #+#    #+#             */
-/*   Updated: 2024/08/05 14:56:39 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/12 17:42:46 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ void	remove_env(t_list **lst, t_list *node)
 	while (prev != node)
 		prev = prev->next;
 	prev->next = node->next;
-	free (node->env);
+	//free (node->env);
 	node->env = ft_strdup("");
 }
