@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:27:31 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/05 16:35:41 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:47:35 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,39 @@ char    *get_cd_path(int size, char **arg, t_input *data)
         path = ft_strdup(arg[1]);
     return (path);
 }
-void    update_env_cd(t_input **data)
+
+void update_env_cd(t_input **data)
 {
-    t_list  *node;
+    t_list *node;
+    char *new_env;
 
     node = find_var((*data)->vars, "OLDPWD");
+    new_env = ft_strjoin("OLDPWD=", (*data)->cwd);
     if (node == NULL)
     {
-        node = new_list_env(ft_strjoin(ft_strdup("OLDPWD="), (*data)->cwd));
+        node = new_list_env(new_env);
         ft_lstadd_back(&(*data)->vars, node);
+        free (new_env);
     }
     else
-        node->env = ft_strjoin(ft_strdup("OLDPWD="), (*data)->cwd);
+    {
+        free (node->env);
+        node->env = new_env;
+    }
     free((*data)->cwd);
     (*data)->cwd = getcwd(NULL, 1024);
     node = find_var((*data)->vars, "PWD");
+    new_env = ft_strjoin("PWD=", (*data)->cwd);
     if (node == NULL)
     {
-        node = new_list_env(ft_strjoin(ft_strdup("PWD="), (*data)->cwd));
+        node = new_list_env(new_env);
         ft_lstadd_back(&(*data)->vars, node);
     }
     else
-        node->env = ft_strjoin(ft_strdup("PWD="), (*data)->cwd); 
+    {
+        free (node->env);
+        node->env = new_env;
+    }
 }
 
 int builtin_cd(char **arg, t_input *data)
@@ -79,5 +90,7 @@ int builtin_cd(char **arg, t_input *data)
     if (chdir(path) == -1)
        return (get_error(path));
     update_env_cd(&data);
+    free (path);
+    rebuild_envp(data);
     return (0);
 }
