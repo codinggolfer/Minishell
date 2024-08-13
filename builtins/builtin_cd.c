@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:27:31 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/12 17:47:35 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/12 21:04:39 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+
+  // (*data)->cwd = getcwd(NULL, 1024);
+    // node = find_var((*data)->vars, "PWD");
+    // new_env = ft_strjoin("PWD=", (*data)->cwd);
+    // if (node == NULL)
+    // {
+    //     node = new_list_env(new_env);
+    //     ft_lstadd_back(&(*data)->vars, node);
+    // }
+    // else
+    // {
+    //     free (node->env);
+    //     node->env = new_env;
+    // } old stuff from update_env;
 
 char    *get_cd_path(int size, char **arg, t_input *data)
 {
@@ -41,7 +56,26 @@ char    *get_cd_path(int size, char **arg, t_input *data)
     return (path);
 }
 
-void update_env_cd(t_input **data)
+void update_pwd(t_list *node, t_input **data)
+{
+    char    *new_env;
+
+    (*data)->cwd = getcwd(NULL, 1024);
+    //node = find_var((*data)->vars, "PWD");
+    new_env = ft_strjoin("PWD=", (*data)->cwd);
+    if (node == NULL)
+    {
+        node = new_list_env(new_env);
+        ft_lstadd_back(&(*data)->vars, node);
+    }
+    else
+    {
+        free (node->env);
+        node->env = new_env;
+    }
+}
+
+void update_oldpwd_cd(t_input **data)
 {
     t_list *node;
     char *new_env;
@@ -60,19 +94,7 @@ void update_env_cd(t_input **data)
         node->env = new_env;
     }
     free((*data)->cwd);
-    (*data)->cwd = getcwd(NULL, 1024);
-    node = find_var((*data)->vars, "PWD");
-    new_env = ft_strjoin("PWD=", (*data)->cwd);
-    if (node == NULL)
-    {
-        node = new_list_env(new_env);
-        ft_lstadd_back(&(*data)->vars, node);
-    }
-    else
-    {
-        free (node->env);
-        node->env = new_env;
-    }
+    update_pwd(find_var((*data)->vars, "PWD"), data);
 }
 
 int builtin_cd(char **arg, t_input *data)
@@ -89,7 +111,7 @@ int builtin_cd(char **arg, t_input *data)
         return (1);
     if (chdir(path) == -1)
        return (get_error(path));
-    update_env_cd(&data);
+    update_oldpwd_cd(&data);
     free (path);
     rebuild_envp(data);
     return (0);
