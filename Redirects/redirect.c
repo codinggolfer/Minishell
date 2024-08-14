@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/09 12:05:41 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/14 14:16:18 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int handle_redirections(char **arg, t_list *list, int std_in)
             free (redirect_info);
             return (1);
         }
+        free(redirect_info);
     }
     if (redirect_info)
        free (redirect_info);
