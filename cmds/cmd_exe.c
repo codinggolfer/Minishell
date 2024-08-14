@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/12 16:57:38 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/14 15:10:18 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	run_cmd(t_input *data)
 		}
 		data->cmds->cmd.cmd = cmds_no_redirect(data->cmds->cmd.cmd);
 		data->exit_code = single_cmd(data, data->cmds);
-		free_2darray(data->cmds->cmd.cmd);
 	}
 }
 

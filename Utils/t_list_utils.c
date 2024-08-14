@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:28:28 by eromonagbom       #+#    #+#             */
-/*   Updated: 2024/08/13 15:43:17 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/14 14:27:27 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ t_list	*new_list_cmd(char **cmd)
 	list = (t_list *) malloc (sizeof(t_list));
 	if (!list)
 		return (NULL);
-	list ->env = NULL;
-	list ->cmd.cmd = cmd;
-	list ->next = NULL;
+	list->env = NULL;
+	list->cmd.cmd = cmd;
+	list->next = NULL;
 	list->in_fd = STDIN_FILENO;
 	list->out_fd = STDOUT_FILENO;
 	return (list);

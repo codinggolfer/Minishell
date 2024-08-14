@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:56:39 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/09 12:03:36 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/14 15:08:40 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	free_list(t_list *lst)
 	t_list	*temp;
 
 	temp = lst;
-	while (!lst)
+	while (lst)
 	{
 		temp = lst->next;
 		free_node(lst);

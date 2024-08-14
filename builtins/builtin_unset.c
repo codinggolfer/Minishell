@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:29:18 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/05 14:35:56 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/14 16:18:46 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,25 @@ int builtin_unset(char **arg, t_input *data)
     t_list  *list;
     t_list  *del;
 
-    i = 1;
+    i = 0;
     list = data->vars;
-    while (arg[i])
+    while (arg[++i])
     {
-        if (!ft_strcmp(arg[i], "_"))
-        {
-            i++;
+        if (!ft_strcmp(arg[i], ""))
             continue ;
-        }
         del = find_var(list, arg[i]);
         if (del)
         {
-            remove_env(&data->vars, del);
+            if (list == del)
+            {
+                list = del->next;
+                free(del->env);
+                del->env = ft_strdup("");
+            }
+            else
+                remove_env(&data->vars, del);
             rebuild_envp(data);
         }
-        i++;
     }
     return (0);
 }
