@@ -56,7 +56,6 @@ char **cmds_no_redirect(char **arg)
         else
             ret[j++] = ft_strdup(arg[i++]);
     }
-    //ret[len + 1] = NULL;
     free_2darray(arg);
     return (ret);
 }

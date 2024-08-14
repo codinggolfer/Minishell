@@ -38,7 +38,6 @@ int	handle_all_redirect_output(char *filename, int *out_fd, int decider)
 	if (fd == -1)
 		return (error_msg(NULL, filename, "File could not be opened", 1));
 	dup2(fd, *out_fd);
-	printf("here\n");
 	close(fd);
 	return (0);
 }
@@ -52,6 +51,7 @@ int	heredoc_child(char *seperate, int *stor, int std_in)
 	dup2(std_in, STDIN_FILENO);
 	while (1)
 	{
+		check_signal(1);
 		line = readline("> ");
 		rl_redisplay();
 		if (!line)
@@ -83,6 +83,7 @@ int	handle_redirect_input_heredoc(char *seperate, int *in_fd, int std_in)
 	if (!child_fd)
 		heredoc_child(seperate, stor, std_in);
 	close(stor[1]);
+	check_signal(2);
 	waitpid(child_fd, 0, 0);
 	dup2(stor[0], *in_fd);
 	return (0);

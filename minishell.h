@@ -14,8 +14,9 @@
 # define MINISHELL_H
 
 # include <stdio.h>
-# include "libft/libft.h"
 # include <signal.h>
+# include <string.h>
+# include "libft/libft.h"
 # include <fcntl.h>
 # include <term.h>
 # include <dirent.h>
@@ -102,7 +103,7 @@ int		handle_line(t_input *data);
 int		check_closed(t_input *data);
 
 //signals:
-void	newliner(int signal);
+void	check_signal(int sig);
 
 //lexer / parsing
 int		lexer(t_input *data);

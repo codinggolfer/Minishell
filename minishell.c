@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "minishell.h"
+
+int		g_num = 0;
 
 void	init_data(t_input *data, char **env)
 {
@@ -115,8 +115,7 @@ int	main(int ac, char **av, char **envp)
 	tcsetattr(STDIN_FILENO, TCSANOW, input.new);
 	while (1)
 	{
-		signal(SIGINT, newliner);
-		signal(SIGQUIT, SIG_IGN);
+		check_signal(0);
 		if (handle_line(&input) == 0)
 			continue ;
 		dollar_sign(&input);

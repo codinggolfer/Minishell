@@ -89,7 +89,6 @@ void	run_cmd(t_input *data)
 		}
 		data->cmds->cmd.cmd = cmds_no_redirect(data->cmds->cmd.cmd);
 		data->exit_code = single_cmd(data, data->cmds);
-		free_2darray(data->cmds->cmd.cmd);
 	}
 }
 

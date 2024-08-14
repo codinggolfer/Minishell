@@ -70,13 +70,6 @@ void	remove_env(t_list **lst, t_list *node)
 	t_list	*head;
 	t_list	*prev;
 	
-	if (*lst == node)
-	{
-		(*lst) = (*lst)->next;
-		free (node->env);
-		node->env = ft_strdup("");
-		return ;
-	}
 	head = (*lst);
 	prev = head;
 	while (prev != node)

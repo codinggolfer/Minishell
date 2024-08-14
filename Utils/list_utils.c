@@ -50,7 +50,7 @@ void	free_list(t_list *lst)
 	t_list	*temp;
 
 	temp = lst;
-	while (!lst)
+	while (lst)
 	{
 		temp = lst->next;
 		free_node(lst);
