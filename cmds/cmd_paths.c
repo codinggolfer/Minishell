@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:59:28 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/02 16:14:51 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/12 16:57:51 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ char	*get_path_env(t_input *data)
 	{
 		if (strcmp_equal(lst->env, "PATH") == 0)
         {
-			ret = ft_strdup(lst->env);
-			//exit(printf("%s\n", ret));
+			ret = lst->env;
             return (ret + 5);
         }
 		lst = lst->next;

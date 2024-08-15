@@ -38,7 +38,6 @@ int	handle_all_redirect_output(char *filename, int *out_fd, int decider)
 	if (fd == -1)
 		return (error_msg(NULL, filename, "File could not be opened", 1));
 	dup2(fd, *out_fd);
-	printf("here\n");
 	close(fd);
 	return (0);
 }
@@ -56,8 +55,8 @@ int	heredoc_child(char *seperate, int *stor, int std_in)
 		rl_redisplay();
 		if (!line)
 		{
-			error_msg("warning", seperate,
-				"here-document at line 28 delimited by end-of-file", 0);
+			// error_msg("warning", seperate,
+			// 	"here-document at line 28 delimited by end-of-file", 0);
 			break ;
 		}
 		if (ft_strcmp(line, seperate) == 0)
@@ -76,6 +75,7 @@ int	handle_redirect_input_heredoc(char *seperate, int *in_fd, int std_in)
 	pid_t	child_fd;
 	int		stor[2];
 
+	check_signal(2);
 	if (is_redirect(seperate))
 		return (-1);
 	pipe(stor);

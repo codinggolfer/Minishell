@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/06 13:52:08 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:57:38 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int single_cmd(t_input *data, t_list *cmds)
 		exit_code = execute_cmd(data, path, cmds->cmd.cmd, cmd);
 		if (path)
 			free_2darray(path);
+		free (cmd); //added to fix leak
     }
     else
 	{

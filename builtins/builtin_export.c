@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:28:43 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/01 15:36:11 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/13 15:40:02 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,10 @@ int builtin_export(char **arg, t_input *data)
         node = find_var(data->vars, new_var_name);
         free (new_var_name);
         if (node == NULL)
-            ft_lstadd_back(&data->vars, new_list_env(ft_strdup(arg[i])));
+            ft_lstadd_back(&data->vars, new_list_env(arg[i]));
         else
             replace_var(arg[i], node);
-    }   
+    }
+    rebuild_envp(data);
     return (0);
 }

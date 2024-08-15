@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:28:28 by eromonagbom       #+#    #+#             */
-/*   Updated: 2024/08/05 14:56:39 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/13 15:43:17 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ t_list	*new_list_env(char *env)
 		return (NULL);
 	head->env = ft_strdup(env);
 	head->next = NULL;
+	head->cmd.cmd = NULL;
+	head->in_fd = 0;
+	head->out_fd = 0;
 	return (head);
 }
 
@@ -31,9 +34,9 @@ t_list	*new_list_cmd(char **cmd)
 	list = (t_list *) malloc (sizeof(t_list));
 	if (!list)
 		return (NULL);
-	list ->env = NULL;
-	list ->cmd.cmd = cmd;
-	list ->next = NULL;
+	list->env = NULL;
+	list->cmd.cmd = cmd;
+	list->next = NULL;
 	list->in_fd = STDIN_FILENO;
 	list->out_fd = STDOUT_FILENO;
 	return (list);
@@ -70,13 +73,6 @@ void	remove_env(t_list **lst, t_list *node)
 	t_list	*head;
 	t_list	*prev;
 	
-	if (*lst == node)
-	{
-		(*lst) = (*lst)->next;
-		free (node->env);
-		node->env = ft_strdup("");
-		return ;
-	}
 	head = (*lst);
 	prev = head;
 	while (prev != node)

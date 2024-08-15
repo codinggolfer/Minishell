@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:04 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/06 13:32:21 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/14 14:16:18 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,8 @@ char **cmds_no_redirect(char **arg)
         else
             ret[j++] = ft_strdup(arg[i++]);
     }
-   // ret[len] = NULL;
     free_2darray(arg);
     return (ret);
-    
 }
 
 int switchdirect(int *info, t_list *lst, char *arg, int stdin)
@@ -95,6 +93,7 @@ int handle_redirections(char **arg, t_list *list, int std_in)
             free (redirect_info);
             return (1);
         }
+        free(redirect_info);
     }
     if (redirect_info)
        free (redirect_info);

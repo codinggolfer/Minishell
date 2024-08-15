@@ -16,6 +16,7 @@ static void	wait_all_cmds(int count, pid_t last_child, t_input *data)
 {
 	int	status;
 
+	status = 0;
 	while (count)
 	{
 		waitpid(last_child, &status, 0);
@@ -39,8 +40,7 @@ static void	clean_pipes(int send, int count, int *pipe_stor)
 
 static void	in_child(int last, t_input *data, t_list *current, int toclose)
 {
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
+	check_signal(1);
 	if (!(last))
 		close(toclose);
 	if (handle_redirections(current->cmd.cmd, current, data->stdin_backup) == -1)
@@ -73,6 +73,7 @@ void	multi_commands(t_input *data)
     cmd_count = get_cmd_counter(data);
     currentent = data->cmds;
     send = 0;
+	last_child = 0;
     while(send < cmd_count)
     {
 		fix_fd(send, cmd_count, &pipe_stor[0], currentent);
@@ -85,8 +86,8 @@ void	multi_commands(t_input *data)
 			++send;
 			currentent = currentent->next;
 		}
+		waitpid(last_child, NULL, 0);
 	}
-	signal(SIGINT, SIG_IGN);
-	signal(SIGQUIT, SIG_IGN);
+	check_signal(1);
 	wait_all_cmds(cmd_count, last_child, data);
 }

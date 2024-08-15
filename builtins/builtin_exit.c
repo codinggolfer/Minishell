@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:29:52 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/07/29 15:57:11 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/09 15:15:29 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int builtin_exit(t_input *data, char **arg)
         ecode = ft_atoi(arg[1]);
     while (ecode >= 256)
         ecode -= 256;
-    tcsetattr(STDIN_FILENO, TCSAFLUSH, data->new);
-    exit (ecode);
+    tcsetattr(STDIN_FILENO, TCSAFLUSH, &data->new);
+    exit (0);
+	//exit (reset_exit(&data->atr->def_atr, ecode));
 }

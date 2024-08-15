@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   array_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:50:27 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/06 13:36:46 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/09 12:19:14 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_2darray(char **array)
 		free (array[i]);
 		i++;
 	}
-	array[0] = NULL;
+	free (array);
 }
 
 char	**realloc_and_add(char **src, char *str)

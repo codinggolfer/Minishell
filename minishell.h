@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/05 19:48:13 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/07 14:42:23 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define MINISHELL_H
 
 # include <stdio.h>
-# include "libft/libft.h"
 # include <signal.h>
+# include <string.h>
+# include "libft/libft.h"
 # include <fcntl.h>
 # include <term.h>
 # include <dirent.h>
@@ -60,8 +61,8 @@ typedef struct s_input
 	char			**tokens;
 	char			*cwd;
 	int				exit_code;
-	struct termios	*new;
-	struct termios	*old;
+	struct termios	new;
+	struct termios	old;
 	t_list			*vars;
 	t_list			*cmds;
 }	t_input;
@@ -95,7 +96,7 @@ int		handle_line(t_input *data);
 int		check_closed(t_input *data);
 
 //signals:
-void	newliner(int signal);
+void	check_signal(int sig);
 
 //lexer / parsing
 int		lexer(t_input *data);
@@ -169,5 +170,6 @@ int		get_exit_code(t_input *data, int exit_stat);
 //error
 int		error_msg(char *cmd, char *context, char *msg, int code);
 int		get_error(char *msg);
+int		reset_exit(struct termios *save, int ecode);
 
 #endif

@@ -18,22 +18,25 @@ int builtin_unset(char **arg, t_input *data)
     t_list  *list;
     t_list  *del;
 
-    i = 1;
+    i = 0;
     list = data->vars;
-    while (arg[i])
+    while (arg[++i])
     {
         if (!ft_strcmp(arg[i], "_"))
-        {
-            i++;
             continue ;
-        }
         del = find_var(list, arg[i]);
         if (del)
         {
-            remove_env(&data->vars, del);
+            if (list == del)
+	        {
+		        list = del->next;
+		        free(del->env);
+		        del->env = ft_strdup("");
+	        }
+            else
+                remove_env(&data->vars, del);
             rebuild_envp(data);
         }
-        i++;
     }
     return (0);
 }
