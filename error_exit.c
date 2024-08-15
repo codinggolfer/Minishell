@@ -6,7 +6,7 @@
 /*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:01:19 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/09 11:05:40 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/14 15:08:52 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	error_msg(char *cmd, char *context, char *msg, int code)
 	write(STDERR_FILENO, "\n", 1);
 	return (code);
 }
+
 void	cleaner(t_input *data)
 {
 	dup2(data->stdin_backup, STDIN_FILENO);
