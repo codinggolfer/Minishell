@@ -29,12 +29,6 @@
 # include <errno.h>
 # include <limits.h>
 
-typedef struct s_signal
-{
-	struct termios	def_atr;
-	struct termios	mod_atr;
-}		t_signal;
-
 typedef struct s_cmd
 {
 	char	**cmd;
@@ -67,11 +61,10 @@ typedef struct s_input
 	char			**tokens;
 	char			*cwd;
 	int				exit_code;
-	struct termios	*new;
-	struct termios	*old;
+	struct termios	new;
+	struct termios	old;
 	t_list			*vars;
 	t_list			*cmds;
-	t_signal		*atr;
 }	t_input;
 
 // env

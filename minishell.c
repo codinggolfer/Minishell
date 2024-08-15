@@ -19,13 +19,11 @@ void	init_data(t_input *data, char **env)
 	data->stdin_backup = dup(STDIN_FILENO);
 	data->stdout_backup = dup(STDOUT_FILENO);
 	data->tokens = NULL;
+	data->line = NULL;
 	data->vars = set_env(env);
 	data->own_env = NULL;
 	data->cwd = getcwd(NULL, 1024);
 	data->exit_code = 0;
-	data->old = malloc(sizeof(struct termios) * 1);
-	//data->new = malloc(sizeof(struct termios) * 1);
-	//tcgetattr(STDIN_FILENO, data->old);
 	rebuild_envp(data);
 }
 
@@ -109,10 +107,12 @@ int	main(int ac, char **av, char **envp)
 	if (ac != 1)
 		return (0);
 	(void)av;
+	g_num = 0;
 	init_data(&input, envp);
-	tcgetattr(STDOUT_FILENO, input.old);
+	tcgetattr(STDIN_FILENO, &input.old);
 	input.new = input.old;
-	tcsetattr(STDIN_FILENO, TCSANOW, input.new);
+	input.new.c_lflag &= ~(ECHOCTL);
+	tcsetattr(STDIN_FILENO, TCSANOW, &input.new);
 	while (1)
 	{
 		check_signal(0);
@@ -120,20 +120,10 @@ int	main(int ac, char **av, char **envp)
 			continue ;
 		dollar_sign(&input);
 		lexer(&input);
-		// for (int i = 0; input.tokens[i]; i++)
-		// 	printf("%s\n", input.tokens[i]);
 		parser(&input);
-		// for (int j = 0; input.cmds->cmd.cmd[j]; j++)
-		// 	printf("%s\n", input.cmds->cmd.cmd[j]);
-		// input.cmds = input.cmds->next;
-		// for (int j = 0; input.cmds->cmd.cmd[j]; j++)
-		// 	printf("%s\n", input.cmds->cmd.cmd[j]);
-		// for (int j = 0; input.own_env[j]; j++)
-		// 	printf("%s\n", input.own_env[j]);
 		if (check_redirect_errors(&input) == 0)
 			run_cmd(&input);
 		cleaner(&input);
 	}
 	exit (0);
-	//exit (reset_exit(&input.atr->def_atr, 0));
 }

@@ -12,6 +12,8 @@
 
 #include "minishell.h"
 
+extern int g_num;
+
 static void	child(int signal)
 {
 	if (signal == SIGINT)
@@ -43,13 +45,11 @@ static void	heredoc(int signal)
 
 static void	newliner(int signal)
 {
-	(void) signal;
 	if (signal == SIGINT)
 	{
-		write(STDOUT_FILENO, "\n", 1);
-		rl_on_new_line();
-		rl_redisplay();
 		rl_replace_line("", 0);
+		write(1, "\n", 1);
+		rl_on_new_line();
 		rl_redisplay();
 		g_num = SIGINT;
 	}
@@ -58,7 +58,6 @@ static void	newliner(int signal)
 		rl_on_new_line();
 		rl_redisplay();
 	}
-
 }
 void	check_signal(int sig)
 {
@@ -67,11 +66,11 @@ void	check_signal(int sig)
 	memset(&sa, 0, sizeof(sa));
 	if (sig == 0)
 		sa.sa_handler = &newliner;
-	if (sig == 1)
+	else if (sig == 1)
 		sa.sa_handler = &child;
 	else
 		sa.sa_handler = &heredoc;
-	sa.sa_flags = RESTART;
+	sa.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sa, NULL);
 	sigaction(SIGTERM, &sa, NULL);

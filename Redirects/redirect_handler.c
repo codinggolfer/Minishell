@@ -51,13 +51,12 @@ int	heredoc_child(char *seperate, int *stor, int std_in)
 	dup2(std_in, STDIN_FILENO);
 	while (1)
 	{
-		check_signal(1);
 		line = readline("> ");
 		rl_redisplay();
 		if (!line)
 		{
-			error_msg("warning", seperate,
-				"here-document at line 28 delimited by end-of-file", 0);
+			// error_msg("warning", seperate,
+			// 	"here-document at line 28 delimited by end-of-file", 0);
 			break ;
 		}
 		if (ft_strcmp(line, seperate) == 0)
@@ -76,6 +75,7 @@ int	handle_redirect_input_heredoc(char *seperate, int *in_fd, int std_in)
 	pid_t	child_fd;
 	int		stor[2];
 
+	check_signal(2);
 	if (is_redirect(seperate))
 		return (-1);
 	pipe(stor);
@@ -83,7 +83,6 @@ int	handle_redirect_input_heredoc(char *seperate, int *in_fd, int std_in)
 	if (!child_fd)
 		heredoc_child(seperate, stor, std_in);
 	close(stor[1]);
-	check_signal(2);
 	waitpid(child_fd, 0, 0);
 	dup2(stor[0], *in_fd);
 	return (0);

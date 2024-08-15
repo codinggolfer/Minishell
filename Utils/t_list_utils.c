@@ -21,6 +21,9 @@ t_list	*new_list_env(char *env)
 		return (NULL);
 	head->env = ft_strdup(env);
 	head->next = NULL;
+	head->cmd.cmd = NULL;
+	head->in_fd = 0;
+	head->out_fd = 0;
 	return (head);
 }
 
@@ -31,9 +34,9 @@ t_list	*new_list_cmd(char **cmd)
 	list = (t_list *) malloc (sizeof(t_list));
 	if (!list)
 		return (NULL);
-	list ->env = NULL;
-	list ->cmd.cmd = cmd;
-	list ->next = NULL;
+	list->env = NULL;
+	list->cmd.cmd = cmd;
+	list->next = NULL;
 	list->in_fd = STDIN_FILENO;
 	list->out_fd = STDOUT_FILENO;
 	return (list);

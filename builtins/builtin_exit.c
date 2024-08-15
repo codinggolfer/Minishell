@@ -72,7 +72,7 @@ int builtin_exit(t_input *data, char **arg)
         ecode = ft_atoi(arg[1]);
     while (ecode >= 256)
         ecode -= 256;
-    tcsetattr(STDIN_FILENO, TCSAFLUSH, data->new);
+    tcsetattr(STDIN_FILENO, TCSAFLUSH, &data->new);
     exit (0);
 	//exit (reset_exit(&data->atr->def_atr, ecode));
 }
