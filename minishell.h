@@ -61,6 +61,7 @@ typedef struct s_input
 	char			**tokens;
 	char			*cwd;
 	int				exit_code;
+	int				d_sign;
 	struct termios	new;
 	struct termios	old;
 	t_list			*vars;
@@ -130,7 +131,7 @@ int 	builtin_exit(t_input *data, char **arg);
 int		find_symbol(char *line, int found);
 int		get_keywords(char *line, int stop);
 char 	*access_var(t_input *data, char *var);
-void	dollar_sign(t_input *data);
+void		dollar_sign(t_input *data);
 t_list  *find_var(t_list *vars, char *find);
 int 	get_position(t_list *node);
 

@@ -19,8 +19,15 @@ int break_down(char *ret, int *index, char **str)
         str[0] = ft_substr(ret, index[0], index[1]);
     else
         str[0] = NULL;
-    str[1] = ft_substr(ret, index[1]+ 1, index[2]);
-    str[2] = ft_substr(ret, index[2] + 1, ft_strlen(ret));
+    str[1] = ft_substr(ret, index[1]+ 1, index[2] - index[1]);
+    str[2] = ft_substr(ret, index[2] + 1, ft_strlen(ret) - index[2]);
+//     printf("str0: %s\n", str[0]);
+//     printf("str1: %s\n", str[1]);
+//     printf("str2: %s\n", str[2]);
+//     printf("index 0: %d\n", index[0]);
+//     printf("index 1: %d\n", index[1]);
+//     printf("indes 2: %d\n", index[2]);
+//    exit (0);
     return (index[2] == index[1]);
 }
 
@@ -38,6 +45,7 @@ char    *handle_special(char *line, int end, int special)
     int left;
     int right;
 
+    printf("here\n");
     left = (line[end - 1] != '\'' && line[end - 1] != '\"');
     if (!special)
         right = (line[end + 1] == '\'' || line[end + 1] == '\"');
@@ -57,15 +65,21 @@ void    get_return(char **buff, char **str, int *index)
     if ((*buff))
         free ((*buff));
     ret = NULL;
-    ret = ft_strjoin(ret, str[0]);
-    ret = ft_strjoin(ret, str[3]);
-    ret = ft_strjoin(ret, str[2]);
+    ret = append_line(ret, str[0]);
+    ret = append_line(ret, str[3]);
+    ret = append_line(ret, str[2]);
     (*buff) = ret;
     index[1] = ft_strlen(str[0]) + ft_strlen(str[3]) - 1;
-    while (str[i])
+    if (str)
     {
-        free (str[i]);
-        i++;
+        if (str[0])
+            free (str[0]);
+        if (str[3])
+            free (str[3]);
+        if (str[2])
+            free (str[2]);
+        if (str[1])
+        free (str[1]);
     }
  }
 

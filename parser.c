@@ -14,9 +14,9 @@
 
 void	find_next_pipe(char **tokens, int *find_cmd)
 {
-	if (!ft_strcmp(tokens[find_cmd[1]], "|"))
+	if (tokens && !ft_strcmp(tokens[find_cmd[1]], "|"))
 		find_cmd[1]++;
-	if (ft_strcmp(tokens[find_cmd[1]], "|") == 1)
+	if (tokens && ft_strcmp(tokens[find_cmd[1]], "|") == 1)
 		find_cmd[1]++;
 	find_cmd[0] = find_cmd[1];
 	while (tokens[find_cmd[1]])
@@ -93,6 +93,7 @@ int	parser(t_input *data)
 	int		find_cmd[2];
 	char	**cmd;
 	
+	find_cmd[0] = 0;
 	find_cmd[1] = 0;
 	cmd = cut_cmds(find_cmd, data->tokens);
 	head = new_list_cmd(cmd);

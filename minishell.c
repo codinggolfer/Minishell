@@ -20,6 +20,7 @@ void	init_data(t_input *data, char **env)
 	data->stdout_backup = dup(STDOUT_FILENO);
 	data->tokens = NULL;
 	data->line = NULL;
+	data->d_sign = 0;
 	data->vars = set_env(env);
 	data->own_env = NULL;
 	data->cwd = getcwd(NULL, 1024);
@@ -32,7 +33,7 @@ int	check_closed(t_input *data)
 	int	i;
 
 	i = 0;
-	while (data->line[i])
+	while (data->line && data->line[i])
 	{
 		if (data->line[i] == '\"' || data->line[i] == '\'')
 		{
@@ -43,6 +44,7 @@ int	check_closed(t_input *data)
 				printf("Error: Unmatched quotation mark detected\n");
 				return (0);
 			}
+			continue ;
 		}
 		i++;
 	}
