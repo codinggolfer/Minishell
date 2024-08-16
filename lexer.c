@@ -75,7 +75,7 @@ int	lexer(t_input *data)
 	int		ret;
 	char	*new_tkn;
 
-	data->tokens = (char **) malloc(sizeof(char *));
+	data->tokens = (char **) ft_calloc(sizeof(char *), 1);
 	if (!data->tokens)
 		return (0);
 	pos[1] = 0;
