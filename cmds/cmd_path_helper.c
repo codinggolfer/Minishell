@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_path_helper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:43:03 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/07/18 13:43:26 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/19 21:00:18 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

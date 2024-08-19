@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/12 16:57:38 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/19 20:59:59 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int single_cmd(t_input *data, t_list *cmds)
+int	single_cmd(t_input *data, t_list *cmds)
 {
-    int     exit_code;
-    char    *cmd;
-    char    **path;
+    int		exit_code;
+    char	*cmd;
+    char	**path;
 
     cmd = ft_strdup(cmds->cmd.cmd[0]);
     exit_code = handle_builtins(cmd, cmds->cmd.cmd, data);
@@ -26,7 +26,7 @@ int single_cmd(t_input *data, t_list *cmds)
 		exit_code = execute_cmd(data, path, cmds->cmd.cmd, cmd);
 		if (path)
 			free_2darray(path);
-		free (cmd); //added to fix leak
+		free (cmd);
     }
     else
 	{
@@ -38,11 +38,11 @@ int single_cmd(t_input *data, t_list *cmds)
 
 int	get_exit_code(t_input *data, int exit_code)
 {
-	if(WIFEXITED(exit_code))
+	if (WIFEXITED(exit_code))
 		data->exit_code = WEXITSTATUS(exit_code);
 	else
 	{
-		if(WIFSIGNALED(exit_code))
+		if (WIFSIGNALED(exit_code))
 			data->exit_code = 130;
 	}
 	return (data->exit_code);
@@ -68,7 +68,7 @@ int	check_pipes(t_input *data)
 
 void	run_cmd(t_input *data)
 {
-    int exit_code;
+    int	exit_code;
 
     exit_code = 0;
     if (data->cmds->next)
@@ -78,7 +78,7 @@ void	run_cmd(t_input *data)
     }
     else
     {
-        if(!data->cmds->cmd.cmd)
+        if (!data->cmds->cmd.cmd)
             return ;
 		exit_code = handle_redirections(data->cmds->cmd.cmd,
 				data->cmds, data->stdin_backup);
@@ -92,16 +92,16 @@ void	run_cmd(t_input *data)
 	}
 }
 
-int execute_cmd(t_input *data, char **paths, char **args, char *cmd)
+int	execute_cmd(t_input *data, char **paths, char **args, char *cmd)
 {
-	int i;
-	pid_t child;
+	int		i;
+	pid_t	child;
 
 	i = 0;
 	rebuild_envp(data);
 	if (!paths)
 		return (error_msg(NULL, cmd, "No such file or directory", 127));
-	while(paths[i] && cmd)
+	while (paths[i] && cmd)
 	{
 		if (args[0])
 			free(args[0]);

@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 15:30:09 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/05 19:36:03 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/19 20:58:32 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ static void	fix_fd(int sent, int cmd_count, int *pipe_stor, t_list *current)
 
 void	multi_commands(t_input *data)
 {
-    t_list  *currentent;
-    int     cmd_count;
-    int     send;
-    int     pipe_stor[3];
-    pid_t   last_child;
+    t_list 	*currentent;
+    int		cmd_count;
+    int		send;
+    int		pipe_stor[3];
+    pid_t	last_child;
 
     cmd_count = get_cmd_counter(data);
     currentent = data->cmds;
