@@ -63,17 +63,12 @@ int pre_print_vars(t_list *list)
     t_list  *smallest_node;
 
     list_size = listsize(list);
-    //reset_printed(list);
     curr_node = list;
     while (list_size-- > 0)
     {
-        // while (curr_node)
-        // {
-        //     if (curr_node->env[0] < smallest_node->env[0])
         smallest_node = curr_node;
         display_export(smallest_node);
         curr_node = curr_node->next;
-        // }
     }
     return (0);
 }

@@ -26,6 +26,10 @@ void	init_data(t_input *data, char **env)
 	data->cwd = getcwd(NULL, 1024);
 	data->exit_code = 0;
 	rebuild_envp(data);
+	tcgetattr(STDIN_FILENO, &data->old);
+	data->new = data->old;
+	data->new.c_lflag &= ~(ECHOCTL);
+	tcsetattr(STDIN_FILENO, TCSANOW, &data->new);
 }
 
 int	check_closed(t_input *data)
@@ -42,7 +46,7 @@ int	check_closed(t_input *data)
 			{
 				free (data->line);
 				printf("Error: Unmatched quotation mark detected\n");
-				return (0);
+				return (2);
 			}
 			continue ;
 		}
@@ -58,11 +62,6 @@ int	handle_line(t_input *data)
 	line = readline("babatunde shell: ");
 	if (line)
 	{
-		if (ft_strlen(line) == 0)
-		{
-			free (line);
-			return (0);
-		}
 		add_history(line);
 		rl_redisplay();
 		data->line = ft_strdup(line);
@@ -77,26 +76,25 @@ int	check_redirect_errors(t_input *data)
 	int		i;
 	t_list	*temp;
 
-	i = 0;
 	temp = data->cmds;
 	while (temp)
 	{
+		i = 0;
 		while (temp->cmd.cmd && temp->cmd.cmd[i] != NULL)
 		{
 			if (is_redirect(temp->cmd.cmd[i]) == 1
-				&& (is_redirect(temp->cmd.cmd[i + 1]) == 1
-					|| temp->cmd.cmd[i + 1] == NULL))
+				&& ((is_redirect(temp->cmd.cmd[i + 1]) == 1
+					|| temp->cmd.cmd[i + 1] == NULL)))
 			{
 				data->exit_code = 2;
-				if (is_redirect(temp->cmd.cmd[i + 1]) == 1)
-					return (error_msg("babatunde shell", NULL,
+				if (is_redirect(temp->cmd.cmd[i]) == 1)
+					return (error_msg(temp->cmd.cmd[i], NULL,
 						"syntax error near unexpected token", 2));
-				return (error_msg("babatunde shell", NULL,
+				return (error_msg(temp->cmd.cmd[i], NULL,
 						"command not found", 2));
 			}
 			++i;
 		}
-		i = 0;
 		temp = temp->next;
 	}
 	return (0);
@@ -105,21 +103,21 @@ int	check_redirect_errors(t_input *data)
 int	main(int ac, char **av, char **envp)
 {
 	t_input	input;
+	int		i;
 
 	if (ac != 1)
 		return (0);
 	(void)av;
 	g_num = 0;
 	init_data(&input, envp);
-	tcgetattr(STDIN_FILENO, &input.old);
-	input.new = input.old;
-	input.new.c_lflag &= ~(ECHOCTL);
-	tcsetattr(STDIN_FILENO, TCSANOW, &input.new);
 	while (1)
 	{
 		check_signal(0);
-		if (handle_line(&input) == 0)
-			continue ;
+		i = handle_line(&input);
+		if (i == 0)
+			break ;
+		else if (i == 2)
+			continue ; 
 		dollar_sign(&input);
 		lexer(&input);
 		parser(&input);
