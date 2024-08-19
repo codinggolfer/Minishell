@@ -25,7 +25,10 @@ void	rebuild_envp(t_input *data)
 		free(data->own_env);
 	data->own_env = calloc (sizeof(char *), listsize(list) + 1);
 	if (!data->own_env)
-		exit (1); // need to add better protections in the future
+	{
+		data->own_env = NULL;
+		return ;
+	}
 	while (list != NULL)
 	{
 		data->own_env[i] = list->env;

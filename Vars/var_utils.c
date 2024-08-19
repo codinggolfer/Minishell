@@ -19,7 +19,7 @@ int break_down(char *ret, int *index, char **str)
         str[0] = ft_substr(ret, index[0], index[1]);
     else
         str[0] = NULL;
-    str[1] = ft_substr(ret, index[1]+ 1, index[2] - index[1]);
+    str[1] = ft_substr(ret, index[1] + 1, index[2] - index[1]);
     str[2] = ft_substr(ret, index[2] + 1, ft_strlen(ret) - index[2]);
 //     printf("str0: %s\n", str[0]);
 //     printf("str1: %s\n", str[1]);
@@ -45,7 +45,6 @@ char    *handle_special(char *line, int end, int special)
     int left;
     int right;
 
-    printf("here\n");
     left = (line[end - 1] != '\'' && line[end - 1] != '\"');
     if (!special)
         right = (line[end + 1] == '\'' || line[end + 1] == '\"');
@@ -58,10 +57,8 @@ char    *handle_special(char *line, int end, int special)
 }
 void    get_return(char **buff, char **str, int *index)
 {
-    int     i;
     char    *ret;
 
-    i = 0;
     if ((*buff))
         free ((*buff));
     ret = NULL;
