@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:59:28 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/12 16:57:51 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/19 21:01:32 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	append_to_path(char **paths, char *cmd)
 char	*get_path_env(t_input *data)
 {
 	t_list	*lst;
-    char    *ret;
+    char	*ret;
 
 	lst = data->vars;
 	while (lst != NULL)
@@ -75,7 +75,6 @@ char	**get_cmd_path(t_input *data, char *cmd)
 		if (!full_path)
 			return (NULL);
 		cmd_paths = ft_split(full_path, ':');
-		//free(full_path);
 		append_to_path(cmd_paths, cmd);
 	}
 	return (cmd_paths);

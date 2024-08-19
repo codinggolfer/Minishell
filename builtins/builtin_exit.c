@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:29:52 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/09 15:15:29 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/19 22:20:07 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static long	ft_atol(const char *str)
 {
-	long		mp;
-	long		number;
+	long	mp;
+	long	number;
 
 	mp = 1;
 	number = 0;
@@ -63,16 +63,20 @@ int builtin_exit(t_input *data, char **arg)
 
     printf("exit\n");
     if (count_arg_array(arg) > 2)
-        return (error_msg("exit", NULL, "too many arguments", 1));
+	{
+    	if (is_number(arg[1]) == 0 || ft_atol(arg[1]) > INT_MAX || ft_atol(arg[1]) < INT_MIN)
+        	ecode = error_msg("exit", NULL, "numeric argument required", 2);
+		else
+        	return (error_msg("exit", NULL, "too many arguments", 1));
+	}
     else if (arg[1] == NULL)
         ecode = 0;
-    else if (is_number(arg[1]) == 0 || ft_atol(arg[1]) > INT_MAX || ft_atol(arg[1]) < INT_MIN)
-        ecode = error_msg("exit", arg[1], "numeric argument required", 2);
+	else if (is_number(arg[1]) == 0 || ft_atol(arg[1]) > INT_MAX || ft_atol(arg[1]) < INT_MIN)
+        	ecode = error_msg("exit", NULL, "numeric argument required", 2);
     else
         ecode = ft_atoi(arg[1]);
     while (ecode >= 256)
         ecode -= 256;
     tcsetattr(STDIN_FILENO, TCSAFLUSH, &data->new);
     exit (0);
-	//exit (reset_exit(&data->atr->def_atr, ecode));
 }

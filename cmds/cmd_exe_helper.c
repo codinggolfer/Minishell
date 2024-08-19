@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 15:03:52 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/06 14:12:33 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/19 20:57:35 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	child_execute(char *path, char **arg, char **my_env)
 {
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
+	check_signal(1);
 	if (execve(path, arg, my_env) == -1)
 		exit(errno);
 }
@@ -24,8 +23,7 @@ int	parent_execute(t_input *data, pid_t pid)
 {
 	int	stat;
 
-	signal(SIGINT, SIG_IGN);
-	signal(SIGQUIT, SIG_IGN);
+	check_signal(0);
 	waitpid(pid, &stat, 0);
 	return (get_exit_code(data, stat));
 }
