@@ -30,6 +30,7 @@ int	error_msg(char *cmd, char *context, char *msg, int code)
 	write(STDERR_FILENO, "\n", 1);
 	return (code);
 }
+
 void	cleaner(t_input *data)
 {
 	dup2(data->stdin_backup, STDIN_FILENO);

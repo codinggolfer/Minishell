@@ -67,7 +67,7 @@ int	find_symbol(char *line, int found)
 	int	i;
 
 	i = 0;
-	while(line[i])
+	while (line[i])
 	{
 		if (line[i] == found)
 			return (i);

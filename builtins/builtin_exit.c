@@ -35,7 +35,7 @@ static long	ft_atol(const char *str)
 	if (number * mp > 2147483647 || number * mp < -2147483648)
 		return (number * mp);
 	if (number == 0 && mp == -1)
-        return (number * mp);
+		return (number * mp);
 	return (number * mp);
 }
 
@@ -57,26 +57,33 @@ static int	is_number(char *num)
 	return (1);
 }
 
-int builtin_exit(t_input *data, char **arg)
+int	builtin_exit(t_input *data, char **arg)
 {
-    int ecode;
+	int	ecode;
 
-    printf("exit\n");
-    if (count_arg_array(arg) > 2)
+	printf("exit\n");
+	if (count_arg_array(arg) > 2)
 	{
-    	if (is_number(arg[1]) == 0 || ft_atol(arg[1]) > INT_MAX || ft_atol(arg[1]) < INT_MIN)
-        	ecode = error_msg("exit", NULL, "numeric argument required", 2);
+		if (is_number(arg[1]) == 0 || ft_atol(arg[1]) > INT_MAX
+			|| ft_atol(arg[1]) < INT_MIN)
+			ecode = error_msg("exit", NULL, "numeric argument required", 2);
 		else
-        	return (error_msg("exit", NULL, "too many arguments", 1));
+			return (error_msg("exit", NULL, "too many arguments", 1));
 	}
-    else if (arg[1] == NULL)
-        ecode = 0;
-	else if (is_number(arg[1]) == 0 || ft_atol(arg[1]) > INT_MAX || ft_atol(arg[1]) < INT_MIN)
-        	ecode = error_msg("exit", NULL, "numeric argument required", 2);
-    else
-        ecode = ft_atoi(arg[1]);
-    while (ecode >= 256)
-        ecode -= 256;
-    tcsetattr(STDIN_FILENO, TCSAFLUSH, &data->new);
-    exit (0);
+	else if (arg[1] == NULL)
+		ecode = 0;
+	else if (is_number(arg[1]) == 0
+		|| ft_atol(arg[1]) > INT_MAX || ft_atol(arg[1]) < INT_MIN)
+		ecode = error_msg("exit", NULL, "numeric argument required", 2);
+	else
+		ecode = ft_atoi(arg[1]);
+	while (ecode >= 256)
+		ecode -= 256;
+	close(data->stdin_backup);
+	close(data->stdout_backup);
+	close(0);
+	close(1);
+	close(2);
+	tcsetattr(STDIN_FILENO, TCSAFLUSH, &data->new);
+	exit (0);
 }

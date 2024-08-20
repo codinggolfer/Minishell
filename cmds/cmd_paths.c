@@ -43,16 +43,16 @@ void	append_to_path(char **paths, char *cmd)
 char	*get_path_env(t_input *data)
 {
 	t_list	*lst;
-    char	*ret;
+	char	*ret;
 
 	lst = data->vars;
 	while (lst != NULL)
 	{
 		if (strcmp_equal(lst->env, "PATH") == 0)
-        {
+		{
 			ret = lst->env;
-            return (ret + 5);
-        }
+			return (ret + 5);
+		}
 		lst = lst->next;
 	}
 	return (NULL);

@@ -118,27 +118,27 @@ void	put_msg(char *av);
 char	*find_path(char **env);
 
 // builtins
-int 	handle_builtins(char *cmd, char **arg, t_input *data);
-int 	ft_strcmp(char *s1, char *s2);
+int		handle_builtins(char *cmd, char **arg, t_input *data);
+int		ft_strcmp(char *s1, char *s2);
 int		cd_error(void);
-int 	builtin_cd(char **arg, t_input *data);
-int 	builtin_export(char **arg, t_input *data);
-int 	builtin_unset(char **arg, t_input *data);
-int 	builtin_exit(t_input *data, char **arg);
+int		builtin_cd(char **arg, t_input *data);
+int		builtin_export(char **arg, t_input *data);
+int		builtin_unset(char **arg, t_input *data);
+int		builtin_exit(t_input *data, char **arg);
 
 // vars
 
 int		find_symbol(char *line, int found);
 int		get_keywords(char *line, int stop);
-char 	*access_var(t_input *data, char *var);
-void		dollar_sign(t_input *data);
-t_list  *find_var(t_list *vars, char *find);
-int 	get_position(t_list *node);
+char	*access_var(t_input *data, char *var);
+void	dollar_sign(t_input *data);
+t_list	*find_var(t_list *vars, char *find);
+int		get_position(t_list *node);
 
 // redirect
 int		check_redirect_errors(t_input *data);
 int		is_redirect(char *arg);
-int 	count_args_skip_redirections(char **args);
+int		count_args_skip_redirections(char **args);
 int		redirection_type(char *arg);
 int		has_redirect(char **arg);
 int		is_redirect(char *arg);
@@ -149,8 +149,7 @@ int		handle_redirect_input_heredoc(char *delimiter, int *in_fd, int std_in);
 int		handle_redirections(char **arg, t_list *list, int std_in);
 char	**cmds_no_redirect(char **arg);
 
-// cmds
-
+// cmd
 void	child_execute(char *cmd_path, char **args, char **my_envp);
 int		parent_execute(t_input *data, pid_t pid);
 int		get_cmd_counter(t_input *data);
@@ -165,8 +164,6 @@ void	append_to_path(char **paths, char *cmd);
 char	*get_path_env(t_input *data);
 char	**get_cmd_path(t_input *data, char *cmd);
 int		get_exit_code(t_input *data, int exit_stat);
-
-
 
 //error
 int		error_msg(char *cmd, char *context, char *msg, int code);

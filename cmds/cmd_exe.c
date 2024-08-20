@@ -14,26 +14,26 @@
 
 int	single_cmd(t_input *data, t_list *cmds)
 {
-    int		exit_code;
-    char	*cmd;
-    char	**path;
+	int		exit_code;
+	char	*cmd;
+	char	**path;
 
-    cmd = ft_strdup(cmds->cmd.cmd[0]);
-    exit_code = handle_builtins(cmd, cmds->cmd.cmd, data);
-    if (exit_code == -1)
-    {
+	cmd = ft_strdup(cmds->cmd.cmd[0]);
+	exit_code = handle_builtins(cmd, cmds->cmd.cmd, data);
+	if (exit_code == -1)
+	{
 		path = get_cmd_path(data, cmd);
 		exit_code = execute_cmd(data, path, cmds->cmd.cmd, cmd);
 		if (path)
 			free_2darray(path);
 		free (cmd);
-    }
-    else
-	{
-        if (cmd)
-            free(cmd);
 	}
-    return (exit_code);
+	else
+	{
+		if (cmd)
+			free(cmd);
+	}
+	return (exit_code);
 }
 
 int	get_exit_code(t_input *data, int exit_code)
@@ -68,18 +68,18 @@ int	check_pipes(t_input *data)
 
 void	run_cmd(t_input *data)
 {
-    int	exit_code;
+	int	exit_code;
 
-    exit_code = 0;
-    if (data->cmds->next)
-    {
+	exit_code = 0;
+	if (data->cmds->next)
+	{
 		if (check_pipes(data))
 			multi_commands(data);
-    }
-    else
-    {
-        if (!data->cmds->cmd.cmd)
-            return ;
+	}
+	else
+	{
+		if (!data->cmds->cmd.cmd)
+			return ;
 		exit_code = handle_redirections(data->cmds->cmd.cmd,
 				data->cmds, data->stdin_backup);
 		if (exit_code == 1)

@@ -15,6 +15,9 @@
 void	child_execute(char *path, char **arg, char **my_env)
 {
 	check_signal(1);
+	close(0);
+	close(4);
+	close(3);
 	if (execve(path, arg, my_env) == -1)
 		exit(errno);
 }
@@ -24,6 +27,9 @@ int	parent_execute(t_input *data, pid_t pid)
 	int	stat;
 
 	check_signal(0);
+	close(0);
+	close(1);
+	close(2);
 	waitpid(pid, &stat, 0);
 	return (get_exit_code(data, stat));
 }

@@ -12,31 +12,31 @@
 
 #include "../minishell.h"
 
-int builtin_unset(char **arg, t_input *data)
+int	builtin_unset(char **arg, t_input *data)
 {
-    int     i;
-    t_list  *list;
-    t_list  *del;
+	int		i;
+	t_list	*list;
+	t_list	*del;
 
-    i = 0;
-    list = data->vars;
-    while (arg[++i])
-    {
-        if (!ft_strcmp(arg[i], "_"))
-            continue ;
-        del = find_var(list, arg[i]);
-        if (del)
-        {
-            if (list == del)
-	        {
-		        list = del->next;
-		        free(del->env);
-		        del->env = ft_strdup("");
-	        }
-            else
-                remove_env(&data->vars, del);
-            rebuild_envp(data);
-        }
-    }
-    return (0);
+	i = 0;
+	list = data->vars;
+	while (arg[++i])
+	{
+		if (!ft_strcmp(arg[i], "_"))
+			continue ;
+		del = find_var(list, arg[i]);
+		if (del)
+		{
+			if (list == del)
+			{
+				list = del->next;
+				free(del->env);
+				del->env = ft_strdup("");
+			}
+			else
+				remove_env(&data->vars, del);
+			rebuild_envp(data);
+		}
+	}
+	return (0);
 }

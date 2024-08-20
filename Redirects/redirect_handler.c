@@ -54,11 +54,7 @@ int	heredoc_child(char *seperate, int *stor, int std_in)
 		line = readline("> ");
 		rl_redisplay();
 		if (!line)
-		{
-			// error_msg("warning", seperate,
-			// 	"here-document at line 28 delimited by end-of-file", 0);
 			break ;
-		}
 		if (ft_strcmp(line, seperate) == 0)
 			break ;
 		write(stor[1], line, ft_strlen(line));

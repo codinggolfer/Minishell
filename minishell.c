@@ -84,12 +84,12 @@ int	check_redirect_errors(t_input *data)
 		{
 			if (is_redirect(temp->cmd.cmd[i]) == 1
 				&& ((is_redirect(temp->cmd.cmd[i + 1]) == 1
-					|| temp->cmd.cmd[i + 1] == NULL)))
+						|| temp->cmd.cmd[i + 1] == NULL)))
 			{
 				data->exit_code = 2;
 				if (is_redirect(temp->cmd.cmd[i]) == 1)
 					return (error_msg(temp->cmd.cmd[i], NULL,
-						"syntax error near unexpected token", 2));
+							"syntax error near unexpected token", 2));
 				return (error_msg(temp->cmd.cmd[i], NULL,
 						"command not found", 2));
 			}
@@ -117,7 +117,7 @@ int	main(int ac, char **av, char **envp)
 		if (i == 0)
 			break ;
 		else if (i == 2)
-			continue ; 
+			continue ;
 		dollar_sign(&input);
 		lexer(&input);
 		parser(&input);

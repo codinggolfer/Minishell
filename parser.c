@@ -57,7 +57,6 @@ void	remove_space_and_ears(char ***cmd, char **tokens, char **str)
 		if (remove_ears(tokens) == 1)
 			(*tokens) = append_line((*tokens), " ");
 		(*str) = append_line((*str), (*tokens));
-
 	}
 }
 
@@ -92,7 +91,7 @@ int	parser(t_input *data)
 	t_list	*node;
 	int		find_cmd[2];
 	char	**cmd;
-	
+
 	find_cmd[0] = 0;
 	find_cmd[1] = 0;
 	cmd = cut_cmds(find_cmd, data->tokens);

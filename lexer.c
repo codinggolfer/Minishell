@@ -14,7 +14,8 @@
 
 int	token_handler(char *line, int token_type, int i)
 {
-	if (line[i] != '\0' && (token_type == 3 || token_type == 4 || token_type == 5))
+	if (line[i] != '\0' && (token_type == 3
+			|| token_type == 4 || token_type == 5))
 	{
 		if (token_type == is_token(line[i + 1]))
 			i++;

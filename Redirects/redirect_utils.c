@@ -52,11 +52,12 @@ int	redirection_type(char *arg)
 		return (4);
 	return (-1);
 }
-int count_args_skip_redirections(char **args)
+
+int	count_args_skip_redirections(char **args)
 {
 	int	i;
 	int	ret;
-	int len;
+	int	len;
 
 	ret = 0;
 	i = 0;

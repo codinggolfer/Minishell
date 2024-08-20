@@ -72,7 +72,7 @@ void	remove_env(t_list **lst, t_list *node)
 {
 	t_list	*head;
 	t_list	*prev;
-	
+
 	head = (*lst);
 	prev = head;
 	while (prev != node)

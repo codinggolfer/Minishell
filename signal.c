@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-extern int g_num;
+extern int	g_num;
 
 static void	child(int signal)
 {
@@ -59,10 +59,11 @@ static void	newliner(int signal)
 		rl_redisplay();
 	}
 }
+
 void	check_signal(int sig)
 {
-	struct sigaction	sa;	
-	
+	struct sigaction	sa;
+
 	memset(&sa, 0, sizeof(sa));
 	if (sig == 0)
 		sa.sa_handler = &newliner;
