@@ -34,8 +34,7 @@ FILES	=	minishell.c \
 			cmds/cmd_exe_multi.c \
 			Redirects/redirect_utils.c \
 			Redirects/redirect_handler.c \
-			
-
+			Builtins/export_env.c \
 
 
 LIBFT	=	libft/libft.a

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/07 14:42:23 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/20 21:47:18 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int		builtin_cd(char **arg, t_input *data);
 int		builtin_export(char **arg, t_input *data);
 int		builtin_unset(char **arg, t_input *data);
 int		builtin_exit(t_input *data, char **arg);
+void	check_to_add_env(t_input *data, t_list *node, char *arg);
 
 // vars
 

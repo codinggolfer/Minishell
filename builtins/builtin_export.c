@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:28:43 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/13 15:40:02 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/20 21:54:29 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,6 @@ int	pre_print_vars(t_list *list)
 	return (0);
 }
 
-void	replace_var(char *str, t_list *node)
-{
-	if (find_symbol(str, '=') == -1)
-		return ;
-	free (node->env);
-	node->env = ft_strdup(str);
-}
-
 int	builtin_export(char **arg, t_input *data)
 {
 	int		i;
@@ -101,11 +93,7 @@ int	builtin_export(char **arg, t_input *data)
 		new_var_name = var_name(arg[i]);
 		node = find_var(data->vars, new_var_name);
 		free (new_var_name);
-		if (node == NULL)
-			ft_lstadd_back(&data->vars, new_list_env(arg[i]));
-		else
-			replace_var(arg[i], node);
+		check_to_add_env(data, node, arg[i]);
 	}
-	rebuild_envp(data);
 	return (0);
 }
