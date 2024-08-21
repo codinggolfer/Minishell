@@ -1,7 +1,7 @@
 NAME	=	minishell
 
 CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS	=	-Wall -Wextra -Werror -g#-fsanitize=address 
 RM		=	rm -f
 
 HEADERS	=	-I ~/.brew/opt/readline/include
@@ -34,7 +34,8 @@ FILES	=	minishell.c \
 			cmds/cmd_exe_multi.c \
 			Redirects/redirect_utils.c \
 			Redirects/redirect_handler.c \
-			Builtins/export_env.c \
+			builtins/export_env.c \
+			cmds/multi_cmd_helper.c
 
 
 LIBFT	=	libft/libft.a

@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/20 21:47:18 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/21 18:12:32 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,9 @@ void	append_to_path(char **paths, char *cmd);
 char	*get_path_env(t_input *data);
 char	**get_cmd_path(t_input *data, char *cmd);
 int		get_exit_code(t_input *data, int exit_stat);
+void	clean_pipes(int send, int count, int *pipe_stor);
+void	multi_cmd_loop(int send, int cmd_count, t_input *data, t_list *current);
+void	wait_all_cmds(int count, pid_t last_child, t_input *data);
 
 //error
 int		error_msg(char *cmd, char *context, char *msg, int code);

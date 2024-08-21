@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:54:41 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/05 20:03:16 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/21 20:44:56 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	handle_redirect_input(char *filename, int *in_fd)
 	if (fd == -1)
 		return (error_msg(NULL, filename, "No such file or directory", 1));
 	dup2(fd, *in_fd);
+	close (fd);
 	return (0);
 }
 
@@ -49,6 +50,7 @@ int	heredoc_child(char *seperate, int *stor, int std_in)
 	line = NULL;
 	close(stor[0]);
 	dup2(std_in, STDIN_FILENO);
+	close(std_in);
 	while (1)
 	{
 		line = readline("> ");
@@ -63,6 +65,7 @@ int	heredoc_child(char *seperate, int *stor, int std_in)
 	}
 	if (line)
 		free(line);
+	close(stor[1]);
 	exit(420);
 }
 
@@ -81,5 +84,6 @@ int	handle_redirect_input_heredoc(char *seperate, int *in_fd, int std_in)
 	close(stor[1]);
 	waitpid(child_fd, 0, 0);
 	dup2(stor[0], *in_fd);
+	//close(stor[0]);
 	return (0);
 }

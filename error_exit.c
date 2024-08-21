@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:01:19 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/09 11:05:40 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/21 20:10:51 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

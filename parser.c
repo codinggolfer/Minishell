@@ -55,7 +55,7 @@ void	remove_space_and_ears(char ***cmd, char **tokens, char **str)
 	else
 	{
 		if (remove_ears(tokens) == 1)
-			(*tokens) = append_line((*tokens), " ");
+			(*tokens) = ft_strtrim((*tokens), " ");
 		(*str) = append_line((*str), (*tokens));
 	}
 }
