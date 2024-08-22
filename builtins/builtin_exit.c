@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:29:52 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/21 19:56:18 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:23:35 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,15 @@ static int	is_number(char *num)
 	return (1);
 }
 
+static void	ft_close(t_input *data)
+{
+	close(data->stdin_backup);
+	close(data->stdout_backup);
+	close(0);
+	close(1);
+	close(2);
+}
+
 int	builtin_exit(t_input *data, char **arg)
 {
 	int	ecode;
@@ -79,11 +88,7 @@ int	builtin_exit(t_input *data, char **arg)
 		ecode = ft_atoi(arg[1]);
 	while (ecode >= 256)
 		ecode -= 256;
-	close(data->stdin_backup);
-	close(data->stdout_backup);
-	close(0);
-	close(1);
-	close(2);
+	ft_close(data);
 	tcsetattr(STDIN_FILENO, TCSAFLUSH, &data->new);
-	exit (0);
+	exit (ecode);
 }

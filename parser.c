@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:27:07 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/05 19:28:27 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:21:00 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	find_next_pipe(char **tokens, int *find_cmd)
 {
-	if (tokens && !ft_strcmp(tokens[find_cmd[1]], "|"))
-		find_cmd[1]++;
-	if (tokens && ft_strcmp(tokens[find_cmd[1]], "|") == 1)
+	if (!tokens)
+		return ;
+	if (!ft_strcmp2(tokens[find_cmd[1]], "|"))
 		find_cmd[1]++;
 	find_cmd[0] = find_cmd[1];
 	while (tokens[find_cmd[1]])
 	{
-		if (!ft_strcmp(tokens[find_cmd[1]], "|"))
+		if (!ft_strcmp2(tokens[find_cmd[1]], "|"))
 			break ;
 		find_cmd[1]++;
 	}
@@ -34,10 +34,10 @@ int	remove_ears(char **tokens)
 	ret_val = ((*tokens)[0] == '\"' || (*tokens)[0] == '\'');
 	if ((*tokens)[0] == '\"')
 	{
-		(*tokens) = ft_strtrim((*tokens), "\"");
+		(*tokens) = ft_strtrim2((*tokens), '\"');
 	}
 	else if ((*tokens)[0] == '\'')
-		(*tokens) = ft_strtrim((*tokens), "\'");
+		(*tokens) = ft_strtrim2((*tokens), '\'');
 	return (ret_val);
 }
 
@@ -54,8 +54,8 @@ void	remove_space_and_ears(char ***cmd, char **tokens, char **str)
 	}
 	else
 	{
-		if (remove_ears(tokens) == 1)
-			(*tokens) = ft_strtrim((*tokens), " ");
+		if (remove_ears(tokens) == 0)
+			(*tokens) = ft_strtrim2((*tokens), ' ');
 		(*str) = append_line((*str), (*tokens));
 	}
 }

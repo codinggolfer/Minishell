@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:29:18 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/05 14:35:56 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/08/22 16:45:21 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

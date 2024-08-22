@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:04:50 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/19 20:59:59 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 16:07:25 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	execute_cmd(t_input *data, char **paths, char **args, char *cmd)
 		if (args[0])
 			free(args[0]);
 		args[0] = ft_strdup(paths[i]);
-		if (!(access(args[0], X_OK)))
+		if (!(access(args[0], X_OK)) && ft_strlen(cmd) != 0)
 		{
 			child = fork();
 			if (!child)

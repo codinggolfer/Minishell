@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:59:55 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/21 18:12:32 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:30:50 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # include <errno.h>
 # include <limits.h>
 
+extern int	g_num;
+
 typedef struct s_cmd
 {
 	char	**cmd;
@@ -42,15 +44,6 @@ typedef struct s_list
 	t_cmd			cmd;
 	struct s_list	*next;
 }	t_list;
-
-//pipex struct
-typedef struct s_pipe
-{
-	int		fd[2];
-	char	**env;
-	char	**path;
-	int		flag;
-}	t_pipe;
 
 typedef struct s_input
 {
@@ -91,6 +84,9 @@ void	remove_env(t_list **lst, t_list *node);
 void	free_list(t_list *lst);
 void	free_node(t_list *node);
 void	cleaner(t_input *data);
+int		ft_strcmp2(char *s1, char *s2);
+char	*ft_strtrim2(char *s1, char set);
+char	*ft_substr2(char const *s, unsigned int start, unsigned int end);
 
 //readline functions:
 int		handle_line(t_input *data);
@@ -106,17 +102,6 @@ int		bunny_ears(char *line, int start, int bunny_ears);
 int		parser(t_input *data);
 char	*append_line(char *line, char *ret);
 
-// pipex funtions
-
-int		pipex_main(int ac, char **av, char **env);
-void	pipex(int fd1, int fd2, char **av, t_pipe *struk);
-void	ft_error(char *msg);
-void	child_one(int fd1, char *av, t_pipe *struk);
-void	child_two(int fd2, char *av, t_pipe *struk);
-char	*get_command(char **path, char *arg);
-void	put_msg(char *av);
-char	*find_path(char **env);
-
 // builtins
 int		handle_builtins(char *cmd, char **arg, t_input *data);
 int		ft_strcmp(char *s1, char *s2);
@@ -128,7 +113,6 @@ int		builtin_exit(t_input *data, char **arg);
 void	check_to_add_env(t_input *data, t_list *node, char *arg);
 
 // vars
-
 int		find_symbol(char *line, int found);
 int		get_keywords(char *line, int stop);
 char	*access_var(t_input *data, char *var);
@@ -172,6 +156,5 @@ void	wait_all_cmds(int count, pid_t last_child, t_input *data);
 //error
 int		error_msg(char *cmd, char *context, char *msg, int code);
 int		get_error(char *msg);
-int		reset_exit(struct termios *save, int ecode);
 
 #endif

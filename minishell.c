@@ -6,13 +6,13 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:12:15 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/21 20:23:35 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:21:16 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		g_num = 0;
+int		g_num;
 
 void	init_data(t_input *data, char **env)
 {
@@ -59,6 +59,11 @@ int	handle_line(t_input *data)
 {
 	char	*line;
 
+	if (g_num == SIGINT)
+	{
+		data->exit_code = 1;
+		g_num = 0;
+	}
 	line = readline("babatunde shell: ");
 	if (line)
 	{

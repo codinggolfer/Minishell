@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:01:19 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/21 20:10:51 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:18:37 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	error_msg(char *cmd, char *context, char *msg, int code)
 	}
 	if (context)
 	{
-		write(1, "babatunde shell: ", 18);
+		if (!cmd)
+			write(1, "babatunde shell: ", 18);
 		write(STDERR_FILENO, context, ft_strlen(context));
 		write(STDERR_FILENO, ": ", 2);
 	}
@@ -47,11 +48,6 @@ int	get_error(char *msg)
 		error_msg("cd", msg, "No such file or directory", 1);
 	else if (errno == ENOTDIR)
 		error_msg("cd", msg, "Not a directory", 1);
+	free(msg);
 	return (1);
-}
-
-int	reset_exit(struct termios *save, int ecode)
-{
-	tcsetattr(STDIN_FILENO, TCSAFLUSH, save);
-	exit(ecode);
 }

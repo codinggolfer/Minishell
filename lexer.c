@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:43:29 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/19 21:36:12 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 16:17:29 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,7 @@ int	lexer(t_input *data)
 			break ;
 		if (ret == 3 || ret == 4 || ret == 5)
 			data->tokens = realloc_and_add(data->tokens, "");
-		new_tkn = ft_substr(data->line, pos[0],
-				pos[1] - pos[0]);
+		new_tkn = ft_substr(data->line, pos[0], pos[1] - pos[0]);
 		data->tokens = realloc_and_add(data->tokens, new_tkn);
 		add_spaces(data, ret, pos);
 		free(new_tkn);

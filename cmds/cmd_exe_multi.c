@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 15:30:09 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/21 21:01:41 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:16:15 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,26 @@ void	clean_pipes(int send, int count, int *pipe_stor)
 	{
 		close(pipe_stor[1]);
 		pipe_stor[2] = pipe_stor[0];
-		close(pipe_stor[0]);
 	}
-	// if (send == count - 1)
-	// 	close(pipe_stor[1]);
 }
 
-static void	in_child(int last, t_input *data, t_list *current, int toclose)
+static void	in_child(int last, t_input *data, t_list *current, int *toclose)
 {
 	check_signal(1);
 	if (!last)
-		close(toclose);
+		close(toclose[0]);
+	if (last)
+		close(toclose[1]);
 	if (handle_redirections(current->cmd.cmd, current,
 			data->stdin_backup) == -1)
 		exit (1);
 	current->cmd.cmd = cmds_no_redirect(current->cmd.cmd);
 	dup2(current->in_fd, STDIN_FILENO);
-	close(current->in_fd);
+	if (last)
+		close(current->in_fd);
 	dup2(current->out_fd, STDOUT_FILENO);
+	if (!last)
+		close(current->out_fd);
 	close(data->stdout_backup);
 	close(data->stdin_backup);
 	exit (single_cmd(data, current));
@@ -64,7 +66,6 @@ static void	fix_fd(int sent, int cmd_count, int *pipe_stor, t_list *current)
 	{
 		pipe(pipe_stor);
 		current->out_fd = pipe_stor[1];
-		//close (pipe_stor[1]);
 	}
 	if (sent)
 		current->in_fd = pipe_stor[2];
@@ -81,21 +82,18 @@ void	multi_commands(t_input *data)
 	cmd_count = get_cmd_counter(data);
 	currentent = data->cmds;
 	send = 0;
-	//multi_cmd_loop(send, cmd_count, data, currentent);
 	while (send < cmd_count)
 	{
 		fix_fd(send, cmd_count, &pipe_stor[0], currentent);
 		last_child = fork();
 		if (last_child == 0)
-			in_child((send == cmd_count - 1), data, currentent, pipe_stor[0]);
+			in_child((send == cmd_count - 1), data, currentent, &pipe_stor[0]);
 		else
 		{
-			printf("hhere\n");
 			clean_pipes(send, cmd_count, &pipe_stor[0]);
 			++send;
 			currentent = currentent->next;
 		}
-		waitpid(last_child, NULL, 0);
 	}
 	check_signal(1);
 	wait_all_cmds(cmd_count, last_child, data);

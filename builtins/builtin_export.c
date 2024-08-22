@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:28:43 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/20 21:54:29 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 16:51:38 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	display_export(t_list *node)
 
 	i = 0;
 	get_pos = get_position(node);
+	if (ft_strlen(node->env) == 0)
+		return ;
 	write(1, "declare -x ", 11);
 	if (get_pos != -1)
 	{

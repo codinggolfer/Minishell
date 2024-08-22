@@ -1,7 +1,7 @@
 NAME	=	minishell
 
 CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror -g#-fsanitize=address 
+CFLAGS	=	-Wall -Wextra -Werror
 RM		=	rm -f
 
 HEADERS	=	-I ~/.brew/opt/readline/include
@@ -35,12 +35,9 @@ FILES	=	minishell.c \
 			Redirects/redirect_utils.c \
 			Redirects/redirect_handler.c \
 			builtins/export_env.c \
-			cmds/multi_cmd_helper.c
 
 
 LIBFT	=	libft/libft.a
-
-#PIPEX	=	pipex/pipex.a
 
 OBJECTS	=	$(FILES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:02:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/06 14:20:15 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:35:42 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,20 @@ int	builtin_env(char **own_env)
 int	handle_builtins(char *cmd, char **arg, t_input *data)
 {
 	if (cmd == 0)
-		return (-1);
-	if (ft_strcmp(cmd, "echo") == 0)
+		return (0);
+	if (ft_strcmp2(cmd, "echo") == 0)
 		return (builtin_echo(arg));
-	else if (ft_strcmp(cmd, "pwd") == 0)
+	else if (ft_strcmp2(cmd, "pwd") == 0)
 		return (builtin_pwd(data));
-	else if (ft_strcmp(cmd, "env") == 0)
+	else if (ft_strcmp2(cmd, "env") == 0)
 		return (builtin_env(data->own_env));
-	else if (ft_strcmp(cmd, "cd") == 0)
+	else if (ft_strcmp2(cmd, "cd") == 0)
 		return (builtin_cd(arg, data));
-	else if (ft_strcmp(cmd, "export") == 0)
+	else if (ft_strcmp2(cmd, "export") == 0)
 		return (builtin_export(arg, data));
-	else if (ft_strcmp(cmd, "unset") == 0)
+	else if (ft_strcmp2(cmd, "unset") == 0)
 		return (builtin_unset(arg, data));
-	else if (ft_strcmp(cmd, "exit") == 0)
+	else if (ft_strcmp2(cmd, "exit") == 0)
 		return (builtin_exit(data, arg));
 	else
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:54:41 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/08/21 20:44:56 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:52:53 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	heredoc_child(char *seperate, int *stor, int std_in)
 		rl_redisplay();
 		if (!line)
 			break ;
-		if (ft_strcmp(line, seperate) == 0)
+		if (ft_strcmp2(line, seperate) == 0)
 			break ;
 		write(stor[1], line, ft_strlen(line));
 		write(stor[1], "\n", 1);
@@ -84,6 +84,6 @@ int	handle_redirect_input_heredoc(char *seperate, int *in_fd, int std_in)
 	close(stor[1]);
 	waitpid(child_fd, 0, 0);
 	dup2(stor[0], *in_fd);
-	//close(stor[0]);
+	close(stor[0]);
 	return (0);
 }

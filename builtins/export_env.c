@@ -6,12 +6,11 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 21:33:11 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/20 21:48:46 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:24:19 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
 
 void	replace_var(char *str, t_list *node)
 {

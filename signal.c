@@ -6,13 +6,11 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:41:58 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/08/20 21:42:23 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:10:29 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-extern int	g_num;
 
 static void	child(int signal)
 {
@@ -36,18 +34,13 @@ static void	heredoc(int signal)
 		close(0);
 		write(1, "> \n", 3);
 	}
-	else if (signal == SIGQUIT)
-	{
-		rl_on_new_line();
-		rl_redisplay();
-	}
 }
 
 static void	newliner(int signal)
 {
 	if (signal == SIGINT)
 	{
-		//rl_replace_line("", 0);
+		rl_replace_line("", 0);
 		write(1, "\n", 1);
 		rl_on_new_line();
 		rl_redisplay();
